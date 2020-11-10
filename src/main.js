@@ -1,16 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import vuetify from './plugins/vuetify';
-import router from './router'
-import VueYouTubeEmbed from 'vue-youtube-embed'
-import LoadScript from 'vue-plugin-load-script'
+// This is the main.js file. Import global CSS and scripts here.
+// The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
-Vue.config.productionTip = false
-Vue.use(VueYouTubeEmbed)
-Vue.use(LoadScript) // required for loading twitch embed
+import DefaultLayout from '~/layouts/Default.vue'
 
-new Vue({
-  vuetify,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+export default function (Vue, { router, head, isClient }) {
+  // Set default layout as a global component
+  Vue.component('Layout', DefaultLayout)
+}
