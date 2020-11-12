@@ -1,50 +1,84 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
-    </header>
+  <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
+  <main class="layout" role="main">
+    <Header :siteName="$page.metadata.siteName" /> <!-- TODO: remove dependence on a page query to set the page title in header -->
     <slot/>
-  </div>
+    <div class="footer">
+      <div class="footer-links">
+        <a target="_blank" href="/sitemap.xml">Sitemap</a>
+        <a target="_blank" href="/feed.xml">RSS Feed</a>
+      </div>
+    </div>
+  </main>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
+<script>
+import Header from "@/components/Blog/Header";
+export default {
+  components: {
+    Header,
   }
 }
-</static-query>
+</script>
 
-<style>
+<style lang="scss">
+:root {
+    --app-background-color: #FFFFFF;
+    --app-font-color: black;
+}
+[theme="dark"] {
+    --app-background-color: #091A28;
+    --app-font-color: white;
+}
+[theme="sepia"] {
+    --app-background-color: #F1E7D0;
+    --app-font-color:#433422;
+}
 body {
+  background-color: var(--app-background-color);
+  color: var(--app-font-color);
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   margin:0;
   padding:0;
   line-height: 1.5;
+  font-size:1.1em;
 }
-
 .layout {
   max-width: 760px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+.footer {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:60px;
+  font-size:.8em;
 }
-
-.nav__link {
-  margin-left: 20px;
+.footer a {
+  color:gray;
+}
+.footer-links a {
+  margin:0 4px;
+}
+a {
+  border-bottom: 1px solid currentColor;
+  color: rgb(32, 201, 151);
+  text-decoration: none;
+}
+a:hover {
+  border-bottom-color: currentColor;
+  color: #686868;
+}
+@media only screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+  }
+  .header {
+    h1 {
+      font-size:1em;
+    }
+  }
 }
 </style>

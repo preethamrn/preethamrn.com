@@ -1,4 +1,5 @@
 <template>
+  <!-- Create new pages: https://gridsome.org/docs/pages/ -->
   <Layout>
 
     <!-- Learn how to use images here: https://gridsome.org/docs/images -->
@@ -13,15 +14,26 @@
     <p class="home-links">
       <a href="https://gridsome.org/docs/" target="_blank" rel="noopener">Gridsome Docs</a>
       <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
+      <a href="/blog" rel="noopener">Blog</a>
     </p>
 
   </Layout>
 </template>
 
+
+<page-query>
+query {
+  metadata {
+    siteName
+    siteDescription
+  }
+}
+</page-query>
+
 <script>
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: '@preethamrn'
   }
 }
 </script>
