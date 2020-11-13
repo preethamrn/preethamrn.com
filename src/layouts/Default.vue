@@ -1,6 +1,6 @@
 <template>
   <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
-  <main class="layout" role="main">
+  <main class="layout-template" role="main">
     <Header :siteName="$page.metadata.siteName" /> <!-- TODO: remove dependence on a page query to set the page title in header -->
     <slot/>
     <div class="footer">
@@ -43,7 +43,7 @@ body {
   line-height: 1.5;
   font-size:1.1em;
 }
-.layout {
+.layout-template {
   max-width: 760px;
   margin: 0 auto;
   padding-left: 20px;
@@ -70,6 +70,12 @@ a {
 a:hover {
   border-bottom-color: currentColor;
   color: #686868;
+}
+h1 {
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 @media only screen and (max-width: 500px) {
   .footer {

@@ -17,6 +17,8 @@
       <a href="/blog" rel="noopener">Blog</a>
     </p>
 
+    <v-container><v-row><v-col>test</v-col><v-col cols='10'>test2</v-col></v-row></v-container>
+    
   </Layout>
 </template>
 
@@ -31,7 +33,13 @@ query {
 </page-query>
 
 <script>
+import {VRow, VCol, VContainer} from 'vuetify/lib'
 export default {
+  components: {
+    VRow,
+    VCol,
+    VContainer,
+  },
   metaInfo: {
     title: '@preethamrn'
   }
