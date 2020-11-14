@@ -15,10 +15,13 @@
 </template>
 
 <script>
+import {VLayout, VFlex} from 'vuetify/lib'
 export default {
   name: 'AboutMeCard',
+  components: {
+    VLayout, VFlex,
+  },
   data: () => ({
-
   })
 }
 </script>

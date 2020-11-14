@@ -40,10 +40,12 @@
 </template>
 
 <script>
+import {VLayout, VFlex, VChip, VCombobox, VImg} from 'vuetify/lib'
 import PortfolioItem from '@/components/HomePage/PortfolioItem'
 export default {
   name: 'PortfolioCard',
   components: {
+    VLayout, VFlex, VChip, VCombobox, VImg,
     PortfolioItem
   },
   data: () => ({

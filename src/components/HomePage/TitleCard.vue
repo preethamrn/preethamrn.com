@@ -25,10 +25,14 @@
 </template>
 
 <script>
+import {VLayout, VFlex, VAvatar} from 'vuetify/lib'
+
 export default {
   name: 'TitleCard',
+  components: {
+    VLayout, VFlex, VAvatar,
+  },
   data: () => ({
-
   })
 }
 </script>

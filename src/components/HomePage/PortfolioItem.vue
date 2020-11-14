@@ -38,8 +38,13 @@
 </template>
 
 <script>
+import {VFlex, VCard, VCardTitle, VImg, VChip, VCardActions, VSpacer, VBtn, VIcon, VSlideYTransition, VCardText} from 'vuetify/lib'
+
 export default {
   name: 'PortfolioItem',
+  components: {
+    VFlex, VCard, VCardTitle, VImg, VChip, VCardActions, VSpacer, VBtn, VIcon, VSlideYTransition, VCardText,
+  },
   data: () => ({
     show: false
   }),

@@ -26,8 +26,12 @@
 </template>
 
 <script>
+import {VLayout, VFlex, VTimeline, VTimelineItem} from 'vuetify/lib'
 export default {
   name: 'ExperienceCard',
+  components: {
+    VLayout, VFlex, VTimeline, VTimelineItem,
+  },
   data: () => ({
     experiences: [
       {
