@@ -11,12 +11,10 @@
     "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/vue-remark": "^0.2.5",
     "gridsome": "^0.7.0",
-    "gridsome-plugin-feed": "^1.0.2",
-    "vuetify": "^2.3.17"
+    "gridsome-plugin-feed": "^1.0.2"
   },
   "devDependencies": {
     "sass": "^1.29.0",
-    "sass-loader": "^7.3.1",
-    "webpack-node-externals": "^2.5.2"
+    "sass-loader": "^7.3.1"
   }
 }

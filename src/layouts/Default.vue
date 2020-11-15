@@ -1,7 +1,7 @@
 <template>
   <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
   <main class="layout-template" role="main">
-    <Header :siteName="$page.metadata.siteName" /> <!-- TODO: remove dependence on a page query to set the page title in header -->
+    <Header siteName="Preetham" /> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
     <slot/>
     <div class="footer">
       <div class="footer-links">
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Header from "@/components/Blog/Header";
+import Header from "@/components/Header";
 export default {
   components: {
     Header,

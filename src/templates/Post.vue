@@ -10,11 +10,7 @@
 </template>
 
 <script>
-import Header from "@/components/Blog/Header";
 export default {
-  components: {
-    Header,
-  }
 };
 </script>
 

@@ -5,16 +5,6 @@
   </Layout>
 </template>
 
-
-<page-query>
-query {
-  metadata {
-    siteName
-    siteDescription
-  }
-}
-</page-query>
-
 <script>
 export default {
   metaInfo: {
