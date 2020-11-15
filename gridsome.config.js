@@ -14,24 +14,24 @@ module.exports = {
     {
       use: '@gridsome/vue-remark',
       options: {
-        baseDir: './content/posts/',
-        typeName: 'Post',
-        route: '/blog/:link',
-        template: './src/templates/Post.vue',
-        remark: {
-          plugins: [
-            ['@gridsome/remark-prismjs', {transformInlineCode: true}]
-          ]
-        }
+        baseDir: './content/redirects/',
+        typeName: 'Redirect',
+        route: '/:link',
+        template: './src/templates/Redirect.vue',
       }
     },
     {
       use: '@gridsome/vue-remark',
       options: {
-        baseDir: './content/redirects/',
-        typeName: 'Redirect',
-        route: '/:link',
-        template: './src/templates/Redirect.vue',
+        baseDir: './content/posts/',
+        typeName: 'Post',
+        route: '/blog/:link',
+        template: './src/templates/Post.vue',
+        // NOTE: vue-remark uses plugins on the latest source globally. So we must order Posts at the bottom.
+        // https://github.com/gridsome/gridsome/issues/707#issuecomment-536952443
+        plugins: [
+          ['@gridsome/remark-prismjs', {transformInlineCode: true}]
+        ],
       }
     },
     {
