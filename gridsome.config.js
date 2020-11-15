@@ -26,12 +26,23 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/vue-remark',
+      options: {
+        baseDir: './content/redirects/',
+        typeName: 'Redirect',
+        route: '/:link',
+        template: './src/templates/Redirect.vue',
+      }
+    },
+    {
+      // TODO: add redirects into the sitemap
       use: '@gridsome/plugin-sitemap',
       options: {
         cacheTime: 600000, // default
       }
     },
     {
+      // TODO: use @microflash/gridsome-plugin-feed for RSS
       use: 'gridsome-plugin-feed',
       options: {
         contentTypes: ['Post'],
