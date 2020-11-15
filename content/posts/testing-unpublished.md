@@ -4,9 +4,10 @@ link: "first-post"
 description: "The first post written in Markdown"
 timeToRead: 1
 date: 2019-04-20
+published: false
 ---
 
-This is the first post, it is written in Markdown.
+This is the first post, it is written in Markdown. THIS SHOULD NOT BE PUBLISHED
 
 # Here's some big text
 
@@ -35,3 +36,9 @@ Inline? ```i think so```
 
 # Blockquotes
 > "You miss 100% of the shots you don't take -Wayne Gretzky" -Michael Scott
+
+# Syntax highlighted codeblock with prismjs
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```

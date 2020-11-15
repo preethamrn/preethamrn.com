@@ -13,4 +13,12 @@ module.exports = function (api) {
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
   })
+
+  // NOTE: use this code to support commiting and deploying even when pages are in progress.
+  // Set published to any non-false value. Even undefined or null will work.
+  api.onCreateNode(node => {
+    if (process.env.NODE_ENV === 'production' && node.internal.typeName === 'Post' && node.published === false) {
+      return null
+    }
+  })
 }
