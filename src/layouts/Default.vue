@@ -1,9 +1,14 @@
 <template>
   <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
   <main class="layout-template" role="main">
-    <Header siteName="Preetham" /> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
+    <Header siteName="Preetham" :links="[
+      {href:'/blog', text: 'Blog'},
+      {href:'/portfolio', text: 'Portfolio'},
+      {href:'#contact', text: 'Contact'},
+    ]"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
     <slot/>
-    <div class="footer">
+    <div id="contact" class="footer">
+      <!-- TODO: add contact details -->
       <div class="footer-links">
         <a target="_blank" href="/sitemap.xml">Sitemap</a>
         <a target="_blank" href="/feed.xml">RSS Feed</a>

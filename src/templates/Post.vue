@@ -1,7 +1,7 @@
 <template>
   <!-- Create new templates: https://gridsome.org/docs/templates/ -->
   <Layout>
-    <div class="article">
+    <div class="article prose ">
       <h1 class="article-title">{{$page.post.title}}</h1>
       <p class="article-date"> {{ $page.post.date}} · <i>{{$page.post.timeToRead}} min read</i></p>
       <VueRemarkContent />

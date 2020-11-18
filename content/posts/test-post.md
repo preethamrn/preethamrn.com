@@ -10,10 +10,10 @@ published: true
 If you're seeing this post then that means the blog is working. I'll have a lot more (hopefully) great content coming soon. Just hold on.
 
 Just so this post has a bit of actual content. Here's an image of my old website (notice the typo "a few internship" that I had for over 2 years).
-![OLD HOMEPAGE]()
+![OLD HOMEPAGE](https://www.preethamrn.com)
 
 And here's an image of the updated homepage.
-![NEW HOMEPAGE]()
+![NEW HOMEPAGE](https://www.preethamrn.com)
 
 I've also set up sub-repositories for webapps that were originally built in this repo and redirect to those sub pages from the original links. This helps reduce the package size of the main homepage and blog posts. I'll probably write up more about how I accomplished this later (for a hint, go to the redirects directory in my repo).
 

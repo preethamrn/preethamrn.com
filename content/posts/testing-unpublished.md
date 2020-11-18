@@ -12,7 +12,11 @@ This is the first post, it is written in Markdown. THIS SHOULD NOT BE PUBLISHED
 # Here's some big text
 
 - and some lists 
+- with multiple items
     - just to show off all of the different elements 
+
+1. numbered lists
+1. work too
 
 ### How about some code?
 
@@ -41,4 +45,12 @@ Inline? ```i think so```
 ```javascript
 var s = "JavaScript syntax highlighting";
 alert(s);
+```
+
+```go
+switch user.kind {
+    case "recruiter": return "Software Engineer"
+    case "viewer": return "Video Maker"
+    case "chatter": return "Live Streamer"
+}
 ```

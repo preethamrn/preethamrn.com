@@ -1,6 +1,7 @@
 <template>
   <header class="header">
     <g-link to="/"><h1>👨‍💻 {{siteName}}</h1></g-link>
+    <a v-for='(link, index) in links' :key='index' :href='link.href'>{{link.text}}</a>
     <ClientOnly>
       <ThemeToggle />
     </ClientOnly>
@@ -9,7 +10,7 @@
 
 <script>
 export default {
-  props: ["siteName"],
+  props: ["siteName", "links"],
   components: {
     ThemeToggle: () => import('@/components/Blog/ThemeToggle')
   }

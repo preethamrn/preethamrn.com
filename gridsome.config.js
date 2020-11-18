@@ -4,7 +4,10 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
-// TODO: fix gridsome-plugin-feed and @gridsome/plugin-sitemap plugins
+// TODO: checkout gridsome-plugin-flexsearch (eg. https://github.com/jammeryhq/gridsome-starter-articles/blob/master/src/pages/Search.vue)
+// TODO: add tags (eg. https://github.com/cossssmin/gridsome-starter-bleda/blob/master/src/templates/Tag.vue)
+// TODO: add @noxify/gridsome-plugin-remark-embed to support displaying embeded YouTube, Vimeo, Giphy, etc. in markdown.
+// TODO: add gridsome-plugin-tailwindcss (ensure this doesn't interfere with all the themes)
 // TODO: add google analytics plugin (use process.env.GRIDSOME_GOOGLE_ANALYTICS_KEY) + SEO metadata into head tag
 module.exports = {
   siteName: 'Preetham',
@@ -35,7 +38,6 @@ module.exports = {
       }
     },
     {
-      // TODO: add redirects into the sitemap
       use: '@gridsome/plugin-sitemap',
       options: {
         cacheTime: 600000, // default
