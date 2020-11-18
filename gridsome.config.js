@@ -15,6 +15,12 @@ module.exports = {
   siteDescription: "Preetham's Portfolio, Blog, and Resume.",
   plugins: [
     {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-175017061-1'
+      }
+    },
+    {
       use: '@gridsome/vue-remark',
       options: {
         baseDir: './content/redirects/',
