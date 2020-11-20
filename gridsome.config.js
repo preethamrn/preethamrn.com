@@ -12,7 +12,10 @@
 module.exports = {
   siteName: 'Preetham',
   siteUrl: 'https://www.preethamrn.com/',
-  siteDescription: "Preetham's Portfolio, Blog, and Resume.",
+  siteDescription: "Preetham's Projects, Blog, and Resume.",
+  chainWebpack: config => {
+    config.resolve.alias.set('@images', '@/assets/images')
+  },
   plugins: [
     {
       use: '@gridsome/plugin-google-analytics',

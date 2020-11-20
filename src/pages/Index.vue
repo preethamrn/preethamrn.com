@@ -6,7 +6,7 @@
     <div class="title-header">
       <div class="header-gradient header-offset" />
       <div class="header-container">
-        <g-image class="profile-img" alt="Profile picture" src="~/assets/images/profile-pic.jpg" height="200" width="200" quality="100" fit="cover" />
+        <g-image class="profile-img" alt="Profile picture" src="~/assets/images/profile-pic.jpg" height="200" width="200" quality="100" fit="cover" blur="10" />
         <div class="header-text">
           I am a:<br>
           <span class='blue-text'>switch</span> user.kind {<br>
@@ -53,14 +53,19 @@
       </div>
     </div>
     
-    <!-- TODO: add portfolio (and create a standalone portfolio page to link to in header). each portfolio item has a hover transition that also pops out links on the right (github. website. blog post) -->
+    <!-- TODO: add projects (and create a standalone projects page to link to in header). each projects item has a hover transition that also pops out links on the right (github. website. blog post) -->
+    <h1 id='projects'>Projects</h1>
+    <Projects />
 
   </Layout>
 </template>
 
 <script>
+import Projects from "@/components/Homepage/Projects"
 export default {
-  components: {},
+  components: {
+    Projects,
+  },
   data: () => ({}),
   methods: {
   },

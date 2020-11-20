@@ -3,12 +3,23 @@
   <main class="layout-template" role="main">
     <Header siteName="Preetham" :links="[
       {href:'/blog', text: 'Blog'},
-      {href:'/portfolio', text: 'Portfolio'},
+      {href:'/projects', text: 'Projects'},
       {href:'#contact', text: 'Contact'},
     ]"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
     <slot/>
     <div id="contact" class="footer">
-      <!-- TODO: add contact details -->
+      <!-- TODO: add contact details
+Follow me:
+
+Twitter Instagram RSS
+Get in touch via email: preetham.narayanareddy@gmail.com (add an MX redirect in hover)
+
+Get notified about new projects:
+Email Address: 
+
+Written by preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
+
+-->
       <div class="footer-links">
         <a target="_blank" href="/sitemap.xml">Sitemap</a>
         <a target="_blank" href="/feed.xml">RSS Feed</a>
