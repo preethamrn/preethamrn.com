@@ -1,11 +1,7 @@
 <template>
   <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
   <main class="layout-template" role="main">
-    <Header siteName="Preetham" :links="[
-      {href:'/blog', text: 'Blog'},
-      {href:'/projects', text: 'Projects'},
-      {href:'#contact', text: 'Contact'},
-    ]"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
+    <Header siteName="Preetham" :links="links"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
     <slot/>
     <div id="contact" class="footer">
       <!-- TODO: add contact details
@@ -17,7 +13,7 @@ Get in touch via email: preetham.narayanareddy@gmail.com (add an MX redirect in 
 Get notified about new projects:
 Email Address: 
 
-Written by preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
+Written by @preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
 
 -->
       <div class="footer-links">
@@ -33,7 +29,17 @@ import Header from "@/components/Header";
 export default {
   components: {
     Header,
-  }
+  },
+  data: () => ({
+    links: [
+      {href:'/blog', text: 'Blog'},
+      {href:'/projects', text: 'Projects'},
+      {href:'#contact', text: 'Contact', onclick: () => {
+        let elem = document.getElementById('contact')
+        if (elem) elem.className += ' highlight'
+      }},
+    ],
+  })
 }
 </script>
 
@@ -41,14 +47,17 @@ export default {
 :root {
     --app-background-color: #FFFFFF;
     --app-font-color: black;
+    --app-highlight-color: rgba(255, 251, 0, 0.5);
 }
 [theme="dark"] {
     --app-background-color: #091A28;
     --app-font-color: white;
+    --app-highlight-color: rgba(0, 17, 255, 0.541);
 }
 [theme="sepia"] {
     --app-background-color: #F1E7D0;
     --app-font-color:#433422;
+    --app-highlight-color: rgba(255, 115, 0, 0.5);
 }
 body {
   background-color: var(--app-background-color);
@@ -102,5 +111,9 @@ h1 {
       font-size:1em;
     }
   }
+}
+
+#contact.highlight {
+  background-color: var(--app-highlight-color);
 }
 </style>

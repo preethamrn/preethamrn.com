@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <g-link to="/"><h1>👨‍💻 {{siteName}}</h1></g-link>
-    <a v-for='(link, index) in links' :key='index' :href='link.href'>{{link.text}}</a>
+    <a v-for='(link, index) in links' :key='index' :href='link.href' @click='link.onclick ? link.onclick() : () => {}'>{{link.text}}</a>
     <ClientOnly>
       <ThemeToggle />
     </ClientOnly>
