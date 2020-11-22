@@ -2,12 +2,12 @@
   <div class="project-item">
     <!-- TODO: Support linking to internal apps in same tab? -->
 		<a :href="project.link" :aria-labelledby="project.name" target="_blank"></a> 
-    <p style="padding-left: 1rem">
-		  <g-image v-if='project.image' :src="require(`!!assets-loader!@images/${project.image}`)" :alt="project.name + ' Logo'" width="100" height="50" fit="contain"></g-image>
-      <b aria-hidden="true">{{project.name}}</b>
-    </p>
+    <g-image v-if='project.image' :src="require(`!!assets-loader!@images/${project.image}`)" :alt="project.name + ' Logo'" width="100" height="50" fit="contain"></g-image>
 		<div class="item__overlay">
+      <h3 aria-hidden="true">{{project.name}}</h3>
+      <p>{{project.description}}</p>
 			<div class="item__body">
+        <font-awesome :icon="['fab', 'github']" />
         <!-- TODO: add font awesome icons linking to various places -->
 			</div>
 		</div>
@@ -22,61 +22,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// TODO: remove unnecessary styles
+* {
+  color: black;
+}
 .project-item {
-  position: relative;
-  height: 5rem;
-  background-color: white;
-  overflow-y: hidden;
   box-shadow: 0.1rem 0.1rem 1rem rgba(0, 0, 0, 0.1);
-
-  b {
-    margin: 0;
-    color: black;
-  }
-
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-
-    &:hover,
-    &:focus {
-      ~ .item__overlay {
-        transform: translate3d(0, 0, 0);
-      }
-    }
-  }
+  height: stretch;
 }
 
 img {
-  float: right;
-  height: 50px;
-  width: 100px;
-}
-
-.item__overlay {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  position: absolute;
+  display: block;
   width: 100%;
-  top: 0;
-  transition: transform 300ms;
-  background-color: lighten(turquoise, 15%);
-  transform: translate3d(0, calc(100%), 0);
 }
-
-.item__body {
-  flex-grow: 1;
-  padding: 1rem;
-
-  p {
-    margin: 0;
-  }
+.item__overlay > h3 {
+  margin: 0;
+  padding-left: 10px;
+  background-color: turquoise;
+}
+.item__overlay > p, .item__body {
+  margin: 0;
+  padding-left: 10px;
+  background-color: lighten(turquoise, 15%);
 }
 </style>
