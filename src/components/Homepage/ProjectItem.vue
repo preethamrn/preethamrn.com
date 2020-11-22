@@ -7,8 +7,8 @@
       <h3 aria-hidden="true">{{project.name}}</h3>
       <p>{{project.description}}</p>
 			<div class="item__body">
-        <font-awesome :icon="['fab', 'github']" />
-        <!-- TODO: add font awesome icons linking to various places -->
+        <a v-if='project.code' :href='project.code'><font-awesome :icon="['fab', 'github']" /></a>
+        <a v-if='project.code' :href='project.code'><font-awesome :icon="['fas', 'file-alt']" /></a>
 			</div>
 		</div>
   </div>
@@ -41,7 +41,11 @@ img {
 }
 .item__overlay > p, .item__body {
   margin: 0;
+  padding-bottom: 10px;
   padding-left: 10px;
   background-color: lighten(turquoise, 15%);
+}
+.item__body > a {
+  margin-right: 14px;
 }
 </style>
