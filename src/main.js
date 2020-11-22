@@ -7,11 +7,11 @@ import 'prismjs/themes/prism.css'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { config, library } from '@fortawesome/fontawesome-svg-core'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faFileAlt } from '@fortawesome/free-solid-svg-icons'
+import { faFileAlt, faLink } from '@fortawesome/free-solid-svg-icons'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 config.autoAddCss = false;
-library.add(faGithub, faFileAlt)
+library.add(faGithub, faFileAlt, faLink)
 
 export default function (Vue, { appOptions, router, head, isClient }) {
   // Set default layout as a global component

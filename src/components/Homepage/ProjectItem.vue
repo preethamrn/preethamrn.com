@@ -8,7 +8,8 @@
       <p>{{project.description}}</p>
 			<div class="item__body">
         <a v-if='project.code' :href='project.code'><font-awesome :icon="['fab', 'github']" /></a>
-        <a v-if='project.code' :href='project.code'><font-awesome :icon="['fas', 'file-alt']" /></a>
+        <a v-if='project.blog' :href='project.blog'><font-awesome :icon="['fas', 'file-alt']" /></a>
+        <a v-if='project.link' :href='project.link'><font-awesome :icon="['fas', 'link']" /></a>
 			</div>
 		</div>
   </div>
