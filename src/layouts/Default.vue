@@ -9,22 +9,28 @@
 
     <Container>
       <div id="contact" class="footer">
-        <!-- TODO: add contact details
-  Follow me:
-
-  Twitter Instagram RSS
-  Get in touch via email: preetham.narayanareddy@gmail.com (add an MX redirect in hover)
-
+        <!-- TODO:
   Get notified about new projects:
   Email Address: 
-
-  Written by @preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
-
   -->
         <div class="footer-links">
-          <a target="_blank" href="/sitemap.xml">Sitemap</a>
+          Follow me:
+          <a href="https://www.twitter.com/preethamrn"><font-awesome :icon="['fab', 'twitter']" /></a>
+          <a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw"><font-awesome :icon="['fab', 'youtube']" /></a>
+          <a href="https://www.twitch.com/preethamrn"><font-awesome :icon="['fab', 'twitch']" /></a>
+          <a href="https://www.github.com/preethamrn"><font-awesome :icon="['fab', 'github']" /></a>
+          <br>
+          To hear about new posts: subscribe to my
           <a target="_blank" href="/feed.xml">RSS Feed</a>
+          with a reader like <a target="_blank" href="https://feedly.com/">Feedly</a>
+          <br>
+          <div>
+            © 2020 Preetham Narayanareddy
+            <a href="mailto:preetham.narayanareddy@gmail.com"><font-awesome :icon="['fas', 'envelope']" /></a>
+            <a target="_blank" href="/sitemap.xml">Sitemap</a>
+          </div>
         </div>
+        
       </div>
     </Container>
   </main>
@@ -78,11 +84,10 @@ body {
 }
 
 .footer {
-  display:flex;
   align-items:center;
-  justify-content:space-between;
   margin-top:60px;
   font-size:.8em;
+  margin-bottom: 50px;
 }
 .footer a {
   color:gray;

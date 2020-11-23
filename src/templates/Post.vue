@@ -5,6 +5,8 @@
       <h1 class="article-title">{{$page.post.title}}</h1>
       <p class="article-date"> {{ $page.post.date}} · <i>{{$page.post.timeToRead}} min read</i></p>
       <VueRemarkContent />
+      <hr>
+      <p class="article-footer">Written by <a href="https://www.twitter.com/preethamrn">@preethamrn</a>: Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. <a href="https://www.github.com/preethamrn">Github</a></p>
     </Container>
   </Layout>
 </template>
@@ -46,6 +48,9 @@ query Post ($path: String!) {
     color: var(--app-font-color);
     margin-top:0;
     font-size:.8em;
+  }
+  .article-footer {
+    font-size: .8em;
   }
   .article blockquote {
     padding: 10px 20px;
