@@ -1,15 +1,15 @@
 <template>
   <div class="project-item">
-    <!-- TODO: Support linking to internal apps in same tab? -->
+    <!-- TODO: Support linking to internal apps in same tab using g-link? -->
 		<a :href="project.link" :aria-labelledby="project.name" target="_blank"></a> 
     <g-image v-if='project.image' :src="require(`!!assets-loader!@images/${project.image}`)" :alt="project.name + ' Logo'" width="100" height="50" fit="contain"></g-image>
 		<div class="item__overlay">
       <h3 aria-hidden="true">{{project.name}}</h3>
       <p>{{project.description}}</p>
 			<div class="item__body">
-        <a v-if='project.code' :href='project.code'><font-awesome :icon="['fab', 'github']" /></a>
-        <a v-if='project.blog' :href='project.blog'><font-awesome :icon="['fas', 'file-alt']" /></a>
-        <a v-if='project.link' :href='project.link'><font-awesome :icon="['fas', 'link']" /></a>
+        <a v-if='project.code' :href='project.code' target="_blank"><font-awesome :icon="['fab', 'github']" /></a>
+        <a v-if='project.blog' :href='project.blog' target="_blank"><font-awesome :icon="['fas', 'file-alt']" /></a>
+        <a v-if='project.link' :href='project.link' target="_blank"><font-awesome :icon="['fas', 'link']" /></a>
 			</div>
 		</div>
   </div>

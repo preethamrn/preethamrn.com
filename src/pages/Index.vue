@@ -10,8 +10,8 @@
           I am a:<br>
           <span class='blue-text'>switch</span> user.kind {<br>
             &nbsp;<span class='blue-text'>case</span>&nbsp;<span class='green-text'>"recruiter"</span>:&nbsp;<span class='blue-text'>return</span>&nbsp;<span><a href="#about">"Software Engineer"</a></span><br>
-            &nbsp;<span class='blue-text'>case</span>&nbsp;<span class='green-text'>"viewer"</span>:&nbsp;<span class='blue-text'>return</span>&nbsp;<span><a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw">"Video Maker"</a></span><br>
-            &nbsp;<span class='blue-text'>case</span>&nbsp;<span class='green-text'>"chatter"</span>:&nbsp;<span class='blue-text'>return</span>&nbsp;<span><a href="https://www.twitch.tv/preethamrn">"Live Streamer"</a></span><br>
+            &nbsp;<span class='blue-text'>case</span>&nbsp;<span class='green-text'>"viewer"</span>:&nbsp;<span class='blue-text'>return</span>&nbsp;<span><a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw" target="_blank">"Video Maker"</a></span><br>
+            &nbsp;<span class='blue-text'>case</span>&nbsp;<span class='green-text'>"chatter"</span>:&nbsp;<span class='blue-text'>return</span>&nbsp;<span><a href="https://www.twitch.tv/preethamrn" target="_blank">"Live Streamer"</a></span><br>
           }
         </div>
       </div>
