@@ -33,17 +33,13 @@ export default {
 
 <style>
 .project-grid {
-  margin-left: -300px;
-  margin-right: -300px;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 17rem);
 	gap: 2rem;
   justify-content: center;
-}
-@media only screen and (max-width: 1360px) {
-  .project-grid {
-    margin-left: unset;
-    margin-right: unset;
-  }
 }
 </style>

@@ -1,15 +1,19 @@
 <template>
   <Layout>
-    <section class="posts">
-      <PostList v-for="year in years" :key="year" :year="year" />
-    </section>
+    <Container>
+      <section class="posts">
+        <PostList v-for="year in years" :key="year" :year="year" />
+      </section>
+    </Container>
   </Layout>
 </template>
 
 <script>
 import PostList from "@/components/Blog/PostList";
+import Container from "@/components/Shared/Container";
 export default {
   components: {
+    Container,
     PostList,
   },
   metaInfo: {

@@ -1,33 +1,41 @@
 <template>
   <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
   <main class="layout-template" role="main">
-    <Header siteName="Preetham" :links="links"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
+    <Container>
+      <Header siteName="Preetham" :links="links"/> <!-- TODO: make the header siteName configurable (use a page query or some metaInfo?) -->
+    </Container>
+
     <slot/>
-    <div id="contact" class="footer">
-      <!-- TODO: add contact details
-Follow me:
 
-Twitter Instagram RSS
-Get in touch via email: preetham.narayanareddy@gmail.com (add an MX redirect in hover)
+    <Container>
+      <div id="contact" class="footer">
+        <!-- TODO: add contact details
+  Follow me:
 
-Get notified about new projects:
-Email Address: 
+  Twitter Instagram RSS
+  Get in touch via email: preetham.narayanareddy@gmail.com (add an MX redirect in hover)
 
-Written by @preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
+  Get notified about new projects:
+  Email Address: 
 
--->
-      <div class="footer-links">
-        <a target="_blank" href="/sitemap.xml">Sitemap</a>
-        <a target="_blank" href="/feed.xml">RSS Feed</a>
+  Written by @preethamrn (twitter): Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. Github
+
+  -->
+        <div class="footer-links">
+          <a target="_blank" href="/sitemap.xml">Sitemap</a>
+          <a target="_blank" href="/feed.xml">RSS Feed</a>
+        </div>
       </div>
-    </div>
+    </Container>
   </main>
 </template>
 
 <script>
 import Header from "@/components/Header";
+import Container from "@/components/Shared/Container";
 export default {
   components: {
+    Container,
     Header,
   },
   data: () => ({
@@ -68,12 +76,7 @@ body {
   line-height: 1.5;
   font-size:1.1em;
 }
-.layout-template {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+
 .footer {
   display:flex;
   align-items:center;

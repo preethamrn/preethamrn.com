@@ -1,16 +1,20 @@
 <template>
   <!-- Create new templates: https://gridsome.org/docs/templates/ -->
   <Layout>
-    <div class="article prose ">
+    <Container class="article prose">
       <h1 class="article-title">{{$page.post.title}}</h1>
       <p class="article-date"> {{ $page.post.date}} · <i>{{$page.post.timeToRead}} min read</i></p>
       <VueRemarkContent />
-    </div>
+    </Container>
   </Layout>
 </template>
 
 <script>
+import Container from "@/components/Shared/Container"
 export default {
+  components: {
+    Container,
+  },
 };
 </script>
 

@@ -2,7 +2,6 @@
   <!-- Create new pages: https://gridsome.org/docs/pages/ -->
   <Layout>
 
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
     <div class="title-header">
       <div class="header-gradient header-offset" />
       <div class="header-container">
@@ -19,43 +18,50 @@
     </div>
     <div class="header-offset"></div>
 
-    <h1 id='about'>About me</h1>
-    <span>
-      <i class='highlight-red subheader'>PAST. </i>I started programming sometime between 5th and 10th grade depending on what you call programming, gaining various levels of experience in VB6, C++, Java, Python, HTML, Javascript, and PHP. After a bout in competitive programming, a few internships, and some web and app development, I graduated from UCLA with a GPA of 3.97.<br>
-      <i class='highlight-green subheader'>PRESENT. </i>I currently work on Uber's Storage Platform Infrastructure using Go, Java, Javascript and technologies like Cassandra, Docstore, Spark, Hive, and Kafka. Outside of work I enjoy cubing, bouldering, and video making.<br>
-      <i class='highlight-blue subheader'>FUTURE. </i>I'd like to explore new ways to leverage programming in fields like video making and live streaming and learn more about Machine Learning and App Development. I also want to teach others more about programming and inspire the next generation of programmers to get excited about coding just like I was when I was young.<br>
-    </span>
-
-    <h1 id='experience'>Experience</h1>
-    <div class='experience-container'>
-      <div class='experience-date'>Jan 2019 - Present</div>
-      <div class='experience-item-text'>
-        <div class='experience-item-title'>Uber Software Engineer</div>
-        Working on the Storage Platform team in Uber Infrastructure. Building workflows to streamline datastore provisioning for various storage engines and use cases. Creating a backend gateway and portal UI to interface with datastores. Creating tools to increase developer efficiency and velocity.
+    <div class='info-grid'>
+      <div class='about'>
+        <h1 id='about'>About me</h1>
+        <span>
+          <i class='highlight-red subheader'>PAST. </i>I started programming sometime between 5th and 10th grade depending on what you call programming, gaining various levels of experience in VB6, C++, Java, Python, HTML, Javascript, and PHP. After a bout in competitive programming, a few internships, and some web and app development, I graduated from UCLA with a GPA of 3.97.<br>
+          <i class='highlight-green subheader'>PRESENT. </i>I currently work on Uber's Storage Platform Infrastructure using Go, Java, Javascript and technologies like Cassandra, Docstore, Spark, Hive, and Kafka. Outside of work I enjoy cubing, bouldering, and video making.<br>
+          <i class='highlight-blue subheader'>FUTURE. </i>I'd like to explore new ways to leverage programming in fields like video making and live streaming and learn more about Machine Learning and App Development. I also want to teach others more about programming and inspire the next generation of programmers to get excited about coding just like I was when I was young.<br>
+        </span>
       </div>
 
-      <div class='experience-date'>Summer 2017, Summer 2018</div>
-      <div class='experience-item-text'>
-        <div class='experience-item-title'>Uber Software Engineering Intern</div>
-        Worked in Uber Infrastructure. Built a metrics aggregation workflow and dashboard to track the storage usage, trends, and query patterns for various teams and Cassandra datastores. Integrated an incremental monitoring and auditing system for Uber’s Kafka pipeline which handles up to 13 million messages/sec.
-      </div>
+      <div class='experience'>
+        <h1 id='experience'>Experience</h1>
+        <div class='experience-container'>
+          <div class='experience-date'>Jan 2019 - Present</div>
+          <div class='experience-item-text'>
+            <div class='experience-item-title'>Uber Software Engineer</div>
+            Working on the Storage Platform team in Uber Infrastructure. Building workflows to streamline datastore provisioning for various storage engines and use cases. Creating a backend gateway and portal UI to interface with datastores. Creating tools to increase developer efficiency and velocity.
+          </div>
 
-      <div class='experience-date'>Summer 2016</div>
-      <div class='experience-item-text'>
-        <div class='experience-item-title'>Symantec Software Engineering Intern</div>
-        Worked on the Symantec STAR team. Generated features from big data telemetry logs to train a classifier using machine learning to distinguish between targeted and non-targetted threats with 65% recall and 97% precision using technologies like Hadoop, Hive, Python (pandas and scikit).
-      </div>
+          <div class='experience-date'>Summer 2017, Summer 2018</div>
+          <div class='experience-item-text'>
+            <div class='experience-item-title'>Uber Software Engineering Intern</div>
+            Worked in Uber Infrastructure. Built a metrics aggregation workflow and dashboard to track the storage usage, trends, and query patterns for various teams and Cassandra datastores. Integrated an incremental monitoring and auditing system for Uber’s Kafka pipeline which handles up to 13 million messages/sec.
+          </div>
 
-      <div class='experience-date'>2015 - 2018</div>
-      <div class='experience-item-text'>
-        <div class='experience-item-title'>University of California, Los Angeles</div>
-        Graduated with 3.97 GPA in a B.S. in Computer Science. Worked as a learning assistant for an Intro to C++ Programming class. Help the professor with creating problem sets and holding office hours and discussions. Worked as a grader for Computer Networks: Physical Layer.
+          <div class='experience-date'>Summer 2016</div>
+          <div class='experience-item-text'>
+            <div class='experience-item-title'>Symantec Software Engineering Intern</div>
+            Worked on the Symantec STAR team. Generated features from big data telemetry logs to train a classifier using machine learning to distinguish between targeted and non-targetted threats with 65% recall and 97% precision using technologies like Hadoop, Hive, Python (pandas and scikit).
+          </div>
+
+          <div class='experience-date'>2015 - 2018</div>
+          <div class='experience-item-text'>
+            <div class='experience-item-title'>University of California, Los Angeles</div>
+            Graduated with 3.97 GPA in a B.S. in Computer Science. Worked as a learning assistant for an Intro to C++ Programming class. Help the professor with creating problem sets and holding office hours and discussions. Worked as a grader for Computer Networks: Physical Layer.
+          </div>
+        </div>
+      </div>
+      
+      <div class='projects'>
+        <h1 id='projects'>Projects</h1>
+        <Projects />
       </div>
     </div>
-    
-    <!-- TODO: add projects (and create a standalone projects page to link to in header). each projects item has a hover transition that also pops out links on the right (github. website. blog post) -->
-    <h1 id='projects'>Projects</h1>
-    <Projects />
 
   </Layout>
 </template>
@@ -119,6 +125,44 @@ export default {
 }
 a:hover {
   color: rgb(102, 255, 102);
+}
+
+.info-grid {
+  display: grid;
+  margin: 0 auto;
+  max-width: 2000px;
+  grid-template-areas: 
+    "about projects projects"
+    "experience projects projects";
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media only screen and (max-width: 1500px) {
+  .info-grid {
+    grid-template-areas:
+      "about"
+      "experience"
+      "projects";
+    grid-template-columns: 1fr;
+    max-width: 760px;
+  }
+  .project-grid {
+    max-width: unset;
+  }
+}
+.about {
+  padding-left: 50px;
+  grid-area: about;
+}
+.experience {
+  padding-left: 50px;
+  grid-area: experience;
+}
+.projects {
+  padding-left: 50px;
+  grid-area: projects;
+  justify-content: left !important;
+  margin: 0;
 }
 
 @media only screen and (max-width: 1500px) {
