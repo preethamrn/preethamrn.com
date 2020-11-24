@@ -17,6 +17,11 @@ export default {
   components: {
     Container,
   },
+  metaInfo () {
+    return {
+      title: this.$page.post.title,
+    }
+  },
 };
 </script>
 
