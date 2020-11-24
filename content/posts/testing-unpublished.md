@@ -7,7 +7,7 @@ date: 2019-04-20
 published: false
 ---
 
-This is the first post, it is written in Markdown. THIS SHOULD NOT BE PUBLISHED
+This is the first post, it is written in Markdown. **THIS SHOULD NOT BE PUBLISHED**
 
 # Here's some big text
 

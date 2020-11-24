@@ -13,6 +13,7 @@
     "@gridsome/vue-remark": "^0.2.5",
     "gridsome": "^0.7.0",
     "gridsome-plugin-feed": "^1.0.2",
+    "remark-autolink-headings": "^6.0.1",
     "remark-footnotes": "^2.0.0"
   },
   "devDependencies": {

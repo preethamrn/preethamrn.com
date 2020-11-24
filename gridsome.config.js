@@ -44,6 +44,7 @@ module.exports = {
         plugins: [
           ['@gridsome/remark-prismjs', {transformInlineCode: true}],
           ['remark-footnotes', {inlineNotes: true}], // NOTE: at the moment we're using remark-footnotes@2.0.0 because that is the latest version supported by remark@12. Once gridsome updates to remark@13 we may have to update this plugin.
+          ['remark-autolink-headings'], // NOTE: links don't work in development because the content is loaded dynamically
         ],
       }
     },
