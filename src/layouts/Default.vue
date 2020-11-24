@@ -15,10 +15,10 @@
   -->
         <div class="footer-links">
           Follow me:
-          <a href="https://www.twitter.com/preethamrn" target="_blank"><font-awesome :icon="['fab', 'twitter']" /></a>
-          <a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw" target="_blank"><font-awesome :icon="['fab', 'youtube']" /></a>
-          <a href="https://www.twitch.com/preethamrn" target="_blank"><font-awesome :icon="['fab', 'twitch']" /></a>
-          <a href="https://www.github.com/preethamrn" target="_blank"><font-awesome :icon="['fab', 'github']" /></a>
+          <a href="https://www.twitter.com/preethamrn" target="_blank" class="icon-link"><font-awesome :icon="['fab', 'twitter']" /></a>
+          <a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw" target="_blank" class="icon-link"><font-awesome :icon="['fab', 'youtube']" /></a>
+          <a href="https://www.twitch.com/preethamrn" target="_blank" class="icon-link"><font-awesome :icon="['fab', 'twitch']" /></a>
+          <a href="https://www.github.com/preethamrn" target="_blank" class="icon-link"><font-awesome :icon="['fab', 'github']" /></a>
           <br>
           To hear about new posts: subscribe to my
           <a target="_blank" href="/feed.xml">RSS Feed</a>
@@ -26,8 +26,8 @@
           <br>
           <div>
             © 2020 Preetham Narayanareddy
-            <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank"><font-awesome :icon="['fas', 'envelope']" /></a>
-            <a target="_blank" href="/sitemap.xml">Sitemap</a>
+            <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank" class="icon-link"><font-awesome :icon="['fas', 'envelope']" /></a>
+            &nbsp;<a target="_blank" href="/sitemap.xml">Sitemap</a>
           </div>
         </div>
         
@@ -92,8 +92,9 @@ body {
 .footer a {
   color:gray;
 }
-.footer-links a {
+.footer-links .icon-link {
   margin:0 4px;
+  border-bottom: none;
 }
 a {
   border-bottom: 1px solid currentColor;
