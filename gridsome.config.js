@@ -42,7 +42,8 @@ module.exports = {
         // NOTE: vue-remark uses plugins on the latest source globally. So we must order Posts at the bottom.
         // https://github.com/gridsome/gridsome/issues/707#issuecomment-536952443
         plugins: [
-          ['@gridsome/remark-prismjs', {transformInlineCode: true}]
+          ['@gridsome/remark-prismjs', {transformInlineCode: true}],
+          ['remark-footnotes', {inlineNotes: true}], // NOTE: at the moment we're using remark-footnotes@2.0.0 because that is the latest version supported by remark@12. Once gridsome updates to remark@13 we may have to update this plugin.
         ],
       }
     },

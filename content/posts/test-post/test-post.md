@@ -19,6 +19,8 @@ I've also set up sub-repositories for webapps that were originally built in this
 
 This helps reduce the package size of the main homepage and blog posts. I'll probably write up more about how I accomplished this later (for a hint, go to the [redirects](https://github.com/preethamrn/preethamrn.com/tree/master/content/redirects) directory in my repo).
 
-A few things that I'm planning on doing is adding tags to all my posts, a comments section, better citation support, smaller image sizes, and recommended posts. Hopefully I'll have all this set up before writing my first proper blog post.
+A few things that I'm planning on doing is adding tags to all my posts, a comments section, better citation support[^1], smaller image sizes, and recommended posts. Hopefully I'll have all this set up before writing my first proper blog post.
 
 In the meantime, consider following my RSS feed [here](https://www.preethamrn.com/feed.xml).
+
+[^1]: Looks like this is working now!

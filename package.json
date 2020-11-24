@@ -12,7 +12,8 @@
     "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/vue-remark": "^0.2.5",
     "gridsome": "^0.7.0",
-    "gridsome-plugin-feed": "^1.0.2"
+    "gridsome-plugin-feed": "^1.0.2",
+    "remark-footnotes": "^2.0.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",

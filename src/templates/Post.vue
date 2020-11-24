@@ -82,4 +82,13 @@ query Post ($path: String!) {
     display:block;
     margin:10px auto;
   }
+
+  .footnote-ref {
+    font-size: 0.9em;
+    border-bottom: unset;
+    text-decoration: underline;
+  }
+  .footnotes {
+    font-size: 0.9em;
+  }
 </style>
