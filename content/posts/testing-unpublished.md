@@ -5,6 +5,7 @@ description: "The first post written in Markdown"
 timeToRead: 1
 date: 2019-04-20
 published: false
+tags: ['test']
 ---
 
 This is the first post, it is written in Markdown. **THIS SHOULD NOT BE PUBLISHED**

@@ -5,6 +5,7 @@ description: "Testing my first post using Gridsome + Vue.js for a personal websi
 timeToRead: 1
 date: 2020-11-11
 published: true
+tags: ["Life", "Programming"]
 ---
 
 If you're seeing this post then that means the blog is working. I'll have a lot more (hopefully) great content coming soon. Just hold on.
