@@ -1,7 +1,6 @@
 <template>
   <div class="post-item">
     <span class="date">{{date}}</span>
-    <!-- Link to the correct path (use /blog/post-title). Separate the link and blog name (ie, have a separate field for link and title in markdown header) -->
     <g-link :to="post.path" class="read">{{post.title}}</g-link>
     <span class="time-to-read"><i>{{post.timeToRead}} min read</i></span>
   </div>

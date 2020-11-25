@@ -12,7 +12,7 @@
 module.exports = {
   siteName: 'Preetham',
   siteUrl: 'https://www.preethamrn.com/',
-  siteDescription: "Preetham's Projects, Blog, and Resume.",
+  siteDescription: "Preetham's Projects, Posts, and Resume.",
   chainWebpack: config => {
     config.resolve.alias.set('@images', '@/assets/images')
   },
@@ -37,13 +37,13 @@ module.exports = {
       options: {
         baseDir: './content/posts/',
         typeName: 'Post',
-        route: '/blog/:link',
+        route: '/posts/:link',
         template: './src/templates/Post.vue',
         refs: {
           tags: {
             // NOTE: must use linux subsystem to generate these tags.
             typeName: 'Tag',
-            route: '/blog/tag/:title',
+            route: '/posts/tag/:title',
             create: true,
           },
         },
@@ -68,7 +68,7 @@ module.exports = {
       options: {
         contentTypes: ['Post'],
         feedOptions: {
-          title: "Preetham's Blog",
+          title: "Preetham's Posts",
           description: "I write about productivity, software development, cubing, and various projects that I'm working on."
         },
         rss: {

@@ -46,7 +46,7 @@ export default {
   },
   data: () => ({
     links: [
-      {href:'/blog', text: 'Blog'},
+      {href:'/posts', text: 'Posts'},
       {href:'/projects', text: 'Projects'},
       {href:'#contact', text: 'Contact', onclick: () => {
         let elem = document.getElementById('contact')
