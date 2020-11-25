@@ -39,6 +39,14 @@ module.exports = {
         typeName: 'Post',
         route: '/blog/:link',
         template: './src/templates/Post.vue',
+        refs: {
+          tags: {
+            // NOTE: must use linux subsystem to generate these tags.
+            typeName: 'Tag',
+            route: '/blog/tag/:title',
+            create: true,
+          },
+        },
         // NOTE: vue-remark uses plugins on the latest source globally. So we must order Posts at the bottom.
         // https://github.com/gridsome/gridsome/issues/707#issuecomment-536952443
         plugins: [
