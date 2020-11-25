@@ -6,6 +6,8 @@
       <p class="article-date"> {{ $page.post.date}} · <i>{{$page.post.timeToRead}} min read</i></p>
       <VueRemarkContent />
       <hr>
+      <g-link class="article-tag" v-for='tag in $page.post.tags' :to='tag.path' :key='tag.id'>&#35;{{tag.title}}</g-link>
+      <!-- TODO: recommended posts: https://overflowed.dev/blog/building-a-gridsome-plugin-for-related-posts/ -->
       <p class="article-footer">Written by <a href="https://www.twitter.com/preethamrn">@preethamrn</a>: Software developer at Uber with a degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes. <a href="https://www.github.com/preethamrn">Github</a></p>
     </Container>
   </Layout>
@@ -38,6 +40,11 @@ query Post ($path: String!) {
     title
     date (format: "D MMMM YYYY")
     timeToRead
+    tags {
+      id
+      title
+      path
+    }
   }
 }
 </page-query>
@@ -86,6 +93,12 @@ query Post ($path: String!) {
     width:80%;
     display:block;
     margin:10px auto;
+  }
+  .article-tag {
+    margin-right: 10px;
+    border-bottom: none;
+    text-decoration: underline;
+    font-style: italic;
   }
 
   .footnote-ref {

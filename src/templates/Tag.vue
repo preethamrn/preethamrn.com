@@ -43,7 +43,6 @@ export default {
     years() {
       const years = {}
       const edges = this.$page.tag.belongsTo.edges
-      console.log(edges)
       // NOTE: manually add "special posts" here which might have custom formatting? Or create dummy .md files in /content which are linked to a concrete Vue.js file.
       edges.map((edge) => {
         const year = edge.node.date.split(" ")[2]
