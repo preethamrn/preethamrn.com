@@ -8,15 +8,15 @@
 <script>
 import PostItem from './PostItem';
 export default {
-  props: ["year"],
+  props: ["year", "tag"],
   components: {
     PostItem
   },
   computed: {
     postsByYear() {
-      const posts = this.$page.allPost.edges;
+      const posts = !this.tag ? this.$page.allPost.edges : this.$page.tag.belongsTo.edges
       return posts.filter((post) => {
-        return post.node.date.includes(this.year);
+        return post.node.date.includes(this.year)
       })
     }
   }

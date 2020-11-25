@@ -41,6 +41,7 @@ module.exports = {
         template: './src/templates/Post.vue',
         refs: {
           tags: {
+            // NOTE: must use linux subsystem to generate these tags.
             typeName: 'Tag',
             route: '/blog/tag/:title',
             create: true,
