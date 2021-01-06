@@ -6,7 +6,6 @@
 
 // TODO: checkout gridsome-plugin-flexsearch (eg. https://github.com/jammeryhq/gridsome-starter-articles/blob/master/src/pages/Search.vue)
 // TODO: add tags (eg. https://github.com/cossssmin/gridsome-starter-bleda/blob/master/src/templates/Tag.vue)
-// TODO: add @noxify/gridsome-plugin-remark-embed to support displaying embeded YouTube, Vimeo, Giphy, etc. in markdown.
 // TODO: add gridsome-plugin-tailwindcss (ensure this doesn't interfere with all the themes)
 // TODO: add google analytics plugin (use process.env.GRIDSOME_GOOGLE_ANALYTICS_KEY) + SEO metadata into head tag
 module.exports = {
@@ -53,6 +52,7 @@ module.exports = {
           ['@gridsome/remark-prismjs', {transformInlineCode: true}],
           ['remark-footnotes', {inlineNotes: true}], // NOTE: at the moment we're using remark-footnotes@2.0.0 because that is the latest version supported by remark@12. Once gridsome updates to remark@13 we may have to update this plugin.
           ['remark-autolink-headings'], // NOTE: links don't work in development because the content is loaded dynamically
+          ['@noxify/gridsome-plugin-remark-embed', {'enabledProviders' : ['Youtube', 'Twitter']}], // Add more enabledProviders (eg. Twitch, Gist, Vimeo, Giphy, etc.) when needed.
         ],
       }
     },
