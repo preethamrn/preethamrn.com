@@ -5,6 +5,7 @@ description: "My yearly flex under the guise of reflection. Here's a summary of 
 date: 2021-01-01
 timeToRead: 13
 published: true
+thumbnail: "./thumbnail.png"
 tags: ["Life", "Programming"]
 ---
 Time for my yearly flex under the guise of reflection.

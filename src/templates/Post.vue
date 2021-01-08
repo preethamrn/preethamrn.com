@@ -22,6 +22,19 @@ export default {
   metaInfo () {
     return {
       title: this.$page.post.title,
+      meta: [
+        {key: "og:title", name: "og:title", content: this.$page.post.title + " - Preetham"},
+        {key: "twitter:title", name: "twitter:title", content: this.$page.post.title + " - Preetham"},
+        {key: "og:description", name: "og:description", content: this.$page.post.description},
+        {key: "twitter:description", name: "twitter:description", content: this.$page.post.description},
+        {key: "og:image", name: "og:image", content: this.thumbnailImage},
+        {key: "twitter:image", name: "twitter:image", content: this.thumbnailImage},
+      ]
+    }
+  },
+  computed: {
+    thumbnailImage () {
+      return this.$page.post.thumbnail.src
     }
   },
 };
@@ -38,6 +51,8 @@ query Post ($path: String!) {
     id
     path
     title
+    description
+    thumbnail(width: 720)
     date (format: "D MMMM YYYY")
     timeToRead
     tags {
