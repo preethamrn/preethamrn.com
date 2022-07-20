@@ -25,7 +25,7 @@
           with a reader like <a target="_blank" href="https://feedly.com/">Feedly</a>
           <br>
           <div>
-            &copy; 2020 Preetham Narayanareddy
+            &copy; 2022 Preetham Narayanareddy
             <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank" class="footer-icon"><font-awesome :icon="['fas', 'envelope']" /></a>
             &nbsp;<a target="_blank" href="/sitemap.xml">Sitemap</a>
           </div>
