@@ -4,6 +4,9 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+// TODO: upgrade gridsome dependencies to be more up to date! (note this may involve creating pull requests because of how inactive the gridsome development is)
+//       probably migrate to Gatsby instead (the React alternative)
+
 // TODO: checkout gridsome-plugin-flexsearch (eg. https://github.com/jammeryhq/gridsome-starter-articles/blob/master/src/pages/Search.vue)
 // TODO: add tags (eg. https://github.com/cossssmin/gridsome-starter-bleda/blob/master/src/templates/Tag.vue)
 // TODO: add gridsome-plugin-tailwindcss (ensure this doesn't interfere with all the themes)
