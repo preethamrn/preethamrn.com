@@ -8,6 +8,8 @@ published: true
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming"]
 ---
+import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
+
 > This article contains some profanity which is found in the original code. If you’d prefer to read a version without profanity or one to show kids.
 
 $$
@@ -98,7 +100,7 @@ $$
 
 Newton’s method can help us solve the roots of this equation (remember we’re solving for y here. x is a constant).
 
-<note: add an interactable Newtons method here>
+<NewtonMethodDemo/>
 
 $$
 \begin{aligned}
