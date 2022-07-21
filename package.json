@@ -12,6 +12,7 @@
     "@gridsome/remark-prismjs": "^0.3.0",
     "@gridsome/vue-remark": "^0.2.5",
     "@noxify/gridsome-plugin-remark-embed": "^1.3.1",
+    "function-plot": "^1.22.9-0",
     "gridsome": "^0.7.0",
     "gridsome-plugin-feed": "^1.0.2",
     "gridsome-remark-katex": "^0.1.1",
