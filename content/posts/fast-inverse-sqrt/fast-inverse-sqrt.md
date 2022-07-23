@@ -9,9 +9,11 @@ thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming"]
 ---
 import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
+import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
 
 <note: TODO add thumbnail>
 
+<FloatingPointDemo />
 <NewtonMethodDemo/>
 
 <note: TODO this graph down>
