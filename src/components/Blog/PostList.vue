@@ -7,6 +7,9 @@
 
 <script>
 import PostItem from './PostItem';
+
+import {shouldListPost} from "@/lib/posts";
+
 export default {
   props: ["year", "tag"],
   components: {
@@ -15,8 +18,10 @@ export default {
   computed: {
     postsByYear() {
       const posts = !this.tag ? this.$page.allPost.edges : this.$page.tag.belongsTo.edges
+      // TODO: fix this O(n^2) issue - posts can be filtered on the pages/Posts component
+      //       and passed as a prop
       return posts.filter((post) => {
-        return post.node.date.includes(this.year)
+        return post.node.date.includes(this.year) && shouldListPost(post)
       })
     }
   }
