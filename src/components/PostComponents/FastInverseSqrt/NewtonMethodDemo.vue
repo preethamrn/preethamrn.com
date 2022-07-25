@@ -48,7 +48,7 @@ export default {
           },
           {
             x: `${this.px - this.py/this.slope}`, // intercept
-            y: `100000t-100000`,
+            y: `100000t`,
             skipTip: true,
             fnType: 'parametric',
             graphType: 'polyline',
