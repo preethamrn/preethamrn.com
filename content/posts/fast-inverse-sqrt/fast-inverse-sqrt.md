@@ -15,17 +15,15 @@ import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/Float
 <note: TODO add thumbnail>
 
 <FloatingPointDemo />
-<NewtonMethodDemo/>
+<NewtonMethodDemo id='test'/>
 
-<note: TODO this graph down>
+<note: TODO move this graph down>
 
-> This article contains some profanity which is found in the original code. If you’d prefer to read a version without profanity or one to show kids.
+> This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids.
 
 $$
 \frac{1}{\sqrt{x}}
 $$
-
-Fast Inverse Square Root is one of the most famous algorithms in the world. But what makes it so iconic? How does the algorithm work? And what the fuck is `0x5f3759df`? All will be answered in this simple blog post.
 
 ```c
 float Q_rsqrt( float number )
@@ -46,19 +44,21 @@ float Q_rsqrt( float number )
 }
 ```
 
+Fast Inverse Square Root is one of the most famous algorithms in the world. But what makes it so iconic? How does the algorithm work? And what the fuck is `0x5f3759df`? All will be answered in this simple blog post.
+
 ## Why is this algorithm so iconic?
 
-If you ask me, it’s because of the comments and just how strange all the steps are. It's not often that you see swear words in official source code. And doing division without a single division operator! How's that even possible?!
+If you ask me, it's because of the funny, completely non-descriptive comments ("`what the fuck?`" and "`evil floating point bit level hacking`"). It's not often that you see swear words in official source code. And doing division without a single division operator! How's that even possible?!
 
 The algorithm was originally found in the source code of Quake III Arena, attributed to the iconic John Carmack however it was later discovered to predate the game.
 
-Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculation. These computations are made thousands of times per frame so it was imperative to find a fast algorithm for it.
+Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculation. These computations are made thousands of times per frame so it is imperative to find a fast algorithm for them.
 
-Finding the inverse square root normally involves finding the square root of a number and dividing 1 by the square root. Both of those are complex operations that take a long time on old CPUs. On the other hand, the fast algorithm only requires multiplications, bit shifts, and subtraction, all of which can run much faster so it became the defacto method for computing inverse square roots.
+To naively find the inverse square root involves we must first find the square root of a number and then find its reciprocal. Both of those are complex operations that take a long time on old CPUs. On the other hand, the fast algorithm only requires multiplications, bit shifts, and subtraction, all of which can run much faster so it became the defacto method for computing inverse square roots.
 
-Is it used today? Not really. Hardware advancements have made this pretty obsolete since many CPUs come with rsqrt instructions (see: [https://www.linkedin.com/pulse/fast-inverse-square-root-still-armin-kassemi-langroodi/](https://www.linkedin.com/pulse/fast-inverse-square-root-still-armin-kassemi-langroodi/)) which can compute the inverse square root in a single instruction.
+Is it used today? Not really. Hardware advancements have made this pretty obsolete since many CPUs come with rsqrt instructions which can compute the inverse square root in a single instruction[^1].
 
-# “Slow inverse square root”
+# "Slow inverse square root"
 
 [https://replit.com/@PreethamNaraya1/Slow-Inverse-Square-Root#main.c](https://replit.com/@PreethamNaraya1/Slow-Inverse-Square-Root#main.c)
 
@@ -78,17 +78,17 @@ float S_rsqrt( float number, int iterations ) {
 }
 ```
 
-Here’s my “slow inverse square root” algorithm.
+Here's my "slow" inverse square root algorithm.
 
-Try running this algorithm. This algorithm is slower but it still works. You’ll notice that larger values of N result in slower iterations.
+Try running this algorithm. It's slower but it still works. You'll notice that smaller values for `number` result in more iterations.
 
 **<note: insert graph of execution time + number of iterations here>**
 
 (for extra credit, try tweaking the initial value of y to see how that impacts the convergence)
 
-Unlike the normal method, this doesn’t use any square root or division operations. However, it also doesn’t use 0x5f3759df from the “what the fuck” step or the “evil floating point hack”. That’s because those steps aren’t even required. The core of this algorithm is using something called Newton’s method (and it’s surprisingly straightforward).
+Unlike the normal method, this doesn't use any square root or division operations. However, it also doesn't use 0x5f3759df from the "what the fuck" step or the "evil floating point hack". That's because those steps aren't even required. The core of this algorithm is using something called Newton's method.
 
-## Newton’s Method
+## Newton's Method
 
 There are plenty of great resources on what this method is and why it works
 
@@ -96,9 +96,11 @@ There are plenty of great resources on what this method is and why it works
 
 TL;DW: It works by taking an approximation and iterating closer and closer to the actual value by riding the slope of the curve.
 
-Here’s a bunch of fancy math for completion’s sake however you can skip to the next section if you’re more interested in the what the fuck 0x5f3759df is and the evil floating point bit level hack.
+<NewtonMethodDemo id='1'/>
 
-Let’s say that x is our input and y is the inverse square root. We want to solve for the equation
+Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in the what the fuck 0x5f3759df is and the evil floating point bit level hack.
+
+Let's say that x is our input and y is the inverse square root. We want to solve for the equation
 
 $$
 \begin{aligned}
@@ -107,7 +109,7 @@ y &= 1/sqrt(x)\\
 \end{aligned}
 $$
 
-Newton’s method can help us solve the roots of this equation (remember we’re solving for y here. x is a constant).
+Newton's method can help us solve the roots of this equation (remember we're solving for y here. x is a constant).
 
 <note: add NewtonMethodDemo component here>
 
@@ -118,7 +120,7 @@ f'(y) &= -2y^{-3}
 \end{aligned}
 $$
 
-To get the next iteration of y, we “ride the slope” of f(y) one step closer to f(y).
+To get the next iteration of y, we "ride the slope" of f(y) one step closer to f(y).
 
 $$
 \begin{aligned}
@@ -138,23 +140,23 @@ x2 = number * 0.5F;
 y = y * (threehalfs - x2 * y * y) // first iteration
 ```
 
-And now we’re doing divisions without a single division operator! Isn’t that exciting!
+And now we're doing an inverse square root without a single division operator! Isn't that exciting!
 
-The important thing to note here is that Newton’s method is just an approximation. The closer your initial guess, the fewer iterations you’ll need. With “slow inverse square root” we often need more than 10 iterations to converge on the actual value. In the fast inverse square root algorithm, we get away with just a single iteration. So that’s our next goal - choosing a better initial guess.
+The important thing to note here is that Newton's method is just an approximation. The closer your initial guess, the fewer iterations you'll need. With "slow inverse square root" we often need more than 10 iterations to converge on the actual value. In the fast inverse square root algorithm, we get away with just a single iteration. So that's our next goal - choosing a better initial guess.
 
-# “What the fuck?” ie, choosing a better initial guess
+# "What the fuck?" ie, choosing a better initial guess
 
 ```cpp
 i = 0x5f3759df - ( i >> 1 )
 ```
 
-The `i` on the left hand side is our initial guess `y` and the `i` on the right hand side is our original number `x`. So let’s rewrite the code so we don’t get confused between the two different values of `i`
+The `i` on the left hand side is our initial guess `y` and the `i` on the right hand side is our original number `x`. So let's rewrite the code so we don't get confused between the two different values of `i`
 
 ```cpp
 y_bits = 0x5f3759df - ( x_bits >> 1 )
 ```
 
-One thing to note is that **these are the binary representations of floating point numbers and not the numbers themselves (x_bits and y_bits instead of x and y)**. That allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on “evil floating point bit level hacking” but first we need to understand how do IEEE floating point numbers work…
+One thing to note is that **these are the binary representations of floating point numbers and not the numbers themselves (x_bits and y_bits instead of x and y)**. That allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how do IEEE floating point numbers work…
 
 ## How do IEEE floating point numbers work?
 
@@ -174,16 +176,16 @@ x = s*m*2^e\\
 x = s*1.M*2^{E-127}
 $$
 
-- s is the sign. If the sign bit S is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can’t take square roots of negative numbers in the “real” world), s will always be 0. We’ll just ignore it for the rest of this post.
+- s is the sign. If the sign bit S is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), s will always be 0. We'll just ignore it for the rest of this post.
 - m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and M is just everything after the floating point (ie, m = 1 + M)
-    - Astute readers might notice that if the mantissa is 0 then we’ll have a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we’ll just ignore it for the rest of this post.
+    - Astute readers might notice that if the mantissa is 0 then we'll have a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we'll just ignore it for the rest of this post.
 - e is the exponent. To store positive and negative exponents, we take the unsigned exponent value (E) and subtract 127 to get a range from -127 to +128. This allows us to store tiny numbers smaller than 1 using negative exponents and large numbers bigger than 1 using positive exponents.
 
 ### Working with logarithms
 
 Working with exponents is tricky and confusing. Instead, by taking the logarithm, we turn confusing division, multiplication, and exponent operations into simple subtraction, addition, and multiplication.
 
-It turns out that working with algorithms allows us to find a relationship between the binary representation of x ($x_{bits}$) and the number $x$. If you squint really hard then you can see that taking the log of x will bring the exponent value down and with some scaling and shifting, it’s proportional to $x_{bits}$. We don’t have to squint.
+It turns out that working with algorithms allows us to find a relationship between the binary representation of x ($x_{bits}$) and the number $x$. If you squint really hard then you can see that taking the log of x will bring the exponent value down and with some scaling and shifting, it's proportional to $x_{bits}$. We don't have to squint.
 
 $$
 \begin{aligned}
@@ -203,7 +205,7 @@ $$
 
 Through another fortunate quirk of logarithms, we see that $x \approxeq log(1+x)$ [https://www.desmos.com/calculator/dd1xqmj6cp](https://www.desmos.com/calculator/dd1xqmj6cp)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/68704e67-6ffe-45e8-80d0-4d36dfa5a9b6/Untitled.png)
+![log(1+x) Approximation](./log-approximation.png)
 
 Putting all of this together, we get
 
@@ -243,9 +245,9 @@ y_bits  = 0x5f3759df - ( x_bits >> 1 );
 $\frac{3}{2}2^{23}(127 - 
 ε)$ gets us the weird number and $-x_{bits}/2$ gets us `-(i >> 1)`
 
-If we ignore the error term ε and plug the weird number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that’s equal to … 0x5f400000? So where did they get 0x5f3759df from?…
+If we ignore the error term ε and plug the weird number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's equal to … 0x5f400000? So where did they get 0x5f3759df from?…
 
-Most likely from the ε… I guess we’re going on another tangent
+Most likely from the ε… I guess we're going on another tangent
 
 ## Optimizing ε with Minmaxing
 
@@ -258,9 +260,9 @@ And now we get… 0x5f375a86. This is still quite different from the constant fo
 <note: figure out for what values we get the closest approximations when doing zero iterations. maybe add another graph.
 Also try a graph where we use a bunch of different values for magic numbers and see how each magic number performs on different values of x>
 
-So if 0x5f375a86 works better then why does Quake use 0x5f3759df? Perhaps, 0x5f3759df works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of someone’s rear. Only the person who wrote this code knows why 0x5f3759df was chosen instead.
+So if 0x5f375a86 works better then why does Quake use 0x5f3759df? Perhaps, 0x5f3759df works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of someone's rear. Only the person who wrote this code knows why 0x5f3759df was chosen instead.
 
-Now brute forcing it might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. Unfortunately, the math is somewhat out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you’re into that stuff.
+Now brute forcing it might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. Unfortunately, the math is somewhat out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff.
 
 [](http://www.lomont.org/papers/2003/InvSqrt.pdf)
 
@@ -283,13 +285,13 @@ Float 3.33 stored in Binary is 01000000010101010001111010111001
 
 Long 3 stored in Binary is 00000000000000000000000000000011
 
-Clearly these are very different and wouldn’t help us when our equation from the previous step depends on x_bits. What we instead want is a long that’s storing 01000000010101010001111010111001 (1079320249 in decimal).
+Clearly these are very different and wouldn't help us when our equation from the previous step depends on x_bits. What we instead want is a long that's storing 01000000010101010001111010111001 (1079320249 in decimal).
 
 [IEEE-754 Floating Point Converter](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
 
 <NOTE: see if you can actually build this in javascript and embed it into the page>
 
-In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by telling the computer that this float pointer (`&y`) is actually a long pointer (type casting using `(long *)`) and then dereferencing that value into a long variable (`*`). That’s what this line is doing (reading right to left): `i = * (long *) &y;`
+In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by telling the computer that this float pointer (`&y`) is actually a long pointer (type casting using `(long *)`) and then dereferencing that value into a long variable (`*`). That's what this line is doing (reading right to left): `i = * (long *) &y;`
 
 Going back from i to y is just a reverse of the previous steps: convert the long pointer (`&i`) into a float pointer (`(float *)`) and dereferencing that value into a float variable (`*`). So we get `y = * ( float * ) &i;`
 
@@ -297,16 +299,18 @@ Going back from i to y is just a reverse of the previous steps: convert the long
 
 # Putting it all together
 
-My favorite way to learn is by taking something that works and tweaking it slightly to see how that changes things. So let’s implement a version that works on 64 bit floating point numbers!
+My favorite way to learn is by taking something that works and tweaking it slightly to see how that changes things. So let's implement a version that works on 64 bit floating point numbers!
 
-<note: TODO. also the Chris Lomont paper already does this so we’re not doing anything new. Think of another idea>
+<note: TODO. also the Chris Lomont paper already does this so we're not doing anything new. Think of another idea>
 
 To recap, the big leaps of logic for me were:
 
-- Using Newton’s method to do divisions using multiplication operations.
+- Using Newton's method to do divisions using multiplication operations.
 - Realizing the relationship between x (floating point bit representation) and log(x).
 - Using log(x) and some basic algebra to get a close approximation for y.
 - Using minmaxing to choose a better error term.
 - Pointer magic to convert from float to long without changing any bits.
 
 <note: TODO: add footnotes and extra reading / references section>
+
+[^1]: [This article](https://www.linkedin.com/pulse/fast-inverse-square-root-still-armin-kassemi-langroodi/) goes into more detail and shows benchmarks.

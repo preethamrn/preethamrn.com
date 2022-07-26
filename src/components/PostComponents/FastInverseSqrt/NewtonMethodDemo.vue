@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div id='newton-method-demo'>
+    <div :id='fullID'>
     </div>
+    <!-- TODO: include f(y), f'(y), tangent slope line eq, y_n, y_n+1 formulae -->
     <div>x: {{x}}; y{{n}}: {{yn}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
   </div>
   <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)
   -->
+  <!-- Add a play button that automatically steps through the Newton method -->
 </template>
 
 <script>
@@ -15,6 +17,9 @@ import functionPlot from 'function-plot'
 
 export default {
   name: 'NewtonMethodDemo',
+  props: {
+    id: String,
+  },
   data: () => ({
     ys: [0.1],
     x: 23,
@@ -32,7 +37,7 @@ export default {
       this.px = this.yn
 
       functionPlot({
-        target: "#newton-method-demo",
+        target: `#${this.fullID}`,
         width: this.width,
         height: this.height,
         // TODO: update the domains to zoom in on the intercept line
@@ -48,7 +53,7 @@ export default {
           },
           {
             x: `${this.px - this.py/this.slope}`, // intercept
-            y: `100000t`,
+            y: `100000t-1`,
             skipTip: true,
             fnType: 'parametric',
             graphType: 'polyline',
@@ -72,6 +77,9 @@ export default {
     },
     yn() {
       return this.ys[this.n]
+    },
+    fullID() {
+      return `newton-method-demo${this.id}`
     }
   },
   mounted() {
