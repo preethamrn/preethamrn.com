@@ -105,13 +105,11 @@ Let's say that x is our input and y is the inverse square root. We want to solve
 $$
 \begin{aligned}
 y &= 1/sqrt(x)\\
-\implies 0 &= 1/y^2 - x
+\text{or } 0 &= 1/y^2 - x
 \end{aligned}
 $$
 
-Newton's method can help us solve the roots of this equation (remember we're solving for y here. x is a constant).
-
-<note: add NewtonMethodDemo component here>
+Newton's method can help us solve the roots of this equation for y. Remember that we're solving for y here. x is a constant input.
 
 $$
 \begin{aligned}
@@ -156,7 +154,7 @@ The `i` on the left hand side is our initial guess `y` and the `i` on the right 
 y_bits = 0x5f3759df - ( x_bits >> 1 )
 ```
 
-One thing to note is that **these are the binary representations of floating point numbers and not the numbers themselves (x_bits and y_bits instead of x and y)**. That allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how do IEEE floating point numbers work…
+One thing to note is that **these are the binary representations of floating point numbers and not the numbers themselves ($x_{bits}$ and $y_{bits}$ instead of $x$ and $y$)**. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
 
 ## How do IEEE floating point numbers work?
 
@@ -166,26 +164,47 @@ Just like regular scientific notation has numbers like $+1.6*10^{15}, -1.731*10^
 
 There are a few commonalities in both representations:
 
-1. The numbers are split into a sign (+ or -), a coefficient (also called a mantissa), and an exponent.
-2. The leading number is never zero. If it was, we could just shift the point to the first non-zero number and subtract from the exponent.
+1. The numbers are split into a sign (+ or -), a coefficient (also called a mantissa), and an exponent. For example, $-1.731*10^{-52}$ can be split into
+    * sign: $-$
+    * coefficient: $1.731$
+    * exponent: $-52$
+2. The leading number is never zero. If it was, we could just shift the point to the first non-zero number and subtract from the exponent. For example, instead of $0.61*10^2$, we can write $6.1*10^1$
 
 Using these two rules, we can write our floating point number as
 
 $$
-x = s*m*2^e\\
-x = s*1.M*2^{E-127}
+\begin{aligned}
+x &= s*m*2^e
+\end{aligned}
 $$
 
-- s is the sign. If the sign bit S is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), s will always be 0. We'll just ignore it for the rest of this post.
-- m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and M is just everything after the floating point (ie, m = 1 + M)
-    - Astute readers might notice that if the mantissa is 0 then we'll have a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we'll just ignore it for the rest of this post.
-- e is the exponent. To store positive and negative exponents, we take the unsigned exponent value (E) and subtract 127 to get a range from -127 to +128. This allows us to store tiny numbers smaller than 1 using negative exponents and large numbers bigger than 1 using positive exponents.
+To store this on a computer, we need to convert the $s$, $m$, and $e$ values into their binary representations `S`, `M`, and `E`
+
+- s is the sign. If the sign bit `S` is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), `S` will always be 0. We'll just ignore it for the rest of this post.
+- m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and `M` is just the fractional part after the point (ie, m = 1 + `M`)
+    - Astute readers might notice that if the mantissa is 0 then we can't avoid a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we'll just ignore it for the rest of this post.
+- e is the exponent. To store positive and negative exponents, we take the unsigned 8 bit exponent value (`E`) and subtract 127 to get a range from -127 to +128. This allows us to store tiny numbers smaller than 1 using negative exponents and large numbers bigger than 1 using positive exponents.
+
+Putting all those constraints together, we get the following equation for our floating point number x in terms of the binary representations of `S`, `M`, and `E`
+
+$$
+\begin{aligned}
+x &= S*(1 + M)*2^{E-127}\\
+x_{bits} &= 2^{23}*(E+M)
+\end{aligned}
+$$
+
+Try playing around with this floating point number calculator to create floating point numbers of your own!
+
+<FloatingPointDemo />
 
 ### Working with logarithms
 
 Working with exponents is tricky and confusing. Instead, by taking the logarithm, we turn confusing division, multiplication, and exponent operations into simple subtraction, addition, and multiplication.
 
-It turns out that working with algorithms allows us to find a relationship between the binary representation of x ($x_{bits}$) and the number $x$. If you squint really hard then you can see that taking the log of x will bring the exponent value down and with some scaling and shifting, it's proportional to $x_{bits}$. We don't have to squint.
+It turns out that working with logarithms also allows us to find a relationship between the binary representation of x ($x_{bits}$) and the number $x$.
+
+If you squint really hard then you can see that taking the log of x will bring the exponent value down and with some scaling and shifting, it's proportional to $x_{bits}$. Fortunately, we don't have to squint.
 
 $$
 \begin{aligned}
@@ -203,7 +222,7 @@ x &= m*2^e\\
 \end{aligned}
 $$
 
-Through another fortunate quirk of logarithms, we see that $x \approxeq log(1+x)$ [https://www.desmos.com/calculator/dd1xqmj6cp](https://www.desmos.com/calculator/dd1xqmj6cp)
+Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp)
 
 ![log(1+x) Approximation](./log-approximation.png)
 
@@ -242,10 +261,9 @@ Or in other words
 y_bits  = 0x5f3759df - ( x_bits >> 1 );
 ```
 
-$\frac{3}{2}2^{23}(127 - 
-ε)$ gets us the weird number and $-x_{bits}/2$ gets us `-(i >> 1)`
+$\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number 0x5f3759df and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
 
-If we ignore the error term ε and plug the weird number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's equal to … 0x5f400000? So where did they get 0x5f3759df from?…
+If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's equal to … 0x5f400000? So where did they get 0x5f3759df from?…
 
 Most likely from the ε… I guess we're going on another tangent
 

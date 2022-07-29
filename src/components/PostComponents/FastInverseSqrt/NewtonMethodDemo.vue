@@ -86,7 +86,8 @@ export default {
     let contentsBounds = document.body.getBoundingClientRect()
     // TODO: fix this to work better on other screen sizes and magnifications.
     //       contentBounds should match the width of the "container article prose" div
-    let ratio = contentsBounds.width / this.width / 1.7
+    console.log(this.width)
+    let ratio = contentsBounds.width / this.width / 3
     this.width *= ratio
     this.height *= ratio
 
