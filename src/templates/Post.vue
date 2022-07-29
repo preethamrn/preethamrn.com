@@ -1,6 +1,8 @@
 <template>
   <!-- Create new templates: https://gridsome.org/docs/templates/ -->
   <Layout>
+    <!-- TODO: get this css from a local file so the CSS doesn't break at runtime -->
+    <link v-if='$page.post.usesLatex' rel="stylesheet" href='https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css' integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG" crossorigin="anonymous">
     <Container class="article prose">
       <h1 class="article-title">{{$page.post.title}}</h1>
       <p class="article-date"> {{ $page.post.date}} · <i>{{$page.post.timeToRead}} min read</i></p>
@@ -54,6 +56,7 @@ query Post ($path: String!) {
     description
     thumbnail(width: 720)
     date (format: "D MMMM YYYY")
+    usesLatex
     timeToRead
     tags {
       id

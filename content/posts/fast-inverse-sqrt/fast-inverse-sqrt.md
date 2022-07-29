@@ -8,6 +8,7 @@ published: true
 unlisted: true
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming"]
+usesLatex: true
 ---
 import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
 import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
