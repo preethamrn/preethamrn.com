@@ -119,7 +119,7 @@ f'(y) &= -2y^{-3}
 \end{aligned}
 $$
 
-To get the next iteration of y, we "ride the slope" of f(y) one step closer to f(y).
+To get the next iteration of y, we "ride the slope" of f(y) one step closer to its root.
 
 $$
 \begin{aligned}
@@ -223,7 +223,7 @@ x &= m*2^e\\
 \end{aligned}
 $$
 
-Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp)
+Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp) for small values of x between 0 and 1.
 
 ![log(1+x) Approximation](./log-approximation.png)
 
@@ -264,7 +264,7 @@ y_bits  = 0x5f3759df - ( x_bits >> 1 );
 
 $\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number 0x5f3759df and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
 
-If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's equal to … 0x5f400000? So where did they get 0x5f3759df from?…
+If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's [equal to](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29+in+hex) … 0x5f400000? So where did they get 0x5f3759df from?…
 
 Most likely from the ε… I guess we're going on another tangent
 
