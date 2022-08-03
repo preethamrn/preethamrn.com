@@ -35,21 +35,21 @@ float Q_rsqrt( float number )
 
 	x2 = number * 0.5F;
 	y  = number;
-	i  = * ( long * ) &y;                       // evil floating point bit level hacking
-	i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+	i  = * ( long * ) &y;         // evil floating point bit level hacking
+	i  = `0x5f3759df` - ( i >> 1 ); // what the fuck?
 	y  = * ( float * ) &i;
 	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+//	y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
 
 	return y;
 }
 ```
 
-Fast Inverse Square Root is one of the most famous algorithms in the world. But what makes it so iconic? How does the algorithm work? And what the fuck is `0x5f3759df`? All will be answered in this simple blog post.
+Fast Inverse Square Root is one of the most famous algorithms in the world. But what makes it so iconic? How does the algorithm work? And where does `0x5f3759df` come from? All will be answered in this simple blog post.
 
 ## Why is this algorithm so iconic?
 
-If you ask me, it's because of the funny, completely non-descriptive comments ("`what the fuck?`" and "`evil floating point bit level hacking`"). It's not often that you see swear words in official source code. And doing division without a single division operator! How's that even possible?!
+It's not often that you see swear words in official source code. And doing division without a single division operator! How's that even possible?!
 
 The algorithm was originally found in the source code of Quake III Arena, attributed to the iconic John Carmack however it was later discovered to predate the game.
 
@@ -70,7 +70,7 @@ float S_rsqrt( float number, int iterations ) {
 	const float threehalfs = 1.5F;
 
 	x2 = number * 0.5F;
-	y  = 0.01; // initial value of y
+	y  = 0.01; // initial value of y - the result that we're approximating
 	for (int i = 0; i < iterations; i++) {
 	  y  = y * ( threehalfs - ( x2 * y * y ) );
   }
@@ -87,7 +87,7 @@ Try running this algorithm. It's slower but it still works. You'll notice that s
 
 (for extra credit, try tweaking the initial value of y to see how that impacts the convergence)
 
-Unlike the normal method, this doesn't use any square root or division operations. However, it also doesn't use 0x5f3759df from the "what the fuck" step or the "evil floating point hack". That's because those steps aren't even required. The core of this algorithm is using something called Newton's method.
+Unlike the normal method, this doesn't use any square root or division operations. However, it also doesn't use `0x5f3759df` or the "evil floating point hack". That's because those steps aren't even required. The core of this algorithm is using something called Newton's method.
 
 ## Newton's Method
 
@@ -99,7 +99,7 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 
 <NewtonMethodDemo id='1'/>
 
-Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in the what the fuck 0x5f3759df is and the evil floating point bit level hack.
+Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in the where `0x5f3759df` comes from and the evil floating point bit level hack.
 
 Let's say that x is our input and y is the inverse square root. We want to solve for the equation
 
@@ -146,16 +146,16 @@ The important thing to note here is that Newton's method is just an approximatio
 # "What the fuck?" ie, choosing a better initial guess
 
 ```cpp
-i = 0x5f3759df - ( i >> 1 )
+i = `0x5f3759df` - ( i >> 1 )
 ```
 
-The `i` on the left hand side is our initial guess `y` and the `i` on the right hand side is our original number `x`. So let's rewrite the code so we don't get confused between the two different values of `i`
+The `i` on the left hand side is our initial guess `y` and the `i` on the right hand side is our original number `x`. So let's rewrite the code so we don't get confused between the two different values of `i`.
 
 ```cpp
-y_bits = 0x5f3759df - ( x_bits >> 1 )
+y_bits = `0x5f3759df` - ( x_bits >> 1 )
 ```
 
-One thing to note is that **these are the binary representations of floating point numbers and not the numbers themselves ($x_{bits}$ and $y_{bits}$ instead of $x$ and $y$)**. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
+One thing to note is that **$x_{bits}$ and $y_{bits}$ are the binary representations** of floating point numbers and not the numbers $x$ and $y$ themselves. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
 
 ## How do IEEE floating point numbers work?
 
@@ -223,7 +223,7 @@ x &= m*2^e\\
 \end{aligned}
 $$
 
-Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp) for small values of x between 0 and 1.
+Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp) for small values of x between 0 and 1. In other words, $x = log(1+x) + \varepsilon$ where $\varepsilon$ is a small error term.
 
 ![log(1+x) Approximation](./log-approximation.png)
 
@@ -240,7 +240,7 @@ $$
 
 So now we have a mathematical relationship between the binary representation of x and log(x).
 
-## What is 0x5f3759df
+## What is `0x5f3759df`
 
 Using logarithms allows us to turn $y = 1/x^{1/2}$ into $log(y) = -\frac{1}{2}log(x)$.
 
@@ -259,31 +259,62 @@ $$
 Or in other words
 
 ```c
-y_bits  = 0x5f3759df - ( x_bits >> 1 );
+y_bits  = `0x5f3759df` - ( x_bits >> 1 );
 ```
 
-$\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number 0x5f3759df and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
+$\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number `0x5f3759df` and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
 
-If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's [equal to](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29+in+hex) … 0x5f400000? So where did they get 0x5f3759df from?…
+If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's [equal to](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29+in+hex) … 0x5f400000? So where did they get `0x5f3759df` from?…
 
 Most likely from the ε… I guess we're going on another tangent
 
-## Optimizing ε with Minmaxing
+## Optimizing ε with Minimaxing
 
-[Minmaxing](https://replit.com/@PreethamNaraya1/Minmaxing#main.c)
+Minimaxing is a lot like what it sounds like. In this case, we want to minimize the maximum error - in other words, find the constant C for which `Q_rsqrt` gives the smallest error compared to the actual inverse square root when considering all possible values of x_bits.
 
-And now we get… 0x5f375a86. This is still quite different from the constant found in the original code. At this point I was stumped. According to the math and tests, this approximation is better than 0x5f3759df.
+Since there are about 2 billion values of x and another 4 billion values of C, we'll need to do some optimization if we want this to finish running before the sun consumes the solar system.
+
+1. In the previous step, we approximately narrowed down C to 0x5f400000. So we only need to search between 0x5f300000 and 0x5f500000.
+2. Instead of searching all values of x, we can ignore the exponent and only search for all values of the mantissa because ε only comes up in the equation $\text{M} = log(1 + \text{M}) + \varepsilon$. If we optimize ε for one exponent value, it's optimized for all exponent values.
+3. Instead of searching values of C one by one, we can narrow down the value of C digit by digit, working in increments of 0x10000, then 0x1000 and so on until all digits are found. This way, we only check around 160 values of C instead of 2 million.
+
+That gives us the following pseudocode:
+```c
+cMin, cMax =  0x5f300000, 0x5f500000
+delta = 0x10000
+while (delta > 0):
+	minMaxError, minMaxC = 10000, cMin
+	for each C between cMin and cMax in increments of delta:
+		for each mantissa value M:
+			x = 0x3F000000 + M // x in [0.5,2) with mantissa M
+			y = Q_rsqrt(x, C)
+			z = sqrt(x)
+			error = abs(1 - y * z) // relative error
+			if (error > minMaxError):
+				minMaxError = error
+				minMaxC = C
+	// narrow down the range of cMin to cMax
+	// and use smaller increments for delta
+	cMin = minMaxC - delta
+	cMax = minMaxC + delta
+	delta = delta >> 4
+
+return minMaxC
+```
+[Try running the actual code for yourself](https://replit.com/@PreethamNaraya1/Minimaxing#main.c). You can try playing around with different ranges of values, different deltas, or different numbers of iterations to see how that impacts the result.
+
+And now we get... `0x5f375a87`. This is still quite different from the constant found in the original code. At this point I was stumped. According to the math and tests, this approximation is better than `0x5f3759df`.
 
 <note: show graphs that prove that our constant is better>
 
 <note: figure out for what values we get the closest approximations when doing zero iterations. maybe add another graph.
 Also try a graph where we use a bunch of different values for magic numbers and see how each magic number performs on different values of x>
 
-So if 0x5f375a86 works better then why does Quake use 0x5f3759df? Perhaps, 0x5f3759df works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of someone's rear. Only the person who wrote this code knows why 0x5f3759df was chosen instead.
+So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps, `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of someone's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead.
 
 Now brute forcing it might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. Unfortunately, the math is somewhat out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff.
 
-[](http://www.lomont.org/papers/2003/InvSqrt.pdf)
+[Fast Inverse Square Root - Chris Lomont](http://www.lomont.org/papers/2003/InvSqrt.pdf)
 
 [A Modification of the Fast Inverse Square Root Algorithm](https://www.preprints.org/manuscript/201908.0045/v1)
 
@@ -291,7 +322,7 @@ Now brute forcing it might be a bit unsatisfying for you. Maybe you wanted a mat
 
 ```c
 y  = number;
-i  = * ( long * ) &y;                       // evil floating point bit level hacking
+i  = * ( long * ) &y;    // evil floating point bit level hacking
 ...
 y  = * ( float * ) &i;
 ```
@@ -327,7 +358,7 @@ To recap, the big leaps of logic for me were:
 - Using Newton's method to do divisions using multiplication operations.
 - Realizing the relationship between x (floating point bit representation) and log(x).
 - Using log(x) and some basic algebra to get a close approximation for y.
-- Using minmaxing to choose a better error term.
+- Using minimaxing to choose a better error term.
 - Pointer magic to convert from float to long without changing any bits.
 
 <note: TODO: add footnotes and extra reading / references section>
