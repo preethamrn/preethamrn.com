@@ -356,10 +356,16 @@ My favorite way to learn is by taking something that works and tweaking it sligh
 To recap, the big leaps of logic for me were:
 
 - Using Newton's method to do divisions using multiplication operations.
-- Realizing the relationship between x (floating point bit representation) and log(x).
+- Realizing the relationship between the floating point bit representation of x and log(x).
 - Using log(x) and some basic algebra to get a close approximation for y.
 - Using minimaxing to choose a better error term.
 - Pointer magic to convert from float to long without changing any bits.
+
+When I started looking into this topic I didn't think it would lead me to calculus, solving optimization problems, the binary representation of floating point numbers, and memory management inside computers. I think that's what I enjoyed most about it. Any one of these ideas is interesting and millions of students learn about them every year, but to put them all together to solve a completely unrelated problem in vector graphics requires someone with a very specific set of skills.
+
+<note: insert venn diagram intersection of a ton of different skills>
+
+What problems can you solve with your specific set of skills?
 
 <note: TODO: add footnotes and extra reading / references section>
 
