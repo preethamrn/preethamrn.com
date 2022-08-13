@@ -2,21 +2,22 @@
   <div>
     <div :id='fullID'>
     </div>
-    <!-- TODO: include f(y), f'(y), tangent slope line eq, y_n, y_n+1 formulae -->
     <div>x: {{x}}; y{{n}}: {{yn}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
+    <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
     <div>
-      <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
+      <input type="range" min="1" max="10" v-model="playSpeed">
     </div>
   </div>
   <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)
   -->
-  <!-- Add a play button that automatically steps through the Newton method -->
 </template>
 
 <script>
 import functionPlot from 'function-plot'
+
+const speeds = [10000, 5000, 2000, 1000, 800, 600, 400, 200, 100, 50]
 
 export default {
   name: 'NewtonMethodDemo',
@@ -26,11 +27,14 @@ export default {
   data: () => ({
     ys: [0.1],
     x: 23,
+    slope: -2000,
+    px: 0.1, py: 77,
     
     width: 750,
     height: 500,
 
     playingIntervalId: null,
+    playSpeed: 7,
   }),
   methods: {
     increment() {
@@ -49,7 +53,7 @@ export default {
         } else {
           this.nextIteration()
         }
-      }, 100) // TODO: configurable interval
+      }, speeds[this.playSpeed - 1])
     },
     draw() {
       this.slope = -2*Math.pow(this.yn, -3)
@@ -90,6 +94,14 @@ export default {
       this.x = Math.random() * 49 + 1
       this.draw()
     },
+  },
+  watch: {
+    playSpeed() {
+      if (this.playingIntervalId) {
+        this.togglePlay()
+        this.togglePlay()
+      }
+    }
   },
   computed: {
     n() {
