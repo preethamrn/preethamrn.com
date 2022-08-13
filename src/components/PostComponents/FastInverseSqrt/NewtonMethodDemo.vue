@@ -6,6 +6,9 @@
     <div>x: {{x}}; y{{n}}: {{yn}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
+    <div>
+      <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
+    </div>
   </div>
   <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)
   -->
@@ -26,10 +29,27 @@ export default {
     
     width: 750,
     height: 500,
+
+    playingIntervalId: null,
   }),
   methods: {
     increment() {
       this.value++
+    },
+    togglePlay() {
+      if (this.playingIntervalId) {
+        clearInterval(this.playingIntervalId)
+        this.playingIntervalId = null
+        return
+      }
+
+      this.playingIntervalId = setInterval(() => {
+        if (this.ys.length > 2 && Math.abs(this.ys[this.n-1] - this.ys[this.n-2]) < 0.0000001) {
+          this.reset()
+        } else {
+          this.nextIteration()
+        }
+      }, 100) // TODO: configurable interval
     },
     draw() {
       this.slope = -2*Math.pow(this.yn, -3)
