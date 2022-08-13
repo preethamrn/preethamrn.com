@@ -24,7 +24,7 @@ export default {
     ys: [0.1],
     x: 23,
     
-    width: 800,
+    width: 750,
     height: 500,
   }),
   methods: {
@@ -84,12 +84,12 @@ export default {
   },
   mounted() {
     let contentsBounds = document.body.getBoundingClientRect()
-    // TODO: fix this to work better on other screen sizes and magnifications.
-    //       contentBounds should match the width of the "container article prose" div
-    console.log(this.width)
-    let ratio = contentsBounds.width / this.width / 3
-    this.width *= ratio
-    this.height *= ratio
+    let ratio = contentsBounds.width / this.width / 1.1
+    let newWidth = this.width * ratio
+    if (newWidth < this.width) {
+      this.width = newWidth
+      this.height *= ratio
+    }
 
     this.draw()
   },

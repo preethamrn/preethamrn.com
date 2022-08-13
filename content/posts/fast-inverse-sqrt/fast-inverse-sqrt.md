@@ -305,6 +305,8 @@ return minMaxC
 
 And now we get... `0x5f375a87`. This is still quite different from the constant found in the original code. At this point I was stumped. According to the math and tests, this approximation is better than `0x5f3759df`.
 
+<note: show a video or graph of how the optimization process runs>
+
 <note: show graphs that prove that our constant is better>
 
 <note: figure out for what values we get the closest approximations when doing zero iterations. maybe add another graph.
@@ -337,9 +339,7 @@ Long 3 stored in Binary is 00000000000000000000000000000011
 
 Clearly these are very different and wouldn't help us when our equation from the previous step depends on x_bits. What we instead want is a long that's storing 01000000010101010001111010111001 (1079320249 in decimal).
 
-[IEEE-754 Floating Point Converter](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
-
-<NOTE: see if you can actually build this in javascript and embed it into the page>
+<NOTE: describe how memory is stored in computers a little more (maybe with some images)>
 
 In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by telling the computer that this float pointer (`&y`) is actually a long pointer (type casting using `(long *)`) and then dereferencing that value into a long variable (`*`). That's what this line is doing (reading right to left): `i = * (long *) &y;`
 
