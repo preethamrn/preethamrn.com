@@ -15,11 +15,6 @@ import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/Float
 
 <note: TODO add thumbnail>
 
-<FloatingPointDemo />
-<NewtonMethodDemo id='test'/>
-
-<note: TODO move this graph down>
-
 > This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids.
 
 $$
@@ -81,11 +76,7 @@ float S_rsqrt( float number, int iterations ) {
 
 Here's my "slow" inverse square root algorithm.
 
-Try running this algorithm. It's slower but it still works. You'll notice that smaller values for `number` result in more iterations.
-
-**<note: insert graph of execution time + number of iterations here>**
-
-(for extra credit, try tweaking the initial value of y to see how that impacts the convergence)
+Try running this algorithm. It's slower but it still works.
 
 Unlike the normal method, this doesn't use any square root or division operations. However, it also doesn't use `0x5f3759df` or the "evil floating point hack". That's because those steps aren't even required. The core of this algorithm is using something called Newton's method.
 
@@ -99,7 +90,16 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 
 <NewtonMethodDemo id='1'/>
 
-Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in the where `0x5f3759df` comes from and the evil floating point bit level hack.
+* The <span style='color: blue'>blue line</span> is the equation that we're trying to find the solution to, that is, the point where it intersects with the x-axis.
+
+* The <span style='color: red'>red line</span> is the tangent to the blue line, or in other words, the slope that we're riding.
+
+* The <span style='color: green'>green line</span> is the x intercept. We can either use this as our initial approximation or use it to repeat the Newton method until we get close to the actual solution.
+
+Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
+<div style='background-color: #eeeeee; padding: 10px;'>
+
+### Fancy math
 
 Let's say that x is our input and y is the inverse square root. We want to solve for the equation
 
@@ -142,6 +142,7 @@ y = y * (threehalfs - x2 * y * y) // first iteration
 And now we're doing an inverse square root without a single division operator! Isn't that exciting!
 
 The important thing to note here is that Newton's method is just an approximation. The closer your initial guess, the fewer iterations you'll need. With "slow inverse square root" we often need more than 10 iterations to converge on the actual value. In the fast inverse square root algorithm, we get away with just a single iteration. So that's our next goal - choosing a better initial guess.
+</div>
 
 # "What the fuck?" ie, choosing a better initial guess
 
@@ -301,24 +302,35 @@ while (delta > 0):
 
 return minMaxC
 ```
-[Try running the actual code for yourself](https://replit.com/@PreethamNaraya1/Minimaxing#main.c). You can try playing around with different ranges of values, different deltas, or different numbers of iterations to see how that impacts the result.
+[Try running the actual code for yourself](https://replit.com/@PreethamNaraya1/Minimaxing#main.c). You can try playing around with different ranges of values, different deltas, or different numbers of iterations to see how that impacts the result.[^2]
 
-And now we get... `0x5f375a87`. This is still quite different from the constant found in the original code. At this point I was stumped. According to the math and tests, this approximation is better than `0x5f3759df`.
+And now we get... `0x5f375a87`. This is still quite different from the constant found in the original code. At this point I was stumped. I got an answer but it wasn't the answer I was looking for. How did the developers come up with `0x5f3759df`?
 
 <note: show a video or graph of how the optimization process runs>
 
-<note: show graphs that prove that our constant is better>
+I tried comparing the values to see if maybe my code was giving incorrect values
 
-<note: figure out for what values we get the closest approximations when doing zero iterations. maybe add another graph.
-Also try a graph where we use a bunch of different values for magic numbers and see how each magic number performs on different values of x>
+```bash
+$ ./main --iterations=1 0x5f3759df
+Max Error for 0x5f3759df: 0.00175233867209800831
+$ ./main --iterations=1 0x5f375a87
+Max Error for 0x5f375a87: 0.00175128778162259024
+```
 
-So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps, `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of someone's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead.
+I tried it with 0 iterations of Newton's method
 
-Now brute forcing it might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. Unfortunately, the math is somewhat out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff.
+```bash
+$ ./main --iterations=0 0x5f3759df
+Max Error for 0x5f3759df: 0.03437577281600123769
+$ ./main --iterations=0 0x5f375a87
+Max Error for 0x5f375a87: 0.03436540281256528218
+```
 
-[Fast Inverse Square Root - Chris Lomont](http://www.lomont.org/papers/2003/InvSqrt.pdf)
+I had to run it with 4 iterations of Newton's method before I started seeing both constants giving the same error of 0.00000010679068984665. And even then, the two constants were performing equally well.
 
-[A Modification of the Fast Inverse Square Root Algorithm](https://www.preprints.org/manuscript/201908.0045/v1)
+So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps, `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of the developer's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead.
+
+
 
 # Evil floating point bit level hack
 
@@ -339,19 +351,19 @@ Long 3 stored in Binary is 00000000000000000000000000000011
 
 Clearly these are very different and wouldn't help us when our equation from the previous step depends on x_bits. What we instead want is a long that's storing 01000000010101010001111010111001 (1079320249 in decimal).
 
-<NOTE: describe how memory is stored in computers a little more (maybe with some images)>
+In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by
 
-In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by telling the computer that this float pointer (`&y`) is actually a long pointer (type casting using `(long *)`) and then dereferencing that value into a long variable (`*`). That's what this line is doing (reading right to left): `i = * (long *) &y;`
+1. telling the computer that this float pointer (`&y`)
+2. is actually a long pointer (type casting using `(long *)`)
+3. and then dereferencing that value into a long variable (`*`).
+
+![C Memory Management](./c-memory.png)
+
+That's what this line is doing (reading right to left): `i = * (long *) &y;`
 
 Going back from i to y is just a reverse of the previous steps: convert the long pointer (`&i`) into a float pointer (`(float *)`) and dereferencing that value into a float variable (`*`). So we get `y = * ( float * ) &i;`
 
-<note: potentially add some images showing the C memory representation>
-
 # Putting it all together
-
-My favorite way to learn is by taking something that works and tweaking it slightly to see how that changes things. So let's implement a version that works on 64 bit floating point numbers!
-
-<note: TODO. also the Chris Lomont paper already does this so we're not doing anything new. Think of another idea>
 
 To recap, the big leaps of logic for me were:
 
@@ -359,14 +371,16 @@ To recap, the big leaps of logic for me were:
 - Realizing the relationship between the floating point bit representation of x and log(x).
 - Using log(x) and some basic algebra to get a close approximation for y.
 - Using minimaxing to choose a better error term.
-- Pointer magic to convert from float to long without changing any bits.
+- Using pointer magic to interpret the bits of a float as a long.
 
 When I started looking into this topic I didn't think it would lead me to calculus, solving optimization problems, the binary representation of floating point numbers, and memory management inside computers. I think that's what I enjoyed most about it. Any one of these ideas is interesting and millions of students learn about them every year, but to put them all together to solve a completely unrelated problem in vector graphics requires someone with a very specific set of skills.
 
-<note: insert venn diagram intersection of a ton of different skills>
+![Venn Diagram](./venn-diagram.png)
 
 What problems can you solve with your specific set of skills?
 
 <note: TODO: add footnotes and extra reading / references section>
 
 [^1]: [This article](https://www.linkedin.com/pulse/fast-inverse-square-root-still-armin-kassemi-langroodi/) goes into more detail and shows benchmarks.
+
+[^2]: Brute forcing the magic number by trying out all the different constants might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. The math is a bit out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff. See [Fast Inverse Square Root - Chris Lomont](http://www.lomont.org/papers/2003/InvSqrt.pdf) or [A Modification of the Fast Inverse Square Root Algorithm](https://www.preprints.org/manuscript/201908.0045/v1)

@@ -14,6 +14,7 @@
     </div>
     <!-- TODO: add a note to try plugging in the "weird" floating point number into a calculator or DDG search. You'll find that it shows the right value -->
     <!-- TODO: show a inc/dec button and show examples of how when you get to large numbers, incrementing by one doesn't actually change the float representation => you lose precision -->
+    <!-- TOOD: add a copy button to the bits data -->
   </div>
 </template>
 
