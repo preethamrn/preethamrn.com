@@ -1,27 +1,35 @@
 <template>
   <div>
+    <FloatingPointBits v-model='num' :signBit='signBit' :expBits='expBits' :mantissaBits='mantissaBits' />
     <div>Num: <input v-model='num' @keypress='validate' /></div>
     <div>Bits: {{signBit}}{{expBits}}{{mantissaBits}}</div>
-    <div>Val: {{signVal}}{{mantissaVal}}*2^{{expVal}}</div>
+    <div>Val: 
+      <span class='sign'>{{signVal}}</span>
+      <span class='mantissa'>{{mantissaVal}}</span>
+      *2^<span class='exp'>{{expVal}}</span>
+    </div>
     <!-- TODO: add a note to try plugging in the "weird" floating point number into a calculator or DDG search. You'll find that it shows the right value -->
-
-    <!-- TODO: pretty print the binaryRepresentation to distinguish the sign, exponent, mantissa fields. Also show the S, M, E values on their own lines (and allow users to manually modify them either bit by bit or by value) -->
-
     <!-- TODO: show a inc/dec button and show examples of how when you get to large numbers, incrementing by one doesn't actually change the float representation => you lose precision -->
   </div>
 </template>
 
 <script>
+import FloatingPointBits from './FloatingPointBits.vue'
+import {getFloatingPointVals} from './utils'
+
 export default {
   name: 'FloatingPointDemo',
+  components: {
+    FloatingPointBits,
+  },
   data: () => ({
-    num: 0,
+    num: 1.5,
     signBit: '0',
-    expBits: '00000000',
-    mantissaBits: '00000000000000000000000',
+    expBits: '01111111',
+    mantissaBits: '10000000000000000000000',
     signVal: '+',
     expVal: '0',
-    mantissaVal: '1.0',
+    mantissaVal: '1.5',
   }),
   methods: {
     validate(e) {
@@ -41,19 +49,10 @@ export default {
       this.expBits = bits.substring(0, 8)
       this.mantissaBits = bits.substring(8)
 
-      // TODO: handle special cases like 0, Infinity, NaN
-      this.signVal = num >= 0 ? '+' : '-'
-      this.expVal = parseInt(this.expBits, 2) - 127
-
-      // NOTE: We can't simply do parseInt(this.mantissaBits, 2) because everything after the decimal point is fractional and there's an infinite number of zeros after the decimal point that we can't account for in parseInt.
-      let curr = 0.5
-      this.mantissaVal = 1
-      for (var i = 0; i < this.mantissaBits.length; i++) {
-        if (this.mantissaBits[i] == 1) {
-          this.mantissaVal += curr
-        }
-        curr /= 2
-      }
+      let vals = getFloatingPointVals(this.signBit, this.expBits, this.mantissaBits)
+      this.signVal = vals[0]
+      this.expVal = vals[1]
+      this.mantissaVal = vals[2]
     },
   },
   watch: {
@@ -61,12 +60,18 @@ export default {
       let num = parseFloat(this.num)
       this.computeVals(num)
     },
-    // TODO: include methods/watchers for parsing other numbers as well,
-    //       eg. if mantissaVal/expVal/sign or binary representation changes.
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+::v-deep .sign {
+  color: green
+}
+::v-deep .exp {
+  color: red;
+}
+::v-deep .mantissa {
+  color: blue;
+}
 </style>
