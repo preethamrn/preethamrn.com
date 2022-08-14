@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>Number: <input v-model='num' @keypress='validate' /></div>
+    <div>Number: <input v-model='num' @keypress='validate' style="width: 50%"/></div>
     <div>Bits: <FloatingPointBits v-model='num' :signBit='signBit' :expBits='expBits' :mantissaBits='mantissaBits' /></div>
     <div>Scientific notation: 
       <span v-if='isFinite(num)'>

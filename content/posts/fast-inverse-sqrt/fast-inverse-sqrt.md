@@ -12,6 +12,7 @@ usesLatex: true
 ---
 import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
 import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
+import SideBySide from '@/components/Blog/SideBySide.vue'
 
 <note: TODO add thumbnail>
 
@@ -24,19 +25,19 @@ $$
 ```c
 float Q_rsqrt( float number )
 {
-	long i;
-	float x2, y;
-	const float threehalfs = 1.5F;
+  long i;
+  float x2, y;
+  const float threehalfs = 1.5F;
 
-	x2 = number * 0.5F;
-	y  = number;
-	i  = * ( long * ) &y;         // evil floating point bit level hacking
-	i  = `0x5f3759df` - ( i >> 1 ); // what the fuck?
-	y  = * ( float * ) &i;
-	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-//	y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
+  x2 = number * 0.5F;
+  y  = number;
+  i  = * ( long * ) &y;         // evil floating point bit level hacking
+  i  = `0x5f3759df` - ( i >> 1 ); // what the fuck?
+  y  = * ( float * ) &i;
+  y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//  y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
 
-	return y;
+  return y;
 }
 ```
 
@@ -60,17 +61,17 @@ Is it used today? Not really. Hardware advancements have made this pretty obsole
 
 ```c
 float S_rsqrt( float number, int iterations ) {
-	long i;
-	float x2, y;
-	const float threehalfs = 1.5F;
+  long i;
+  float x2, y;
+  const float threehalfs = 1.5F;
 
-	x2 = number * 0.5F;
-	y  = 0.01; // initial value of y - the result that we're approximating
-	for (int i = 0; i < iterations; i++) {
-	  y  = y * ( threehalfs - ( x2 * y * y ) );
+  x2 = number * 0.5F;
+  y  = 0.01; // initial value of y - the result that we're approximating
+  for (int i = 0; i < iterations; i++) {
+    y  = y * ( threehalfs - ( x2 * y * y ) );
   }
 
-	return y;
+  return y;
 }
 ```
 
@@ -88,7 +89,9 @@ There are plenty of great resources on what this method is and why it works
 
 TL;DW: It works by taking an approximation and iterating closer and closer to the actual value by riding the slope of the curve.
 
-<NewtonMethodDemo id='1'/>
+<div style='background-color: #eeeeee; padding: 10px;'>
+  <NewtonMethodDemo id='1'/>
+</div>
 
 * The <span style='color: blue'>blue line</span> is the equation that we're trying to find the solution to, that is, the point where it intersects with the x-axis.
 
@@ -198,7 +201,9 @@ $$
 
 Try playing around with this floating point number calculator to create floating point numbers of your own!
 
-<FloatingPointDemo />
+<div style='background-color: #eeeeee; padding: 10px;'>
+  <FloatingPointDemo />
+</div>
 
 ### Working with logarithms
 
@@ -224,9 +229,24 @@ x &= m*2^e\\
 \end{aligned}
 $$
 
-Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp) for small values of x between 0 and 1. In other words, $x = log(1+x) + \varepsilon$ where $\varepsilon$ is a small error term.
+
+<SideBySide>
+
+<template v-slot:left>
+
+Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/dd1xqmj6cp) for small values of x between 0 and 1.
+
+In other words, $x = log(1+x) + \varepsilon$ where $\varepsilon$ is a small error term.
+
+</template>
+
+<template v-slot:right>
 
 ![log(1+x) Approximation](./log-approximation.png)
+
+</template>
+
+</SideBySide>
 
 Putting all of this together, we get
 
@@ -284,21 +304,21 @@ That gives us the following pseudocode:
 cMin, cMax =  0x5f300000, 0x5f500000
 delta = 0x10000
 while (delta > 0):
-	minMaxError, minMaxC = 10000, cMin
-	for each C between cMin and cMax in increments of delta:
-		for each mantissa value M:
-			x = 0x3F000000 + M // x in [0.5,2) with mantissa M
-			y = Q_rsqrt(x, C)
-			z = sqrt(x)
-			error = abs(1 - y * z) // relative error
-			if (error > minMaxError):
-				minMaxError = error
-				minMaxC = C
-	// narrow down the range of cMin to cMax
-	// and use smaller increments for delta
-	cMin = minMaxC - delta
-	cMax = minMaxC + delta
-	delta = delta >> 4
+  minMaxError, minMaxC = 10000, cMin
+  for each C between cMin and cMax in increments of delta:
+    for each mantissa value M:
+      x = 0x3F000000 + M // x in [0.5,2) with mantissa M
+      y = Q_rsqrt(x, C)
+      z = sqrt(x)
+      error = abs(1 - y * z) // relative error
+      if (error > minMaxError):
+        minMaxError = error
+        minMaxC = C
+  // narrow down the range of cMin to cMax
+  // and use smaller increments for delta
+  cMin = minMaxC - delta
+  cMax = minMaxC + delta
+  delta = delta >> 4
 
 return minMaxC
 ```
