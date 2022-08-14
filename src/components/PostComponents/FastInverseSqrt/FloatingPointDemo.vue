@@ -1,12 +1,16 @@
 <template>
   <div>
-    <FloatingPointBits v-model='num' :signBit='signBit' :expBits='expBits' :mantissaBits='mantissaBits' />
-    <div>Num: <input v-model='num' @keypress='validate' /></div>
-    <div>Bits: {{signBit}}{{expBits}}{{mantissaBits}}</div>
-    <div>Val: 
-      <span class='sign'>{{signVal}}</span>
-      <span class='mantissa'>{{mantissaVal}}</span>
-      *2^<span class='exp'>{{expVal}}</span>
+    <div>Number: <input v-model='num' @keypress='validate' /></div>
+    <div>Bits: <FloatingPointBits v-model='num' :signBit='signBit' :expBits='expBits' :mantissaBits='mantissaBits' /></div>
+    <div>Scientific notation: 
+      <span v-if='isFinite(num)'>
+        <span class='sign'>{{signVal}}</span>
+        <span class='mantissa'>{{mantissaVal}}</span>
+        *2^<span class='exp'>{{expVal}}</span>
+      </span>
+      <span v-else>
+        {{num}}
+      </span>
     </div>
     <!-- TODO: add a note to try plugging in the "weird" floating point number into a calculator or DDG search. You'll find that it shows the right value -->
     <!-- TODO: show a inc/dec button and show examples of how when you get to large numbers, incrementing by one doesn't actually change the float representation => you lose precision -->
@@ -57,6 +61,7 @@ export default {
   },
   watch: {
     num() {
+      // TODO: support representing negative zero
       let num = parseFloat(this.num)
       this.computeVals(num)
     },

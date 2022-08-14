@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <span>
     <FloatingPointBit 
-      v-for='(_, i) in 32'
+      v-for='(v, i) in 32'
       v-model='val[i]'
-      :key='i'
+      :key='`${v}-${i}`'
       :class='i == 0 ? "sign" : i < 9 ? "exp" : "mantissa"'
     />
-  </div>
+  </span>
 </template>
 
 <script>
@@ -41,6 +41,7 @@ export default {
           this.val[i] = this.signBit[j].charCodeAt(0) - 48
           i++
         }
+        this.$forceUpdate() // NOTE: required to re-render when array data is modified.
       },
       immediate: true
     },
@@ -51,6 +52,7 @@ export default {
           this.val[i] = this.expBits[j].charCodeAt(0) - 48
           i++
         }
+        this.$forceUpdate() // NOTE: required to re-render when array data is modified.
       },
       immediate: true
     },
@@ -61,6 +63,7 @@ export default {
           this.val[i] = this.mantissaBits[j].charCodeAt(0) - 48
           i++
         }
+        this.$forceUpdate() // NOTE: required to re-render when array data is modified.
       },
       immediate: true
     },
