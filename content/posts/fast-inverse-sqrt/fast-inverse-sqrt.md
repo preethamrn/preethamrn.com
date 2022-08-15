@@ -208,6 +208,8 @@ Try playing around with this floating point number calculator to create floating
   <FloatingPointDemo />
 </Highlight>
 
+If you click on the scientific notation you'll notice that the numbers match up even though they don't look anything alike.
+
 ### Working with logarithms
 
 Working with exponents is tricky and confusing. Instead, by taking the logarithm, we turn confusing division, multiplication, and exponent operations into simple subtraction, addition, and multiplication.
@@ -288,7 +290,7 @@ y_bits  = 0x5f3759df - ( x_bits >> 1 );
 
 $\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number `0x5f3759df` and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
 
-If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's [equal to](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29+in+hex) … 0x5f400000? So where did they get `0x5f3759df` from?…
+If we ignore the error term ε and plug the magic number equation into [WolframAlpha](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29) we get 1598029824. And that's [equal to](https://www.wolframalpha.com/input?i=%5Cfrac%7B3%7D%7B2%7D2%5E%7B23%7D%28127%29+in+hex) … `0x5f400000`? So where did they get `0x5f3759df` from?…
 
 Most likely from the ε… I guess we're going on another tangent
 
@@ -298,7 +300,7 @@ Minimaxing is a lot like what it sounds like. In this case, we want to minimize 
 
 Since there are about 2 billion values of x and another 4 billion values of C, we'll need to do some optimization if we want this to finish running before the sun consumes the solar system.
 
-1. In the previous step, we approximately narrowed down C to 0x5f400000. So we only need to search between 0x5f300000 and 0x5f500000.
+1. In the previous step, we approximately narrowed down C to `0x5f400000`. So we only need to search between `0x5f300000` and `0x5f500000`.
 2. Instead of searching all values of x, we can ignore the exponent and only search for all values of the mantissa because ε only comes up in the equation $\text{M} = log(1 + \text{M}) + \varepsilon$. If we optimize ε for one exponent value, it's optimized for all exponent values.
 3. Instead of searching values of C one by one, we can narrow down the value of C digit by digit, working in increments of 0x10000, then 0x1000 and so on until all digits are found. This way, we only check around 160 values of C instead of 2 million.
 

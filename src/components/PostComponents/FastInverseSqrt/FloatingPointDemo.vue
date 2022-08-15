@@ -2,14 +2,17 @@
   <div>
     <div>Number: <input v-model='num' @keypress='validate' style="width: 50%"/></div>
     <div>Bits: <FloatingPointBits v-model='num' :signBit='signBit' :expBits='expBits' :mantissaBits='mantissaBits' /></div>
-    <div>Scientific notation: 
+    <div>
       <span v-if='isFinite(num)'>
-        <span class='sign'>{{signVal}}</span>
-        <span class='mantissa'>{{mantissaVal}}</span>
-        *2^<span class='exp'>{{expVal}}</span>
+        <a :href="`https://www.wolframalpha.com/input?i=${signVal}${mantissaVal}*2^${expVal}`" target="_blank">
+          Scientific notation: 
+          <span class='sign'>{{signVal}}</span>
+          <span class='mantissa'>{{mantissaVal}}</span>
+          *2^<span class='exp'>{{expVal}}</span>
+        </a>
       </span>
       <span v-else>
-        {{num}}
+        Scientific notation: {{num}}
       </span>
     </div>
     <!-- TODO: add a note to try plugging in the "weird" floating point number into a calculator or DDG search. You'll find that it shows the right value -->
@@ -79,5 +82,8 @@ export default {
 }
 ::v-deep .mantissa {
   color: rgb(94, 94, 255);
+}
+a {
+  color: unset;
 }
 </style>
