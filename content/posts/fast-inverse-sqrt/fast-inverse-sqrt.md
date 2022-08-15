@@ -3,7 +3,7 @@ title: "How Fast Inverse Square Root actually works"
 link: "fast-inverse-sqrt"
 description: ""
 date: 2022-08-01
-timeToRead: 15
+timeToRead: 17
 published: true
 unlisted: true
 thumbnail: "./thumbnail.png"
@@ -16,6 +16,8 @@ import SideBySide from '@/components/Blog/SideBySide.vue'
 import Highlight from '@/components/Blog/Highlight.vue'
 
 <note: TODO add thumbnail>
+
+<note: TODO add sfw version>
 
 > This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids.
 
@@ -33,7 +35,7 @@ float Q_rsqrt( float number )
   x2 = number * 0.5F;
   y  = number;
   i  = * ( long * ) &y;         // evil floating point bit level hacking
-  i  = `0x5f3759df` - ( i >> 1 ); // what the fuck?
+  i  = 0x5f3759df - ( i >> 1 ); // what the fuck?
   y  = * ( float * ) &i;
   y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
 //  y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
@@ -42,11 +44,11 @@ float Q_rsqrt( float number )
 }
 ```
 
-Fast Inverse Square Root is one of the most famous algorithms in the world. But what makes it so iconic? How does the algorithm work? And where does `0x5f3759df` come from? All will be answered in this simple blog post.
+Fast Inverse Square Root is one of the most famous algorithms in game development. But what makes it so iconic? How does the algorithm work? And where does `0x5f3759df` come from? All will be answered in this "simple" blog post.
 
 ## Why is this algorithm so iconic?
 
-It's not often that you see swear words in official source code. And doing division without a single division operator! How's that even possible?!
+It's not often that you see swear words in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552). And doing division without a single division operator! How's that even possible?!
 
 The algorithm was originally found in the source code of Quake III Arena, attributed to the iconic John Carmack however it was later discovered to predate the game.
 
@@ -151,13 +153,13 @@ The important thing to note here is that Newton's method is just an approximatio
 # "What the fuck?" ie, choosing a better initial guess
 
 ```cpp
-i = `0x5f3759df` - ( i >> 1 )
+i = 0x5f3759df - ( i >> 1 )
 ```
 
 The `i` on the left hand side is our initial guess `y` and the `i` on the right hand side is our original number `x`. So let's rewrite the code so we don't get confused between the two different values of `i`.
 
 ```cpp
-y_bits = `0x5f3759df` - ( x_bits >> 1 )
+y_bits = 0x5f3759df - ( x_bits >> 1 )
 ```
 
 One thing to note is that **$x_{bits}$ and $y_{bits}$ are the binary representations** of floating point numbers and not the numbers $x$ and $y$ themselves. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the next section on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
@@ -281,7 +283,7 @@ $$
 Or in other words
 
 ```c
-y_bits  = `0x5f3759df` - ( x_bits >> 1 );
+y_bits  = 0x5f3759df - ( x_bits >> 1 );
 ```
 
 $\frac{3}{2}2^{23}(127 - \varepsilon)$ gets us the magic number `0x5f3759df` and $-x_{bits}/2$ gets us `-(x_bits >> 1)`
