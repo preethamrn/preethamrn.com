@@ -13,6 +13,7 @@ usesLatex: true
 import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
 import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
 import SideBySide from '@/components/Blog/SideBySide.vue'
+import Highlight from '@/components/Blog/Highlight.vue'
 
 <note: TODO add thumbnail>
 
@@ -89,9 +90,9 @@ There are plenty of great resources on what this method is and why it works
 
 TL;DW: It works by taking an approximation and iterating closer and closer to the actual value by riding the slope of the curve.
 
-<div style='background-color: #eeeeee; padding: 10px;'>
+<Highlight>
   <NewtonMethodDemo id='1'/>
-</div>
+</Highlight>
 
 * The <span style='color: blue'>blue line</span> is the equation that we're trying to find the solution to, that is, the point where it intersects with the x-axis.
 
@@ -100,7 +101,7 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 * The <span style='color: green'>green line</span> is the x intercept. We can either use this as our initial approximation or use it to repeat the Newton method until we get close to the actual solution.
 
 Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
-<div style='background-color: #eeeeee; padding: 10px;'>
+<Highlight>
 
 ### Fancy math
 
@@ -145,7 +146,7 @@ y = y * (threehalfs - x2 * y * y) // first iteration
 And now we're doing an inverse square root without a single division operator! Isn't that exciting!
 
 The important thing to note here is that Newton's method is just an approximation. The closer your initial guess, the fewer iterations you'll need. With "slow inverse square root" we often need more than 10 iterations to converge on the actual value. In the fast inverse square root algorithm, we get away with just a single iteration. So that's our next goal - choosing a better initial guess.
-</div>
+</Highlight>
 
 # "What the fuck?" ie, choosing a better initial guess
 
@@ -201,9 +202,9 @@ $$
 
 Try playing around with this floating point number calculator to create floating point numbers of your own!
 
-<div style='background-color: #eeeeee; padding: 10px;'>
+<Highlight>
   <FloatingPointDemo />
-</div>
+</Highlight>
 
 ### Working with logarithms
 

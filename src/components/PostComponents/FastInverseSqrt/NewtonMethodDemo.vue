@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class='newton-method-demo'>
     <div :id='fullID'>
     </div>
-    <div>x: {{x}}; y{{n}}: {{yn}}</div>
+    <div style="padding-left: 10px">x: {{x}}; y{{n}}: {{yn}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
     <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
@@ -128,6 +128,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.newton-method-demo {
+  background: white;
+  color: black;
+}
 </style>
