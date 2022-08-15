@@ -140,4 +140,12 @@ query Post ($path: String!) {
     transition: visibility 0s linear 0ms, opacity 300ms;
     visibility: visible;
   }
+
+  /* prismjs related theming */
+  @media only screen and (max-width: 700px) {
+    code[class*="language-"], pre[class*="language-"] {
+      font-size: 0.8em !important;
+      line-height: 1.1 !important;
+    }
+  }
 </style>
