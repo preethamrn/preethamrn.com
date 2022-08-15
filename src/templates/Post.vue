@@ -68,6 +68,19 @@ query Post ($path: String!) {
 </page-query>
 
 <style>
+  :root {
+    --app-slight-contrast: #eeeeee;
+    --app-more-contrast: #cecece;
+  }
+  [theme="dark"] {
+    --app-slight-contrast: #06111a;
+    --app-more-contrast: #286ba1;
+  }
+  [theme="sepia"] {
+    --app-slight-contrast: #f7e1af;
+    --app-more-contrast: #ffd271;
+  }
+
   .article {
     margin-top: 15px;
   }
@@ -86,7 +99,7 @@ query Post ($path: String!) {
     padding: 10px 20px;
     margin: 0 0 20px;
     font-size: 17.5px;
-    border-left: 5px solid #eee;
+    border-left: 5px solid var(--app-more-contrast);
   }
   .article table {
     width: 100%;
@@ -95,16 +108,16 @@ query Post ($path: String!) {
   }
   .article th {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--app-more-contrast);
   }
   .article td {
-      border-top: 1px solid #ddd;
+      border-top: 1px solid var(--app-more-contrast);
       padding: 8px;
       line-height: 1.42857143;
       vertical-align: top;
   }
   .article tr:nth-child(odd) td {
-    background-color: #f9f9f9;
+    background-color: var(--app-slight-contrast);
   }
   .article img {
     margin:auto;

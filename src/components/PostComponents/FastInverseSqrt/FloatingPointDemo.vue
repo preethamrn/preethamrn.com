@@ -72,12 +72,12 @@ export default {
 
 <style scoped>
 ::v-deep .sign {
-  color: green
+  color: rgb(0, 141, 0)
 }
 ::v-deep .exp {
-  color: red;
+  color: rgb(255, 70, 70);
 }
 ::v-deep .mantissa {
-  color: blue;
+  color: rgb(94, 94, 255);
 }
 </style>
