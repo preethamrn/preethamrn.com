@@ -30,7 +30,7 @@ export default {
     slope: -2000,
     px: 0.1, py: 77,
     
-    width: 850,
+    width: 800,
     height: 500,
 
     playingIntervalId: null,
@@ -130,7 +130,7 @@ export default {
 
 <style scoped>
 .newton-method-demo {
-  background: white;
+  background: #eeeeee;
   color: black;
 }
 </style>
