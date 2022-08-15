@@ -19,7 +19,7 @@
 .side-by-side-container {
   display: flex;
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 760px) {
   .side-by-side-container {
     display: unset;
   }

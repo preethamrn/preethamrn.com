@@ -155,7 +155,7 @@ query Post ($path: String!) {
   }
 
   /* prismjs related theming */
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 760px) {
     code[class*="language-"], pre[class*="language-"] {
       font-size: 0.8em !important;
       line-height: 1.1 !important;

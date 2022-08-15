@@ -30,7 +30,7 @@ export default {
     slope: -2000,
     px: 0.1, py: 77,
     
-    width: 750,
+    width: 850,
     height: 500,
 
     playingIntervalId: null,
