@@ -73,7 +73,7 @@ float S_rsqrt( float number, int iterations ) {
 
 Here's my "slow" inverse square root algorithm.
 
-Try [running](https://replit.com/@PreethamNaraya1/Slow-Inverse-Square-Root#main.c) this algorithm. It's slower but surprisingly it still works. Unlike the fast method, this doesn't use `0x5f3759df` or the "evil floating point hack". But it also doesn't use any square root or division operations. That's because those steps aren't required. The core of this algorithm is using something called Newton's method.
+Try [running](https://replit.com/@PreethamNaraya1/Slow-Inverse-Square-Root#main.c) it. It's slower but surprisingly it still works. Unlike the fast method, this doesn't use `0x5f3759df` or the "evil floating point hack". But it also doesn't use any square root or division operations. That's because those steps aren't required. The core of this algorithm is using something called Newton's method.
 
 ## Newton's Method
 

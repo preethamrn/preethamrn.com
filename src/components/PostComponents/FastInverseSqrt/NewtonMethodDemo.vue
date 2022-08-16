@@ -2,7 +2,7 @@
   <div class='newton-method-demo'>
     <div :id='fullID'>
     </div>
-    <div style="padding-left: 10px"><b>number:</b> {{x}}; <b>y{{n}}:</b> {{yn}}</div>
+    <div style="padding-left: 10px"><b>number:</b> {{x.toFixed(3)}}; <b>y{{n}}:</b> {{yn.toFixed(6)}}; <b>actual:</b> {{answer}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
     <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
@@ -10,8 +10,7 @@
       Speed: <input type="range" min="1" max="10" v-model="playSpeed">
     </div>
   </div>
-  <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)
-  -->
+  <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)-->
 </template>
 
 <script>
@@ -29,6 +28,8 @@ export default {
     x: 23,
     slope: -2000,
     px: 0.1, py: 77,
+
+    answer: 0.208514,
     
     width: 800,
     height: 500,
@@ -92,6 +93,7 @@ export default {
     reset() {
       this.ys = [Math.random()*0.3]
       this.x = Math.random() * 49 + 1
+      this.answer = (1.0/Math.sqrt(this.x)).toFixed(6)
       this.draw()
     },
   },
