@@ -15,7 +15,6 @@ import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/Float
 import SideBySide from '@/components/Blog/SideBySide.vue'
 import Highlight from '@/components/Blog/Highlight.vue'
 
-<!--note: TODO add thumbnail-->
 <!--note: TODO add sfw version-->
 
 <!-- > This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids.-->
