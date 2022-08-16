@@ -3,7 +3,7 @@ title: "How Fast Inverse Square Root actually works"
 link: "fast-inverse-sqrt"
 description: ""
 date: 2022-08-14
-timeToRead: 17
+timeToRead: 20
 published: true
 unlisted: false
 thumbnail: "./thumbnail.png"
@@ -91,7 +91,7 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 
 * The <span style='color: red'>red line</span> is the tangent to the blue line at the point where x is our initial guess ($y_n$). This is the slope that we're riding.
 
-* The <span style='color: green'>green line</span> is the x intercept of the red line. We can either use this as our initial approximation or use it to repeat the Newton method with another guess ($y_{n+1}$) until we get close to the actual solution.
+* The <span style='color: green'>green line</span> is the x intercept of the red line. We can either use this as our solution approximation or use it to repeat the Newton method with another guess ($y_{n+1}$) until we get close to the actual solution.
 
 Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
 
@@ -155,11 +155,11 @@ The `i` on the left hand side is our initial guess `y` and the `i` on the right 
 y_bits = 0x5f3759df - ( x_bits >> 1 )
 ```
 
-One thing to note is that **$x_{bits}$ and $y_{bits}$ are the binary representations** of the floating point numbers and not the numbers $x$ and $y$ themselves. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the [next section](#evil-floating-point-bit-level-hack) on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
+One thing to note is that **$x_{bits}$ and $y_{bits}$ are the binary representations** of the IEEE floating point numbers and not the numbers $x$ and $y$ themselves. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the [next section](#evil-floating-point-bit-level-hack) on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
 
 ## How do IEEE floating point numbers work?
 
-Floating point is a fancy way of saying binary scientific notation.
+Floating point is a fancy way of saying binary scientific notation[^4].
 
 Just like regular scientific notation has numbers like $+1.6*10^{15}, -1.731*10^{-52}, +4.25*10^0$, floating point has numbers like $+1.101011*2^{11010}, -1.001101*2^{-101}, -1.001*2^{0}$
 
@@ -181,8 +181,8 @@ $$
 
 To store this on a computer, we need to convert the $s$, $m$, and $e$ values into their binary representations `S`, `M`, and `E`
 
-- s is the sign. If the sign bit `S` is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), `S` will always be 0. We'll just ignore it for the rest of this post.
-- m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and `M` is just the fractional part after the point (ie, m = 1 + `M`) [^4]
+- s is the sign. If the sign bit `S` is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), so `S` will always be 0. We can ignore it for the rest of this post.
+- m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and `M` is just the fractional part after the point (ie, m = 1 + `M`) [^5]
 - e is the exponent. To store positive and negative exponents, we take the unsigned 8 bit exponent value (`E`) and subtract 127 to get a range from -127 to +128. This allows us to store tiny fractions smaller than 1 using negative exponents and large numbers bigger than 1 using positive exponents.
 
 Putting all those constraints together, we get the following equation for our floating point number x in terms of the binary representations of `S`, `M`, and `E`
@@ -326,7 +326,7 @@ And now we get... `0x5f375a87`. This is still quite different from the constant 
 
 <!--note: TODO: show a video or graph of how the optimization process runs-->
 
-I tried comparing the values to see if maybe my code was giving incorrect values
+I tried comparing the errors to see if our magic number was somehow producing worse results.
 
 ```bash
 $ ./main --iterations=1 0x5f3759df
@@ -348,8 +348,7 @@ Max Error for 0x5f375a87: 0.03436540281256528218
 
 We're still smaller. I had to run it with 4 iterations of Newton's method before I started seeing both constants giving the same error of 0.00000010679068984665. And even then, the two constants were performing equally well.
 
-So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps, `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps it was simply pulled out of the developer's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead.[^5]
-
+So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps the developer figured that their number worked well enough. Perhaps it was simply pulled out of the developer's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead. At least now we know how the magic number works.[^6]
 
 
 # Evil floating point bit level hack
@@ -396,11 +395,11 @@ float Q_rsqrt(float number)
   long x_bits  = * ( long * ) &number;
 
   // finding a better initial guess for the inverse sqrt
-  x_bits = 0x5f3759df - ( x_bits >> 1 );
+  long y_bits = 0x5f3759df - ( x_bits >> 1 );
 
-  // interpreting the long bits of x_bits as a float
+  // interpreting the long bits of y_bits as a float
   // by reversing the steps from earlier
-  float y  = * ( float * ) &x_bits;
+  float y  = * ( float * ) &y_bits;
 
   const float threehalfs = 1.5F;
   float half_x = number * 0.5F;
@@ -416,11 +415,11 @@ To recap, the big leaps of logic for me were:
 
 - Using Newton's method to do divisions using multiplication operations.
 - Realizing the relationship between the floating point bit representation of x and log(x).
-- Using log(x) and some basic algebra to get a close approximation for y.
-- Using minimaxing to choose a better error term.
-- Using pointer magic to interpret the bits of a float as a long.
+- Using log(x) and some algebra to get a close approximation for y.
+- Using minimaxing to find a better magic number that accounts for the error term.
+- Using pointer magic to interpret the bits of a float as a long and vice-versa.
 
-When I started looking into this topic I didn't think it would lead me to calculus, solving optimization problems, the binary representation of floating point numbers, and memory management inside computers. I think that's what I enjoyed most about it. Any one of these ideas is interesting and millions of students learn about them every year, but to put them all together to solve a completely unrelated problem in vector graphics requires someone with a very specific set of skills.
+When I started looking into this topic I didn't think it would lead me to calculus, solving optimization problems, the binary representation of floating point numbers, and memory management inside computers. I think that's what I enjoyed most about it. Any one of these ideas is interesting and many students learn about them every year, but to put them all together to solve a completely unrelated problem in vector graphics requires someone with a very specific set of skills.
 
 ![Venn Diagram](./venn-diagram.png)
 
@@ -432,6 +431,8 @@ What problems can you solve with your specific set of skills?
 
 [^3]: This is technically not always true because there are cases where a good initial guess can send you off on a wild goose chase. The [3Blue1Brown video](https://youtu.be/-RdOwhmqP5s?t=524) explains this better. However, for the purposes of fast inverse square root, this assumption works well.
 
-[^4]: Astute readers might notice that if the mantissa is 0 then we can't avoid a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we'll just ignore it for the rest of this post. Even more astute readers would notice that the IEEE floating point standards includes denormalization where the leading 1 is excluded if all exponent bits at set to 0. Since that only happens for extremely small numbers, it's unlikely to cause issues in real world applications.
+[^4]: The reason it's called floating point is because the point isn't fixed. It's able to "float" depending on what the exponent value is.
 
-[^5]: Brute forcing the magic number by trying out all the different constants might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. The math is a bit out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff. See [Fast Inverse Square Root - Chris Lomont](http://www.lomont.org/papers/2003/InvSqrt.pdf) or [A Modification of the Fast Inverse Square Root Algorithm](https://www.preprints.org/manuscript/201908.0045/v1).
+[^5]: Astute readers might notice that if the mantissa is 0 then we can't avoid a leading 0, the floating point standard handles this in an interesting way but since the inverse of 0 is undefined, we'll just ignore it for the rest of this post. Even more astute readers would notice that the IEEE floating point standards includes denormalization where the leading 1 is excluded if all exponent bits at set to 0. Since that only happens for extremely small numbers, it's unlikely to cause issues in real world applications.
+
+[^6]: Brute forcing the magic number by trying out all the different constants might be a bit unsatisfying for you. Maybe you wanted a mathematically rigorous way to narrow it down to the precise bit. The math is a bit out of scope for this article. However, there are some great papers by Chris Lomont and others that prove this (and find even better constants) using a lot of algebra and piecewise equation optimizations if you're into that stuff. See [Fast Inverse Square Root - Chris Lomont](http://www.lomont.org/papers/2003/InvSqrt.pdf) or [A Modification of the Fast Inverse Square Root Algorithm](https://www.preprints.org/manuscript/201908.0045/v1).

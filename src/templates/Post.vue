@@ -142,6 +142,9 @@ query Post ($path: String!) {
   .footnotes {
     font-size: 0.9em;
   }
+  .footnotes li {
+    padding-bottom: 5px;
+  }
 
   .icon-link {
     margin-left: -25px;
