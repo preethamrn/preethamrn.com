@@ -2,12 +2,12 @@
   <div class='newton-method-demo'>
     <div :id='fullID'>
     </div>
-    <div style="padding-left: 10px">x: {{x}}; y{{n}}: {{yn}}</div>
+    <div style="padding-left: 10px"><b>number:</b> {{x}}; <b>y{{n}}:</b> {{yn}}</div>
     <button @click='nextIteration'>next</button>
     <button @click='reset'>reset</button>
     <button @click='togglePlay'>{{ playingIntervalId ? "pause" : "play" }}</button>
     <div>
-      <input type="range" min="1" max="10" v-model="playSpeed">
+      Speed: <input type="range" min="1" max="10" v-model="playSpeed">
     </div>
   </div>
   <!-- TODO: integrate the demo more with the text (possibly include multiple demos? and link them together)
