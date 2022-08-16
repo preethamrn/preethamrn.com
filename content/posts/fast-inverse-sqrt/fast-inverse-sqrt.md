@@ -47,9 +47,9 @@ Fast Inverse Square Root is one of the most famous algorithms in game developmen
 ## Why is this algorithm so iconic?
 It's not often that you see swear words in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552).[^1] And doing division without a single division operator! How's that even possible?! And more importantly, why?
 
-Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculation. These computations are made thousands of times per frame so it is imperative to find a fast algorithm for them.
+Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculations. These computations are made thousands of times per frame so it was imperative to find a fast algorithm for them.
 
-To naively find the inverse square root involves we must first find the square root of a number and then find its reciprocal. Both of those are complex operations that take a long time on old CPUs. On the other hand, the fast algorithm only requires multiplications, bit shifts, and subtraction, all of which can run much faster so it became the defacto method for computing inverse square roots.
+To naively find the inverse square root we must first find the square root of a number and then find its reciprocal. Both of those are complex operations that take a long time on old CPUs. On the other hand, the fast algorithm only requires multiplications, bit shifts, and subtraction, all of which can run much faster so it became the defacto method for computing inverse square roots.
 
 Is it used today? Not really. Hardware advancements have made this pretty obsolete since many CPUs come with rsqrt instructions which can compute the inverse square root in a single instruction[^2].
 
@@ -348,7 +348,7 @@ Max Error for 0x5f375a87: 0.03436540281256528218
 
 We're still smaller. I had to run it with 4 iterations of Newton's method before I started seeing both constants giving the same error of 0.00000010679068984665. And even then, the two constants were performing equally well.
 
-So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps the developer figured that their number worked well enough. Perhaps it was simply pulled out of the developer's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead. At least now we know how the magic number works.[^6]
+So if `0x5f375a87` works better then why does Quake use `0x5f3759df`? Perhaps `0x5f3759df` works better with the numbers that Quake deals with. Perhaps the developer used a different method to generate this number. Perhaps the developer figured that their number worked well enough and didn't bother optimizing it further. Perhaps it was simply pulled out of the developer's rear. Only the person who wrote this code knows why `0x5f3759df` was chosen instead. At least now we know how the magic number works.[^6]
 
 
 # Evil floating point bit level hack
