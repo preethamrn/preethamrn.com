@@ -31,13 +31,13 @@ export default {
     FloatingPointBits,
   },
   data: () => ({
-    num: 1.5,
+    num: 127,
     signBit: '0',
-    expBits: '01111111',
-    mantissaBits: '10000000000000000000000',
+    expBits: '10000101',
+    mantissaBits: '11111100000000000000000',
     signVal: '+',
-    expVal: '0',
-    mantissaVal: '1.5',
+    expVal: '6',
+    mantissaVal: '1.984375',
   }),
   methods: {
     validate(e) {
