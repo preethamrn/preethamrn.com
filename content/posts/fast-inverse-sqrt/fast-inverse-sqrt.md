@@ -155,9 +155,25 @@ The `i` on the left hand side is our initial guess `y` and the `i` on the right 
 y_bits = 0x5f3759df - ( x_bits >> 1 )
 ```
 
-One thing to note is that **$x_{bits}$ and $y_{bits}$ are the binary representations** of the IEEE floating point numbers and not the numbers $x$ and $y$ themselves. Using the binary representation stored in integers allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the [next section](#evil-floating-point-bit-level-hack) on "evil floating point bit level hacking" but first we need to understand how IEEE floating point numbers work...
+Note that we're using $x_{bits}$ instead of $x$ here. "What's the difference between $x_{bits}$ and $x$?" you might ask. While $x$ is the actual number that we're computing the inverse square root for, $x_{bits}$ is the number that a computer stores internally to represent that number, that is, the **binary representation** of that number. For example, instead of $3.33$ we're using $01000000010101010001111010111001_{\text{base } 2}$
 
-## How do IEEE floating point numbers work?
+Using the binary representation allows us to do operations like subtraction (`-`) and bit shifting (`>>`). How we do this conversion will be explained in the [next section](#evil-floating-point-bit-level-hack) on "evil floating point bit level hacking" but first we need to understand how computers store numbers...
+
+## How computers store numbers
+
+Decimal integers use digits from 0 to 9 to represent numbers in base 10. Computers run off of 1s and 0s and so are restricted to only using base 2.
+
+The 1s and 0s in a computer are known as bits. Grouping together bits allows us to represent larger numbers and the numbers that we'll be dealing with today have 32 bits.
+
+Just like decimal integers use powers of 10 for each place (unit, tens, hundreds, thousands, etc.), binary integers use powers of 2. So:
+
+* Decimal $1234 = 1 * 10^3 + 2 * 10^2 + 3 * 10 + 4$
+* Binary $101101 = 1 * 2^5 + 0 * 2^4 + 1 * 2^3 + 1 * 2^2 + 0 * 2 + 1$
+
+
+You may notice however, that this doesn't allow us to represent numbers with a decimal point in them like $1.5$ or $74.123$. For that, we need to use [The IEEE Floating Point Standard](#the-ieee-floating-point-standard)
+
+### The IEEE Floating Point Standard
 
 Floating point is a fancy way of saying binary scientific notation[^4].
 
