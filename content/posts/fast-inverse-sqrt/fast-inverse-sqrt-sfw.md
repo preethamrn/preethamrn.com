@@ -1,6 +1,6 @@
 ---
 title: "How Fast Inverse Square Root actually works"
-link: "fast-inverse-sqrt"
+link: "fast-inverse-sqrt-sfw"
 description: ""
 date: 2022-08-14
 timeToRead: 20
@@ -14,9 +14,6 @@ import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/Newton
 import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
 import SideBySide from '@/components/Blog/SideBySide.vue'
 import Highlight from '@/components/Blog/Highlight.vue'
-
-
-> This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids check out [the SFW version here](fast-inverse-sqrt-sfw).
 
 $$
 \frac{1}{\sqrt{x}}
@@ -32,7 +29,7 @@ float Q_rsqrt( float number )
   x2 = number * 0.5F;
   y  = number;
   i  = * ( long * ) &y;         // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 ); // what the fuck?
+  i  = 0x5f3759df - ( i >> 1 ); // what ???
   y  = * ( float * ) &i;
   y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
 //  y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
@@ -44,7 +41,7 @@ float Q_rsqrt( float number )
 Fast Inverse Square Root is one of the most famous algorithms in game development. But what makes it so iconic? How does the algorithm work? And where does `0x5f3759df` come from? All will be answered in this "simple" blog post.
 
 ## Why is this algorithm so iconic?
-It's not often that you see swear words in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552).[^1] And doing division without a single division operator! How's that even possible?! And more importantly, why?
+It's not often that you see such vague comments in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552).[^1] And doing division without a single division operator! How's that even possible?! And more importantly, why?
 
 Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculations. These computations are made thousands of times per frame so it was imperative to find a fast algorithm for them.
 
@@ -92,7 +89,7 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 
 * The <span style='color: green'>green line</span> is the x intercept of the red line. We can either use this as our solution approximation or use it to repeat the Newton method with another guess ($y_{n+1}$) until we get close to the actual solution.
 
-Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
+Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what--ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
 
 <Highlight>
 
@@ -142,7 +139,7 @@ The important thing to note here is that Newton's method is just an approximatio
 
 </Highlight>
 
-# "What the fuck?" ie, choosing a better initial guess
+# "What ???" ie, choosing a better initial guess
 
 ```cpp
 i = 0x5f3759df - ( i >> 1 )
