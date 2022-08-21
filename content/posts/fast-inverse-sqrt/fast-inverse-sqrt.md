@@ -306,7 +306,7 @@ Most likely from the ε… I guess we're going on another tangent.
 
 Minimaxing is a lot like what it sounds like. In this case, we want to minimize the maximum error - in other words, find the magic number for which `Q_rsqrt` gives the smallest error compared to the actual inverse square root when considering all possible values of x_bits.
 
-Since there are about 2 billion values of x and another 4 billion values for the magic number, we'll need to do some optimization if we want this to finish running before the sun consumes the solar system.
+Since there are about 2 billion values of x and another 4 billion values for the magic number, we'll need to do some optimization if we want this to finish running before the sun consumes the solar system. Let's try speeding things up by cutting down the number of values that we need to search through.
 
 1. In the previous step, we approximately narrowed down the magic number to `0x5f400000`. So we only need to search between `0x5f300000` and `0x5f500000`.
 2. Instead of searching all values of x, we can ignore the exponent and only search for all values of the mantissa because ε only comes up in the equation $\text{M} = log(1 + \text{M}) + \varepsilon$. If we optimize ε for one exponent value, it's optimized for all exponent values.
@@ -377,15 +377,15 @@ i  = * ( long * ) &y;    // evil floating point bit level hacking
 y  = * ( float * ) &i;
 ```
 
-In order to do the magic from the previous step, we need to work with the binary representation of numbers (`x_bits` and `y_bits`) instead of the floating point numbers (`x` and `y`) themselves.
+In order to do the magic from the previous step, we need to work with the binary representation of numbers (`x_bits` and `y_bits`) instead of the floating point numbers (`x` and `y`) themselves. This requires us to convert from the floating point number `x` to the 32 bits that a computer uses to store that number internally. Those 32 bits are called a long int or long for short.
 
-C allows you to convert between floats and longs using [type casting](https://en.wikipedia.org/wiki/Type_conversion#C-like_languages). However, if you type cast a float to a long normally, then you would do the sensible thing and, for example, convert a float storing 3.33 into a long storing 3.
+C allows you to convert between [floats](#the-ieee-floating-point-standard) and [longs](#how-computers-store-numbers) using [type casting](https://en.wikipedia.org/wiki/Type_conversion#C-like_languages). However, if you type cast a float to a long normally, then you would do the sensible thing and, for example, convert a float storing 3.33 into a integer storing 3.
 
 The binary representation of float(3.33) is `0x40551eb9`
 
 The binary representation of long(3) is `0x00000003`
 
-Clearly these are very different and wouldn't help us when our equation from the previous step depends on x_bits. What we instead want is a long that's storing `0x40551eb9` (1079320249 in decimal).
+Clearly these are very different and wouldn't help us when our equation from the previous step depends on `x_bits`. What we instead want is a long that's storing `0x40551eb9` (1079320249 in decimal).
 
 In order to do that, we need to trick the computer into interpreting the floating point bits as long bits. We can do this by
 
