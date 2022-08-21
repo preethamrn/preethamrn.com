@@ -5,7 +5,7 @@ description: ""
 date: 2022-08-14
 timeToRead: 20
 published: true
-unlisted: false
+unlisted: true
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming", "SOME2"]
 usesLatex: true
