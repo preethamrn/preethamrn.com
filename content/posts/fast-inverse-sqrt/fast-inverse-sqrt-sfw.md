@@ -191,7 +191,9 @@ x &= s*m*2^e
 \end{aligned}
 $$
 
-To store this on a computer, we need to convert the $s$, $m$, and $e$ values into their binary representations `S`, `M`, and `E`
+To store this on a computer, we need to convert the $s$, $e$, and $m$ values into their binary representations `S`, `E`, and `M`. 1 bit for the sign, 8 bits for the exponent, and 23 bits for the mantissa to make 32 bits in total.
+
+![IEEE 754 Standard](./ieee754-standard.png)
 
 - s is the sign. If the sign bit `S` is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), so `S` will always be 0. We can ignore it for the rest of this post.
 - m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and `M` is just the fractional part after the point (ie, m = 1 + `M`) [^5]
@@ -244,7 +246,7 @@ $$
 
 Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/k7eekdct1s) for small values of x between 0 and 1.
 
-In other words, $x = log(1+x) + \varepsilon$ where $\varepsilon$ is a small error term.
+Since `M` will always be within 0 and 1, we can say that $M = log(1+M) + \varepsilon$ where $\varepsilon$ is a small error term.
 
 </template>
 
