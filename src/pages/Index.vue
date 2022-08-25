@@ -22,9 +22,9 @@
       <div class='about'>
         <h1 id='about'>About me</h1>
         <span>
-          <i class='highlight-red subheader'>PAST. </i>I started programming sometime between 5th and 10th grade depending on what you call programming, gaining various levels of experience in VB6, C++, Java, Python, HTML, Javascript, and PHP. After a bout in competitive programming, a few internships, and some web and app development, I graduated from UCLA with a GPA of 3.97.<br>
-          <i class='highlight-green subheader'>PRESENT. </i>I currently work on Uber's Storage Platform Infrastructure using Go, Java, Javascript and technologies like Cassandra, Docstore, Spark, Hive, and Kafka. Outside of work I enjoy cubing, bouldering, and video making.<br>
-          <i class='highlight-blue subheader'>FUTURE. </i>I'd like to explore new ways to leverage programming in fields like video making and live streaming and learn more about Machine Learning and App Development. I also want to teach others more about programming and inspire the next generation of programmers to get excited about coding just like I was when I was young.<br>
+          <i class='highlight-red subheader'>PAST. </i>I started programming sometime between 5th and 10th grade depending on what you call programming, gaining various levels of experience in VB6, C++, Java, Python, HTML, Javascript, and PHP. After a bout in competitive programming, a few internships, and some website and app development, I graduated from UCLA in 2018.<br>
+          <i class='highlight-green subheader'>PRESENT. </i>I currently work on Uber's Storage Platform Infrastructure using Go, Java, Javascript and technologies like Cassandra, Docstore, Raft, Spark, Hive, and Kafka. Outside of work I enjoy cubing, bouldering, and video making.<br>
+          <i class='highlight-blue subheader'>FUTURE. </i>I'd like to explore new ways to leverage programming to make people's lives easier. I'm also interested in teaching others about programming and inspiring the next generation of programmers to get excited about coding just like I did when I was young.<br>
         </span>
       </div>
 
@@ -33,8 +33,8 @@
         <div class='experience-container'>
           <div class='experience-date'>Jan 2019 - Present</div>
           <div class='experience-item-text'>
-            <div class='experience-item-title'>Uber Software Engineer</div>
-            Working on the Storage Platform team in Uber Infrastructure. Building workflows to streamline datastore provisioning for various storage engines and use cases. Creating a backend gateway and portal UI to interface with datastores. Creating tools to increase developer efficiency and velocity.
+            <div class='experience-item-title'>Uber Senior Software Engineer</div>
+            Working on the Storage Platform team in Uber Infrastructure. Building an integrated, fully transparent cache for Uber's distributed datastore. Building workflows to streamline datastore provisioning for various storage engines and use cases. Creating a backend gateway and portal UI to interface with datastores. Creating tools to increase developer efficiency and velocity.
           </div>
 
           <div class='experience-date'>Summer 2017, Summer 2018</div>
@@ -52,7 +52,7 @@
           <div class='experience-date'>2015 - 2018</div>
           <div class='experience-item-text'>
             <div class='experience-item-title'>University of California, Los Angeles</div>
-            Graduated with 3.97 GPA in a B.S. in Computer Science. Worked as a learning assistant for an Intro to C++ Programming class. Help the professor with creating problem sets and holding office hours and discussions. Worked as a grader for Computer Networks: Physical Layer.
+            Graduated summa cum laude from UCLA with in a B.S. in Computer Science. Worked as a learning assistant for an Intro to C++ Programming class. Help the professor with creating problem sets and holding office hours and discussions. Worked as a grader for Computer Networks: Physical Layer.
           </div>
         </div>
       </div>
