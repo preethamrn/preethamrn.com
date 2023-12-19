@@ -111,6 +111,7 @@ This seemed like a relatively simple change but I won't lie, it took me at least
 ![Time taken](./time-taken.png)
 
 To give a rough timeline:
+
 1. First I cloned the repo and got the application running on my device
 2. Then I used specific string and other details to find the activity and class where the relevant time formatting code was located
 3. I quickly replaced the existing time format with my own to see if this would fix the issue on my device. It did. 
