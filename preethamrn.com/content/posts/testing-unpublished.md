@@ -52,7 +52,7 @@ $$
 
 > "You miss 100% of the shots you don't take -Wayne Gretzky" -Michael Scott
 
-# Syntax highlighted codeblock with prismjs
+# Syntax highlighted codeblock with Shikiji
 
 ```javascript
 var s = "JavaScript syntax highlighting";

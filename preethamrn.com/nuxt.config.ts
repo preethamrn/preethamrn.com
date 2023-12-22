@@ -10,6 +10,13 @@ export default defineNuxtConfig({
         "remark-oembed": true
       },
       rehypePlugins: ["rehype-katex"]
+    },
+    highlight: {
+      theme: {
+        default: "github-light",
+        dark: "github-dark",
+        sepia: "monokai"
+      }
     }
   }
 });
