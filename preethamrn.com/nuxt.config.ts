@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxt/content"],
+  modules: ["@nuxt/content", "@nuxt/image"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -18,5 +18,6 @@ export default defineNuxtConfig({
         sepia: "monokai"
       }
     }
-  }
+  },
+  image: {}
 });
