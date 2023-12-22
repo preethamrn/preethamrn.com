@@ -6,11 +6,10 @@ export default defineNuxtConfig({
     markdown: {
       anchorLinks: true,
       remarkPlugins: {
-        "remark-math": true
+        "remark-math": true,
+        "remark-oembed": true
       },
-      rehypePlugins: {
-        "rehype-katex": true
-      }
+      rehypePlugins: ["rehype-katex"]
     }
   }
 });
