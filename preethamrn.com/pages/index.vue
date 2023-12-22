@@ -103,13 +103,7 @@
 </template>
 
 <script>
-import Projects from "../components/Homepage/Projects.vue";
-import Container from "../components/Shared/Container.vue";
 export default {
-  components: {
-    Projects,
-    Container,
-  },
   data: () => ({}),
   methods: {},
   metaInfo: {

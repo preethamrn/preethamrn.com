@@ -47,13 +47,7 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Container from "./components/Shared/Container";
 export default {
-  components: {
-    Container,
-    Header,
-  },
   data: () => ({
     links: [
       { href: "/posts", text: "Posts" },

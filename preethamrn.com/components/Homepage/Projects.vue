@@ -5,12 +5,8 @@
 </template>
 
 <script>
-import ProjectItem from "./ProjectItem";
 export default {
   name: "projects",
-  components: {
-    ProjectItem,
-  },
   data: () => ({
     projects: [
       // { name: "XYZ", image: "projects/xyz.png", link: "xyz.com", code: "github.com/xyz", blog: "/blog/xyz", description: "DESCRIPTION XYZ" }, // code, blog, description are optional

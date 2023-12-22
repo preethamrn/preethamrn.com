@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <g-link to="/"
-      ><h1>👨‍💻 {{ siteName }}</h1></g-link
-    >
+    <NuxtLink to="/">
+      <h1>👨‍💻 {{ siteName }}</h1>
+    </NuxtLink>
     <a
       v-for="(link, index) in links"
       :key="index"
@@ -11,9 +11,9 @@
       >{{ link.text }}</a
     >
     <span class="header side-links">
-      <!-- <ClientOnly> -->
-      <ThemeToggle />
-      <!-- </ClientOnly> -->
+      <ClientOnly>
+        <ThemeToggle />
+      </ClientOnly>
       <a href="https://www.twitter.com/preethamrn" target="_blank"><font-awesome :icon="['fab', 'twitter']" /></a>
     </span>
   </header>
@@ -22,9 +22,6 @@
 <script>
 export default {
   props: ["siteName", "links"],
-  components: {
-    ThemeToggle: () => import("./Shared/ThemeToggle"),
-  },
 };
 </script>
 
