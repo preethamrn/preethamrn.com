@@ -11,7 +11,7 @@
 export default {
   data: () => {
     return {
-      mode: 'light'
+      mode: 'dark'
     }
   },
   created() {

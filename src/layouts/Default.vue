@@ -59,14 +59,14 @@ export default {
 
 <style lang="scss">
 :root {
-    --app-background-color: #FFFFFF;
-    --app-font-color: black;
-    --app-highlight-color: rgba(255, 251, 0, 0.5);
-}
-[theme="dark"] {
     --app-background-color: #091A28;
     --app-font-color: white;
     --app-highlight-color: rgba(0, 17, 255, 0.541);
+}
+[theme="light"] {
+    --app-background-color: #FFFFFF;
+    --app-font-color: black;
+    --app-highlight-color: rgba(255, 251, 0, 0.5);
 }
 [theme="sepia"] {
     --app-background-color: #F1E7D0;
