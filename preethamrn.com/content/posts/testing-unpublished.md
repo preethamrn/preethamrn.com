@@ -27,6 +27,12 @@ Yeah we've got that too!
 
 Inline? `i think so`
 
+Also some LaTeX inline $\pi$ and outline
+
+$$
+\frac{1}{\sqrt{x}}
+$$
+
 ## Images
 
 ![Motorcycle](https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
@@ -60,12 +66,6 @@ switch user.kind {
 ```
 
 <p> Adding some HTML <span style='font-weight: 800'>(with CSS)</span> directly in here </p>
-
-Also some LaTeX inline $\pi$ and outline
-
-$$
-\frac{1}{\sqrt{x}}
-$$
 
 Here is a footnote reference[^1]
 another [^longnote],

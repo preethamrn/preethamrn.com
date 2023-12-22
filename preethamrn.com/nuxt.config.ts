@@ -5,7 +5,12 @@ export default defineNuxtConfig({
   content: {
     markdown: {
       anchorLinks: true,
-      remarkPlugins: {}
+      remarkPlugins: {
+        "remark-math": true
+      },
+      rehypePlugins: {
+        "rehype-katex": true
+      }
     }
   }
 });
