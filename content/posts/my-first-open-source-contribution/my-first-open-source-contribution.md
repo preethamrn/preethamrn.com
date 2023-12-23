@@ -4,8 +4,6 @@ link: "my-first-open-source-contribution"
 description: "One of the things that I love about programming is that you can see a problem in the world and solve it. So when I found out that one of the apps I used on a daily basis was open source, I was pleasantly surprised"
 date: 2023-08-06
 timeToRead: 6
-published: true
-unlisted: false
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming"]
 ---

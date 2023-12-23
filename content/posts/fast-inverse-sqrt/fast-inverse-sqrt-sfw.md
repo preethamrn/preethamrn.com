@@ -4,7 +4,6 @@ link: "fast-inverse-sqrt-sfw"
 description: ""
 date: 2022-08-14
 timeToRead: 20
-published: true
 unlisted: true
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming", "SOME2"]

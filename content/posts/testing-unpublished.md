@@ -3,8 +3,8 @@ title: "First Post"
 link: "first-post"
 description: "The first post written in Markdown"
 timeToRead: 1
-date: 2019-04-20
-published: false # change this to "draft: true"
+date: 2019-04-21
+draft: true
 tags: ["test"]
 ---
 

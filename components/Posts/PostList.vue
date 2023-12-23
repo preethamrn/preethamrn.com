@@ -1,7 +1,7 @@
 <template>
   <div class="post-list">
     <h1>{{ year }}</h1>
-    <PostItem :key="post.link" v-for="post in this.posts" :post="post" />
+    <PostItem :key="post.link" v-for="post in posts" :post="post" />
   </div>
 </template>
 
