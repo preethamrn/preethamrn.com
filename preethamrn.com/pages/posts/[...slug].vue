@@ -11,7 +11,7 @@
       <Container class="article prose">
         <h1 class="article-title">{{ data.title }}</h1>
         <p class="article-date">
-          {{ format(new Date(data.date), "d MMMM yyyy", { timeZone: "UTC" }) }} · <i>{{ data.timeToRead }} min read</i>
+          {{ formatDate(data.date) }} · <i>{{ data.timeToRead }} min read</i>
         </p>
         <ContentRenderer :value="data" />
         <hr />
@@ -28,10 +28,6 @@
     </ContentQuery>
   </main>
 </template>
-
-<script setup>
-import { format } from "date-fns";
-</script>
 
 <style>
 :root {
