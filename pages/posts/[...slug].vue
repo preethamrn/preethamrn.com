@@ -7,27 +7,36 @@
       integrity="sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG"
       crossorigin="anonymous"
     />
-    <ContentQuery :path="$route.path" find="one" v-slot="{ data }">
-      <Container v-if="data" class="article prose">
-        <h1 class="article-title">{{ data.title }}</h1>
-        <p class="article-date">
-          {{ formatDate(data.date) }} · <i>{{ data.timeToRead }} min read</i>
-        </p>
-        <ContentRenderer :value="data" />
-        <hr />
-        <NuxtLink class="article-tag" v-for="tag in data.tags" :to="`/posts/tag/${tag}`" :key="tag">
-          &#35;{{ tag }}
-        </NuxtLink>
-        <!-- TODO: recommended posts: https://overflowed.dev/blog/building-a-gridsome-plugin-for-related-posts/ -->
-        <p class="article-footer">
-          Written by <a href="https://www.twitter.com/preethamrn">@preethamrn</a>: Software developer at Uber with a
-          degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes.
-          <a href="https://www.github.com/preethamrn">Github</a>
-        </p>
-      </Container>
-    </ContentQuery>
+    <Container v-if="data" class="article prose">
+      <h1 class="article-title">{{ data.title }}</h1>
+      <p class="article-date">
+        {{ formatDate(data.date) }} · <i>{{ data.timeToRead }} min read</i>
+      </p>
+      <ContentRenderer :value="data" />
+      <hr />
+      <NuxtLink class="article-tag" v-for="tag in data.tags" :to="`/posts/tag/${tag}`" :key="tag">
+        &#35;{{ tag }}
+      </NuxtLink>
+      <!-- TODO: recommended posts: https://overflowed.dev/blog/building-a-gridsome-plugin-for-related-posts/ -->
+      <p class="article-footer">
+        Written by <a href="https://www.twitter.com/preethamrn">@preethamrn</a>: Software developer at Uber with a
+        degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes.
+        <a href="https://www.github.com/preethamrn">Github</a>
+      </p>
+    </Container>
   </main>
 </template>
+
+<script setup>
+const route = useRoute();
+const { data } = await useAsyncData(`post-${route.path}`, () =>
+  queryContent("/posts").where({ link: route.params.slug[0] }).findOne()
+);
+if (!data || !data.value) {
+  // TODO: improve the 404 redirect (maybe link to posts page instead?)
+  navigateTo(`/404?post=${route.params.slug[0]}`, { redirectCode: 404 });
+}
+</script>
 
 <style>
 :root {
