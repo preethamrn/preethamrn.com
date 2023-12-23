@@ -3,13 +3,14 @@
     <NuxtLink to="/">
       <h1>👨‍💻 {{ siteName }}</h1>
     </NuxtLink>
-    <a
+    <NuxtLink
       v-for="(link, index) in links"
       :key="index"
-      :href="link.href"
+      :to="link.href"
       @click="link.onclick ? link.onclick() : () => {}"
-      >{{ link.text }}</a
     >
+      {{ link.text }}
+    </NuxtLink>
     <span class="header side-links">
       <ClientOnly>
         <ThemeToggle />
