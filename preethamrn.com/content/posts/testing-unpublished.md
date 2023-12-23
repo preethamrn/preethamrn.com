@@ -72,8 +72,7 @@ switch user.kind {
 Here is a footnote reference[^1]
 another [^longnote],
 and optionally there are inline
-notes.^[you can type them inline, which may be easier, since you don’t
-have to pick an identifier and move down to type the note.]
+notes.^[inline footnotes DO NOT work][^2]
 
 [^1]: Here is the footnote.
 [^longnote]: Here’s one with multiple blocks.
@@ -89,3 +88,5 @@ have to pick an identifier and move down to type the note.]
 
 This paragraph won’t be part of the note, because it
 isn’t indented.
+
+[^2]: see above.
