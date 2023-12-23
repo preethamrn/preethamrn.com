@@ -1,5 +1,6 @@
-import { format } from "date-fns";
+import { format, utcToZonedTime } from "date-fns-tz";
 
 export function formatDate(dateStr, formatStr = "d MMMM yyyy") {
-  return format(new Date(dateStr), formatStr, { timeZone: "UTC" });
+  const date = utcToZonedTime(new Date(dateStr));
+  return format(date, formatStr, { timeZone: "UTC" });
 }
