@@ -4,7 +4,7 @@
 set -e
 
 # build
-npm run build
+bun run generate
 
 # navigate into the build output directory
 cd dist

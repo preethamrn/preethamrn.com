@@ -6,7 +6,6 @@ timeToRead: 1
 date: 2019-04-20
 published: false # change this to "draft: true"
 tags: ["test"]
-usesLatex: true
 ---
 
 This is the first post, it is written in Markdown. **THIS SHOULD NOT BE PUBLISHED**
@@ -20,6 +19,8 @@ This is the first post, it is written in Markdown. **THIS SHOULD NOT BE PUBLISHE
 1. numbered lists
 1. work too
 
+https://www.youtube.com/watch?v=XSLaiaAGlXs
+
 ### How about some code?
 
 ```
@@ -27,6 +28,12 @@ Yeah we've got that too!
 ```
 
 Inline? `i think so`
+
+Also some LaTeX inline $\pi$ and outline
+
+$$
+\frac{1}{\sqrt{x}}
+$$
 
 ## Images
 
@@ -45,7 +52,7 @@ Inline? `i think so`
 
 > "You miss 100% of the shots you don't take -Wayne Gretzky" -Michael Scott
 
-# Syntax highlighted codeblock with prismjs
+# Syntax highlighted codeblock with Shikiji
 
 ```javascript
 var s = "JavaScript syntax highlighting";
@@ -62,17 +69,10 @@ switch user.kind {
 
 <p> Adding some HTML <span style='font-weight: 800'>(with CSS)</span> directly in here </p>
 
-Also some LaTeX inline $\pi$ and outline
-
-$$
-\frac{1}{\sqrt{x}}
-$$
-
 Here is a footnote reference[^1]
 another [^longnote],
 and optionally there are inline
-notes.^[you can type them inline, which may be easier, since you don’t
-have to pick an identifier and move down to type the note.]
+notes.^[inline footnotes DO NOT work][^2]
 
 [^1]: Here is the footnote.
 [^longnote]: Here’s one with multiple blocks.
@@ -88,3 +88,5 @@ have to pick an identifier and move down to type the note.]
 
 This paragraph won’t be part of the note, because it
 isn’t indented.
+
+[^2]: see above.
