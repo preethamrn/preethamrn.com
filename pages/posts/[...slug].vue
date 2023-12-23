@@ -8,7 +8,7 @@
       crossorigin="anonymous"
     />
     <ContentQuery :path="$route.path" find="one" v-slot="{ data }">
-      <Container class="article prose">
+      <Container v-if="data" class="article prose">
         <h1 class="article-title">{{ data.title }}</h1>
         <p class="article-date">
           {{ formatDate(data.date) }} · <i>{{ data.timeToRead }} min read</i>
