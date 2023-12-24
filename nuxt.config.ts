@@ -18,7 +18,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ["@nuxt/content", "@nuxt/image"],
+  modules: ["nuxt-content-assets", "@nuxt/content", "@nuxt/image"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -42,6 +42,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  image: {},
+  image: {
+    dir: ".nuxt/content-assets/public",
+  },
   css: ["@fortawesome/fontawesome-svg-core/styles.css"],
 });
