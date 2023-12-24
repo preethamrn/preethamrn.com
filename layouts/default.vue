@@ -1,5 +1,4 @@
 <template>
-  <!-- Create new layouts: https://gridsome.org/docs/layouts/ -->
   <main class="layout-template" role="main">
     <Container>
       <Header siteName="Preetham" :links="links" />
@@ -17,16 +16,16 @@
         <div class="footer-links">
           Follow me:
           <a href="https://www.twitter.com/preethamrn" target="_blank" class="footer-icon">
-            <font-awesome :icon="['fab', 'twitter']" />
+            <Icon name="mdi:twitter" />
           </a>
           <a href="https://www.youtube.com/channel/UC7tKYiFtH_6HCBD4hh7hTWw" target="_blank" class="footer-icon">
-            <font-awesome :icon="['fab', 'youtube']" />
+            <Icon name="mdi:youtube" />
           </a>
           <a href="https://www.twitch.com/preethamrn" target="_blank" class="footer-icon">
-            <font-awesome :icon="['fab', 'twitch']" />
+            <Icon name="mdi:twitch" />
           </a>
           <a href="https://www.github.com/preethamrn" target="_blank" class="footer-icon">
-            <font-awesome :icon="['fab', 'github']" />
+            <Icon name="mdi:github" />
           </a>
           <br />
           To hear about new posts: subscribe to my
@@ -36,7 +35,7 @@
           <div>
             &copy; 2023 Preetham Narayanareddy
             <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank" class="footer-icon">
-              <font-awesome :icon="['fas', 'envelope']" />
+              <Icon name="ph:envelope" />
             </a>
             &nbsp;<a target="_blank" href="/sitemap.xml">Sitemap</a>
           </div>

@@ -14,9 +14,9 @@
       <h3 aria-hidden="true">{{ project.name }}</h3>
       <p>{{ project.description }}</p>
       <div class="item__body">
-        <a v-if="project.code" :href="project.code" target="_blank"><font-awesome :icon="['fab', 'github']" /></a>
-        <a v-if="project.blog" :href="project.blog" target="_blank"><font-awesome :icon="['fas', 'file-alt']" /></a>
-        <a v-if="project.link" :href="project.link" target="_blank"><font-awesome :icon="['fas', 'link']" /></a>
+        <a v-if="project.code" :href="project.code" target="_blank"><Icon name="mdi:github" /></a>
+        <a v-if="project.blog" :href="project.blog" target="_blank"><Icon name="carbon:blog" /></a>
+        <a v-if="project.link" :href="project.link" target="_blank"><Icon name="ph:link" /></a>
       </div>
     </div>
   </div>

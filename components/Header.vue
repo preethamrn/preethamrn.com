@@ -15,7 +15,7 @@
       <ClientOnly>
         <ThemeToggle />
       </ClientOnly>
-      <a href="https://www.twitter.com/preethamrn" target="_blank"><font-awesome :icon="['fab', 'twitter']" /></a>
+      <a href="https://www.twitter.com/preethamrn" target="_blank"><Icon name="mdi:twitter" /></a>
     </span>
   </header>
 </template>

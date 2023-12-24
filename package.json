@@ -10,11 +10,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/vue-fontawesome": "latest-3",
     "@nuxt/devtools": "latest",
+    "nuxt-icon": "^0.6.7",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "nuxt": "^3.8.2",
