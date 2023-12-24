@@ -17,7 +17,7 @@
       <NuxtLink class="article-tag" v-for="tag in data.tags" :to="`/posts/tag/${tag}`" :key="tag">
         &#35;{{ tag }}
       </NuxtLink>
-      <!-- TODO: recommended posts: https://overflowed.dev/blog/building-a-gridsome-plugin-for-related-posts/ -->
+      <!-- TODO: recommended posts or next/prev post: https://overflowed.dev/blog/building-a-gridsome-plugin-for-related-posts/ -->
       <p class="article-footer">
         Written by <a href="https://www.twitter.com/preethamrn">@preethamrn</a>: Software developer at Uber with a
         degree in CS. Go, Storage, Distributed Systems, Bouldering, Rubik's Cubes.

@@ -1,5 +1,4 @@
 <template>
-  <!-- Create new pages: https://gridsome.org/docs/pages/ -->
   <main>
     <div class="title-header">
       <div class="header-gradient header-offset" />
