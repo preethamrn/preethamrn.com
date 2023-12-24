@@ -70,13 +70,13 @@ export default {
 </script>
 
 <style scoped>
-:deep .sign {
+:deep(.sign) {
   color: rgb(0, 141, 0);
 }
-:deep .exp {
+:deep(.exp) {
   color: rgb(255, 70, 70);
 }
-:deep .mantissa {
+:deep(.mantissa) {
   color: rgb(94, 94, 255);
 }
 a {

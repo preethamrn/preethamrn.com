@@ -23,9 +23,10 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@nuxt/content": "^2.10.0",
     "@nuxt/image": "^1.1.0",
-    "function-plot": "^1.22.9-0",
+    "function-plot": "1.22.9-0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
     "remark-oembed": "^1.2.2"

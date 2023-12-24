@@ -1,8 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  build: {
-    transpile: ["@fortawesome/vue-fontawesome"],
+  vite: {
+    optimizeDeps: {
+      esbuildOptions: {
+        define: {
+          global: "globalThis",
+        },
+      },
+    },
   },
   components: [
     {
