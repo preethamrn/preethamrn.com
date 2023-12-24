@@ -18,7 +18,13 @@ export default defineNuxtConfig({
         "remark-math": true,
         "remark-oembed": true,
       },
-      rehypePlugins: ["rehype-katex"],
+      rehypePlugins: { "rehype-katex": { output: "html" } },
+      tags: {
+        highlight: "Highlight",
+        "side-by-side": "SideBySide",
+        floatingpointdemo: "FloatingPointDemo",
+        newtonmethoddemo: "NewtonMethodDemo",
+      },
     },
     highlight: {
       theme: {

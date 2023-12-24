@@ -8,11 +8,6 @@ thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming", "SOME2"]
 usesLatex: true
 ---
-import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
-import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
-import SideBySide from '@/components/Blog/SideBySide.vue'
-import Highlight from '@/components/Blog/Highlight.vue'
-
 
 > This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids check out [the SFW version here](fast-inverse-sqrt-sfw).
 

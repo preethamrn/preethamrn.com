@@ -9,10 +9,6 @@ thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming", "SOME2"]
 usesLatex: true
 ---
-import NewtonMethodDemo from '@/components/PostComponents/FastInverseSqrt/NewtonMethodDemo.vue'
-import FloatingPointDemo from '@/components/PostComponents/FastInverseSqrt/FloatingPointDemo.vue'
-import SideBySide from '@/components/Blog/SideBySide.vue'
-import Highlight from '@/components/Blog/Highlight.vue'
 
 $$
 \frac{1}{\sqrt{x}}

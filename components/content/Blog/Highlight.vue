@@ -1,6 +1,6 @@
 <template>
   <div class="highlight-container">
-    <slot></slot>
+    <ContentSlot :use="$slots.default" />
   </div>
 </template>
 
