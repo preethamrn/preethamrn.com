@@ -7,7 +7,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "client: chrome",
-      "url": "http://localhost:3000",
+      "url": "http://localhost:3000/posts/fast-inverse-sqrt",
       "webRoot": "${workspaceFolder}"
     },
     {

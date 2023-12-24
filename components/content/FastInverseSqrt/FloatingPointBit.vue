@@ -1,16 +1,16 @@
 <template>
-  <button @click='toggle'>{{value}}</button>
+  <button @click="toggle">{{ bit }}</button>
 </template>
 
 <script>
 export default {
   props: {
-    value: Number,
+    bit: Number,
   },
   methods: {
     toggle() {
-      this.$emit('input', this.value == 0 ? 1 : 0)
-    }
-  }
-}
+      this.$emit("update:bit", this.bit == 0 ? 1 : 0);
+    },
+  },
+};
 </script>
