@@ -4,3 +4,9 @@
     <Projects />
   </main>
 </template>
+
+<script setup>
+useHead({
+  title: "Projects - Preetham",
+});
+</script>

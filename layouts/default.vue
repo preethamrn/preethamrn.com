@@ -45,23 +45,40 @@
   </main>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    links: [
-      { href: "/posts", text: "Posts" },
-      { href: "/projects", text: "Projects" },
-      {
-        href: "#contact",
-        text: "Contact",
-        onclick: () => {
-          let elem = document.getElementById("contact");
-          if (elem) elem.className += " highlight";
-        },
-      },
-    ],
-  }),
-};
+<script setup>
+const links = [
+  { href: "/posts", text: "Posts" },
+  { href: "/projects", text: "Projects" },
+  {
+    href: "#contact",
+    text: "Contact",
+    onclick: () => {
+      let elem = document.getElementById("contact");
+      if (elem) elem.className += " highlight";
+    },
+  },
+];
+
+useHead({
+  htmlAttrs: {
+    lang: "en",
+  },
+  // icons generated using realfavicongenerator.net
+  link: [
+    { rel: "apple-touch-icon", sizes: "180x180", href: "/favicons/apple-touch-icon.png" },
+    { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicons/favicon-32x32.png" },
+    { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicons/favicon-16x16.png" },
+    { rel: "shortcut icon", href: "/favicons/favicon.ico" },
+    { rel: "manifest", href: "/favicons/site.webmanifest" },
+    { rel: "mask-icon", href: "/favicons/safari-pinned-tab.svg", color: "#72ed9f" },
+  ],
+  meta: [
+    { name: "msapplication-TileColor", content: "#2b5797" },
+    { name: "msapplication-config", content: "/favicons/browserconfig.xml" },
+    { name: "theme-color", content: "#333333" },
+  ],
+  title: "@preethamrn - Preetham",
+});
 </script>
 
 <style lang="scss">

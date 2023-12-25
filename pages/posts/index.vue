@@ -9,6 +9,10 @@
 </template>
 
 <script setup>
+useHead({
+  title: "Posts - Preetham",
+});
+
 const { data } = await useAsyncData("all-posts", () => queryContent("/posts").without("body").find());
 const years = computed(() => {
   const posts = data.value;
