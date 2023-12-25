@@ -9,7 +9,7 @@ tags: ["Programming"]
 
 You've heard of semver. You've heard of calver. But what about piver[^1]?
 
-For any versioning system to work, it needs to increase as new version are released. So in theory, instead of going from v1 to v2, you could go v1 -> v1.2 -> v1.23 -> v1.234 -> v1.2345 and so on. 
+For any versioning system to work,  it needs to increase as new versions are released. So in theory, instead of going from v1 to v2, you could go v1 -> v1.2 -> v1.23 -> v1.234 -> v1.2345 and so on. 
 Now this wouldn't be a good versioning system and it's definitely not scalable, but it works.
 
 Now imagine a system where instead of simply counting up the digits in numerical order, you instead chose to go by the digits of pi. And imagine if that system was used by a piece of software that was being used by millions of people around the world - you've probably even heard of it. It's called TeX.

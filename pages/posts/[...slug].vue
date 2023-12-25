@@ -28,10 +28,11 @@
 </template>
 
 <script setup>
-// TOOD: FIGURE OUT WHY useAsyncData (OR queryContent) KEEPS ON GETTING STALE DATA...
 const route = useRoute();
-const { data } = await useAsyncData(`post-${route.path}`, () =>
-  queryContent("/posts").where({ link: route.params.slug[0] }).findOne()
+const key = `post-${route.path}`.replace(/\/$/, "");
+const { data } = await useAsyncData(
+  key, // return key without trailing slash
+  () => queryContent("/posts").where({ link: route.params.slug[0] }).findOne()
 );
 if (!data || !data.value) {
   // TODO: improve the 404 redirect (maybe link to posts page instead?)
