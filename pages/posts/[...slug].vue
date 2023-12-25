@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+// TOOD: FIGURE OUT WHY useAsyncData (OR queryContent) KEEPS ON GETTING STALE DATA...
 const route = useRoute();
 const { data } = await useAsyncData(`post-${route.path}`, () =>
   queryContent("/posts").where({ link: route.params.slug[0] }).findOne()
@@ -35,6 +36,22 @@ const { data } = await useAsyncData(`post-${route.path}`, () =>
 if (!data || !data.value) {
   // TODO: improve the 404 redirect (maybe link to posts page instead?)
   navigateTo(`/404?post=${route.params.slug[0]}`, { redirectCode: 404 });
+}
+
+const post = data.value;
+if (post) {
+  useSeoMeta({
+    title: post.title,
+    ogTitle: post.title,
+    twitterTitle: post.title,
+    description: post.description,
+    ogDescription: post.description,
+    twitterDescription: post.description,
+    twitterCard: "summary",
+    ogImage: `/posts/${post.thumbnail}` || `${post._path}/thumbnail.png`,
+    twitterImage: `/posts/${post.thumbnail}` || `${post._path}/thumbnail.png`,
+    ogUrl: `preethamrn.com/posts/${post.link}`,
+  });
 }
 </script>
 

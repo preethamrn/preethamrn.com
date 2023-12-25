@@ -1,13 +1,12 @@
 ---
 title: "How Fast Inverse Square Root actually works"
 link: "fast-inverse-sqrt-sfw"
-description: ""
+description: "Learn how one of the most elusive algorithms in gaming history works using calculus, floating point binary representations, and computer memory management"
 date: 2022-08-14
 timeToRead: 20
 unlisted: true
-thumbnail: "./thumbnail.png"
-tags: ["Learn", "Programming", "SOME2"]
-usesLatex: true
+thumbnail: "fast-inverse-sqrt/thumbnail.png"
+tags: ["Learn", "Programming", "SoME"]
 ---
 
 $$

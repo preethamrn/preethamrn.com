@@ -4,7 +4,6 @@ link: "piver"
 description: "You've heard of semver. You might have heard of zero ver. But what about piver?"
 date: 2023-12-17
 timeToRead: 4
-thumbnail: "./thumbnail.png"
 tags: ["Programming"]
 ---
 

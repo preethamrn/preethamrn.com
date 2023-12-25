@@ -4,7 +4,6 @@ link: "2020-year-in-review"
 description: "My yearly flex under the guise of reflection. Here's a summary of everything I did in 2020 alongside a few things I learned along the way. The year's theme was the \"Year of Doing\""
 date: 2021-01-01
 timeToRead: 13
-thumbnail: "./thumbnail.png"
 tags: ["Life", "Programming"]
 ---
 Time for my yearly flex under the guise of reflection.

@@ -1,12 +1,10 @@
 ---
 title: "How Fast Inverse Square Root actually works"
 link: "fast-inverse-sqrt"
-description: ""
+description: "Learn how one of the most elusive algorithms in gaming history works using calculus, floating point binary representations, and computer memory management"
 date: 2022-08-14
 timeToRead: 20
-thumbnail: "./thumbnail.png"
-tags: ["Learn", "Programming", "SOME2"]
-usesLatex: true
+tags: ["Learn", "Programming", "SoME"]
 ---
 
 > This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids check out [the SFW version here](fast-inverse-sqrt-sfw).
