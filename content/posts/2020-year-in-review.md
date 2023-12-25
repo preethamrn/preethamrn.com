@@ -17,7 +17,7 @@ Every year I've tried resolutions, they've never worked for me. Resolutions are 
 
 If you wait for the new year before starting then you're off to a bad start. Which is why I started this project 3 days before the new year.
 
-![Pokemon Dens - First Commit](./pokemondens-commit.png)
+![Pokemon Dens - First Commit](/posts/2020-year-in-review/pokemondens-commit.png)
 
 Inspiration struck when I was playing Pokemon Sword/Shield with my friends over winter break and realized how difficult it was to find information about raids and the new wild area that was added. Since this was the majority of end game content, it was where I spent most of my time with friends.
 
@@ -27,9 +27,9 @@ While it's always fun to build things for myself, I'd be lying if I said I didn'
 
 A [few](https://www.dexerto.com/pokemon/interactive-sword-shield-map-makes-finding-wild-area-pokemon-a-breeze-1322324/)&nbsp;[gaming](https://dotesports.com/pokemon/news/pokemon-fan-creates-interactive-map-of-sword-and-shields-wild-area) "[news](https://piunikaweb.com/2020/02/03/pokemon-sword-and-shield-interactive-map-all-pokemon-locations-in-the-wild-area/)" [websites](https://www.imore.com/fan-made-interactive-map-pokemon-sword-and-shield-wild-area-going-be-exactly-what-you-needed) picked it up which was cool (although I wish they did this when the website was actually live instead of just linking the GIF). I then spent the next 2 days scrambling to finish building it. Although it was partially working when I made the GIF, I still needed to scrape data for all the remaining sections of the wild area and integrate it into the website. I bought a domain, uploaded it to a github page, and then made [an update post on reddit](https://www.reddit.com/r/PokemonSwordAndShield/comments/es50l6/update_interactive_map_of_the_wild_area_with_list/) which also blew up... for about 10 hours after which point the subreddit was made private.
 
-![Pokemon Dens - Reddit Post](./pokemondens-reddit.png)
+![Pokemon Dens - Reddit Post](/posts/2020-year-in-review/pokemondens-reddit.png)
 
-![Pokemon Dens - Analytics](./pokemondens-analytics.png)
+![Pokemon Dens - Analytics](/posts/2020-year-in-review/pokemondens-analytics.png)
 
 Unbeknownst to me, there was some unrelated drama going on between the mods of the subreddit. I still don't fully understand the reason[^2] but as a result, the post that I made fell off the face of the earth (notice the extremely sharp drop in users after the first day it was live). When the subreddit was reinstated, my post was no longer at the top. Who knows what would have happened if the subreddit didn't go down for 2 days. Despite this I still got a pretty good response and it gave me a lot of confidence that the year was going to go great!
 
@@ -77,7 +77,7 @@ A few notable moments. Getting a random viewer out of nowhere on my first day st
 
 Sometime in the middle of playing Pogostuck I ended up getting affiliate by meeting all the requirements.
 
-![Twitch - Analytics](./twitch-analytics.png)
+![Twitch - Analytics](/posts/2020-year-in-review/twitch-analytics.png)
 
 Looks like I'm still growing so I don't plan on stopping anytime soon. If you're interested, find me on [https://twitch.tv/preethamrn](https://twitch.tv/preethamrn) 🙂
 
@@ -145,7 +145,7 @@ If there's one takeaway from this, it's to give themes a shot if New Year's Reso
 It's probably a bad idea to write this much for my first blog post but on the bright side that means my writing is only going to get better and hopefully the 2021 Year in Review post will show that.
 
 I'll end this off with a photo from the start of the year vs. the end of the year.
-![Year Start versus End Pics](./pics.png)
+![Year Start versus End Pics](/posts/2020-year-in-review/pics.png)
 
 [^1]: I did something sort of like themes before this but it wasn't until I was introduced to this idea that I actually put it in words. Before I had quarterly goals like learn cooking, make friends, and work out more whereas now I would call that Year/Season of Health.
 

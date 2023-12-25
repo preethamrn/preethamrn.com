@@ -11,10 +11,10 @@ tags: ["Life", "Programming"]
 If you're seeing this post then that means the blog is working. I'll have a lot more (hopefully) great content coming soon. Just hold on.
 
 Just so this post has a bit of actual content. Here's an image of my old website. It was littered with typos and dead links that I didn't notice for 2 years since I never really updated it.
-![OLD HOMEPAGE](./old_homepage.png)
+![OLD HOMEPAGE](/posts/test-post/old_homepage.png)
 
 And here's an image of the updated homepage. Looks a lot nicer. Lower quantity but higher quality projects. A unified layout across all my subpages. An integrated blog.
-![NEW HOMEPAGE](./new_homepage.png)
+![NEW HOMEPAGE](/posts/test-post/new_homepage.png)
 
 I've also set up sub-repositories for webapps that were originally built in this repo and redirect to those sub pages from the original links. For example the old link [preethamrn.com/algtrainer](/algtrainer) redirects to [https://www.preethamrn.com/cubing/algtrainer](https://www.preethamrn.com/cubing/algtrainer)
 

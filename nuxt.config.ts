@@ -12,13 +12,14 @@ export default defineNuxtConfig({
       },
     },
   },
+  ignore: ["wip"],
   components: [
     {
       path: "./components",
       pathPrefix: false,
     },
   ],
-  modules: ["nuxt-content-assets", "@nuxt/content", "@nuxt/image", "nuxt-icon"],
+  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -42,7 +43,5 @@ export default defineNuxtConfig({
       },
     },
   },
-  image: {
-    dir: ".nuxt/content-assets/public",
-  },
+  image: {},
 });

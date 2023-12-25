@@ -20,7 +20,7 @@ Now I could actually fix them. On the other hand, I was a little bit daunted. Ev
 
 This post will go over issue #1 - Supporting month/day formatting in the bar chart.
 
-![The issue](./issue.png)
+![The issue](/posts/my-first-open-source-contribution/issue.png)
 
 Step one was figuring out where the date formatting code even was[^2]. Generally when I'm doing this, I first try to get a grip onto the code by diving deep into it. I look for the tiniest thing that I can recognize and try to work my way around that to see how it fits in.
 
@@ -102,11 +102,11 @@ fun formatShortDay(time: Long, useMonthDayTimeFormat: Boolean): String = synchro
 ```
 
 If you want to see the full pull request you can [check it out on Github](https://github.com/Razeeman/Android-SimpleTimeTracker/pull/118). One day later[^4] and it was merged with the comment.
-![Pull request accepted](./pr-accepted.png)
+![Pull request accepted](/posts/my-first-open-source-contribution/pr-accepted.png)
 
 This seemed like a relatively simple change but I won't lie, it took me at least 2 hours to pull it off. I know that because I tracked my time.
 
-![Time taken](./time-taken.png)
+![Time taken](/posts/my-first-open-source-contribution/time-taken.png)
 
 To give a rough timeline:
 

@@ -1,14 +1,15 @@
 ---
 title: "How Fast Inverse Square Root actually works"
-link: "fast-inverse-sqrt-sfw"
+link: "fast-inverse-sqrt"
 description: ""
 date: 2022-08-14
 timeToRead: 20
-unlisted: true
 thumbnail: "./thumbnail.png"
 tags: ["Learn", "Programming", "SOME2"]
 usesLatex: true
 ---
+
+> This article contains some profanity which is found in the original code. If you'd prefer to read a version without profanity or one to show kids check out [the SFW version here](fast-inverse-sqrt-sfw).
 
 $$
 \frac{1}{\sqrt{x}}
@@ -24,7 +25,7 @@ float Q_rsqrt( float number )
   x2 = number * 0.5F;
   y  = number;
   i  = * ( long * ) &y;         // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 ); // what ???
+  i  = 0x5f3759df - ( i >> 1 ); // what the fuck?
   y  = * ( float * ) &i;
   y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
 //  y  = y * ( threehalfs - ( x2 * y * y ) );   // optional 2nd iteration
@@ -36,7 +37,7 @@ float Q_rsqrt( float number )
 Fast Inverse Square Root is one of the most famous algorithms in game development. But what makes it so iconic? How does the algorithm work? And where does `0x5f3759df` come from? All will be answered in this "simple" blog post.
 
 ## Why is this algorithm so iconic?
-It's not often that you see such vague comments in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552).[^1] And doing division without a single division operator! How's that even possible?! And more importantly, why?
+It's not often that you see swear words in official, [public source code](https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/q_math.c#L552).[^1] And doing division without a single division operator! How's that even possible?! And more importantly, why?
 
 Finding the inverse square root of a number is important for normalizing vectors in computer graphics programs which is often required in lighting and shaders calculations. These computations are made thousands of times per frame so it was imperative to find a fast algorithm for them.
 
@@ -84,7 +85,7 @@ TL;DW: It works by taking an approximation and iterating closer and closer to th
 
 * The <span style='color: green'>green line</span> is the x intercept of the red line. We can either use this as our solution approximation or use it to repeat the Newton method with another guess ($y_{n+1}$) until we get close to the actual solution.
 
-Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what--ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
+Here's a bunch of fancy math for completion's sake however you can skip to the [next section](#what-the-fuck-ie-choosing-a-better-initial-guess) if you're more interested in where `0x5f3759df` comes from and how the evil floating point bit level hack works.
 
 <Highlight>
 
@@ -134,7 +135,7 @@ The important thing to note here is that Newton's method is just an approximatio
 
 </Highlight>
 
-# "What ???" ie, choosing a better initial guess
+# "What the fuck?" ie, choosing a better initial guess
 
 ```cpp
 i = 0x5f3759df - ( i >> 1 )
@@ -188,7 +189,7 @@ $$
 
 To store this on a computer, we need to convert the $s$, $e$, and $m$ values into their binary representations `S`, `E`, and `M`. 1 bit for the sign, 8 bits for the exponent, and 23 bits for the mantissa to make 32 bits in total.
 
-![IEEE 754 Standard](./ieee754-standard.png)
+![IEEE 754 Standard](/posts/fast-inverse-sqrt/ieee754-standard.png)
 
 - s is the sign. If the sign bit `S` is 0 then the number is positive (ie, +1). 1 means negative (ie, -1). For the purposes of inverse square root x will always be positive (you can't take square roots of negative numbers in the "real" world), so `S` will always be 0. We can ignore it for the rest of this post.
 - m is the mantissa. Since the leading digit of a floating point number is always a 1 in binary, the 1 is implied and `M` is just the fractional part after the point (ie, m = 1 + `M`) [^5]
@@ -247,7 +248,7 @@ Since `M` will always be within 0 and 1, we can say that $M = log(1+M) + \vareps
 
 <template v-slot:right>
 
-![log(1+x) Approximation](./log-approximation.png)
+![log(1+x) Approximation](/posts/fast-inverse-sqrt/log-approximation.png)
 
 </template>
 
@@ -385,7 +386,7 @@ In order to do that, we need to trick the computer into interpreting the floatin
 2. is actually a long pointer (type casting using `(long *)`)
 3. and then dereferencing that value into a long variable (`*`).
 
-![C Memory Management](./c-memory.png)
+![C Memory Management](/posts/fast-inverse-sqrt/c-memory.png)
 
 That's what this line is doing (reading right to left): `i = * (long *) &y;`
 
@@ -430,7 +431,7 @@ To recap, the big leaps of logic for me were:
 
 When I started looking into this topic I didn't think it would lead me to calculus, solving optimization problems, the binary representation of floating point numbers, and memory management inside computers. I think that's what I enjoyed most about it. Any one of these ideas is interesting and many students learn about them every year, but to put them all together to solve a completely unrelated problem in vector graphics requires someone with a very specific set of skills.
 
-![Venn Diagram](./venn-diagram.png)
+![Venn Diagram](/posts/fast-inverse-sqrt/venn-diagram.png)
 
 What problems can you solve with your specific set of skills?
 
