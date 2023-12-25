@@ -82,17 +82,17 @@ useHead({
 </script>
 
 <style lang="scss">
-:root {
+.light {
   --app-background-color: #ffffff;
   --app-font-color: black;
   --app-highlight-color: rgba(255, 251, 0, 0.5);
 }
-[theme="dark"] {
+.dark {
   --app-background-color: #091a28;
   --app-font-color: white;
   --app-highlight-color: rgba(0, 17, 255, 0.541);
 }
-[theme="sepia"] {
+.sepia {
   --app-background-color: #f1e7d0;
   --app-font-color: #433422;
   --app-highlight-color: rgba(255, 115, 0, 0.5);

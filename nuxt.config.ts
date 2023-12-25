@@ -19,7 +19,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon"],
+  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon", "@nuxtjs/color-mode"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -37,11 +37,15 @@ export default defineNuxtConfig({
     },
     highlight: {
       theme: {
-        default: "github-light",
-        dark: "github-dark",
-        sepia: "monokai",
+        default: "github-dark",
+        light: "github-light",
+        sepia: "solarized-light",
       },
     },
   },
   image: {},
+  colorMode: {
+    fallback: "dark", // fallback if system color isn't set => default to dark
+    classSuffix: "",
+  },
 });

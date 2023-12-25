@@ -5,13 +5,13 @@
 </template>
 
 <style>
-:root {
+.light {
   --app-highlight-background-color: #eeeeee;
 }
-[theme="dark"] {
+.dark {
   --app-highlight-background-color: #06111a;
 }
-[theme="sepia"] {
+.sepia {
   --app-highlight-background-color: #d8cfbb;
 }
 

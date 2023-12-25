@@ -1,7 +1,7 @@
 <template>
   <div class="theme-toggle">
     <!-- e.preventDefault on mousedown to prevent double clicks from selecting text -->
-    <p v-if="mode === 'dark'" @click="toggle('sepia')" @mousedown="(e) => e.preventDefault()">
+    <p v-if="$colorMode.value === 'dark'" @click="toggle('sepia')" @mousedown="(e) => e.preventDefault()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -17,7 +17,7 @@
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
     </p>
-    <p v-if="mode === 'sepia'" @click="toggle('light')" @mousedown="(e) => e.preventDefault()">
+    <p v-if="$colorMode.value === 'sepia'" @click="toggle('light')" @mousedown="(e) => e.preventDefault()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -37,7 +37,7 @@
         <line x1="14" y1="1" x2="14" y2="4"></line>
       </svg>
     </p>
-    <p v-if="mode === 'light'" @click="toggle('dark')" @mousedown="(e) => e.preventDefault()">
+    <p v-if="$colorMode.value === 'light'" @click="toggle('dark')" @mousedown="(e) => e.preventDefault()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -64,29 +64,11 @@
   </div>
 </template>
 
-<script>
-export default {
-  data: () => {
-    return {
-      mode: "dark",
-    };
-  },
-  created() {
-    const htmlElement = document.documentElement;
-    const mode = localStorage.getItem("theme");
-    if (mode) {
-      this.mode = mode;
-      htmlElement.setAttribute("theme", mode);
-    }
-  },
-  methods: {
-    toggle(mode) {
-      this.mode = mode;
-      const htmlElement = document.documentElement;
-      htmlElement.setAttribute("theme", mode);
-      localStorage.setItem("theme", mode);
-    },
-  },
+<script setup>
+const colorMode = useColorMode();
+
+const toggle = (mode) => {
+  colorMode.preference = mode;
 };
 </script>
 
