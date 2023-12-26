@@ -43,6 +43,7 @@ export default defineNuxtConfig({
         light: "github-light",
         sepia: "solarized-light",
       },
+      preload: ["c", "cpp", "kotlin", "go", "javascript", "xml", "bash"],
     },
   },
   image: {},

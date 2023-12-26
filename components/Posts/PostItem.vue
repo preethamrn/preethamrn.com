@@ -1,6 +1,6 @@
 <template>
   <div class="post-item">
-    <span class="date">{{ formatDate(post.date, "d MMMM") }}</span>
+    <span class="date">{{ formatDate(post.date, "MMM d") }}</span>
     <NuxtLink :to="`/posts/${post.link}`" class="read">{{ post.title }}</NuxtLink>
     <span class="time-to-read"
       ><i>{{ post.timeToRead }} min read</i></span

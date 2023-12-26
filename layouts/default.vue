@@ -118,6 +118,7 @@ body {
 }
 .footer-links .footer-icon {
   margin: 0 4px;
+  font-size: 1.2em;
   border-bottom: none;
 }
 a {

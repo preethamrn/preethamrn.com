@@ -155,4 +155,14 @@ h6:hover .icon-link,
   transition: visibility 0s linear 0ms, opacity 300ms;
   visibility: visible;
 }
+
+/* shiki code related styling for mobile devices */
+@media only screen and (max-width: 760px) {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    font-size: 0.9em !important;
+    line-height: 1.1 !important;
+    overflow: auto;
+  }
+}
 </style>

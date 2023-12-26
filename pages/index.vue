@@ -211,6 +211,7 @@ a:hover {
   .profile-img {
     position: static;
     width: 150px;
+    height: 150px;
   }
   .header-text {
     position: static;
