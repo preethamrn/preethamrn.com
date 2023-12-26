@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon", "@nuxtjs/color-mode"],
+  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon", "@nuxtjs/color-mode", "nuxt-simple-sitemap"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -47,6 +47,17 @@ export default defineNuxtConfig({
       },
       preload: ["c", "cpp", "kotlin", "go", "javascript", "xml", "bash"],
     },
+  },
+  site: {
+    url: "https://www.preethamrn.com",
+  },
+  sitemap: {
+    sources: ["/api/__sitemap__/urls"],
+    autoLastmod: true,
+    xslColumns: [
+      { label: "URL", width: "70%" },
+      { label: "Last Modified", select: "sitemap:lastmod", width: "25%" },
+    ],
   },
   image: {},
   colorMode: {
