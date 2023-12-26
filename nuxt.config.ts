@@ -28,7 +28,9 @@ export default defineNuxtConfig({
         "remark-math": true,
         "remark-oembed": true,
       },
-      rehypePlugins: { "rehype-katex": { output: "html" } },
+      // NOTE: using mathml results in better accessibility but adds a lot of console warnings about "Failed to resolve component:"
+      // Either Vue will be upgraded to support this in v3.4 or nuxt/content MDC renderer will allow configuring custom Vue compiler options.
+      rehypePlugins: { "rehype-katex": { output: "htmlAndMathml" } },
       tags: {
         highlight: "Highlight",
         "side-by-side": "SideBySide",
