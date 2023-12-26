@@ -17,6 +17,7 @@
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.7",
     "nuxt-simple-sitemap": "^4.2.0",
+    "rss": "^1.2.2",
     "sass": "^1.69.5",
     "vite-plugin-node-polyfills": "^0.18.0",
     "vue": "^3.3.12",
