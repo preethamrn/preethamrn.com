@@ -33,6 +33,7 @@ export default defineNuxtConfig({
         "side-by-side": "SideBySide",
         floatingpointdemo: "FloatingPointDemo",
         newtonmethoddemo: "NewtonMethodDemo",
+        "youtube-embed": "YoutubeEmbed",
       },
     },
     highlight: {

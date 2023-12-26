@@ -48,7 +48,7 @@ CubersLive was a website I built all the way back in 2018 because I wanted to be
 
 After much refactoring, implementing new features, improving the user experience, and fixing bugs at 5am in the morning while the competition was already live, I got to witness this
 
-<iframe width="760" height="453" src="https://www.youtube.com/embed/Z-2Zznk4vk4?t=5423" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<YoutubeEmbed src="https://www.youtube.com/embed/Z-2Zznk4vk4?start=5423"></YoutubeEmbed>
 
 It's a cubing competition between Feliks Zemdegs and Tymon Kolasiński. Feliks is the [world record holder of many Rubik's cube categories](https://www.worldcubeassociation.org/persons/2009ZEMD01). That was live streamed on Twitch with a peak of 1000+ concurrent viewers (and many more watching it after the fact). And the CubersLive logo is right there in the bottom left corner.
 

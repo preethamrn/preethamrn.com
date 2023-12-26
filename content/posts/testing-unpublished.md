@@ -19,7 +19,7 @@ This is the first post, it is written in Markdown. **THIS SHOULD NOT BE PUBLISHE
 1. numbered lists
 1. work too
 
-https://www.youtube.com/watch?v=XSLaiaAGlXs
+<YoutubeEmbed src="https://www.youtube.com/embed/XSLaiaAGlXs"></YoutubeEmbed>
 
 ### How about some code?
 

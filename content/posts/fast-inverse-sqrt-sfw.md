@@ -69,7 +69,7 @@ Try [running](https://replit.com/@PreethamNaraya1/Slow-Inverse-Square-Root#main.
 
 There are plenty of great resources on what this method is and why it works.
 
-[Newton's method produces this fractal, why don't we teach it in calculus classes?](https://youtu.be/-RdOwhmqP5s?t=336)
+<YoutubeEmbed src="https://www.youtube.com/embed/-RdOwhmqP5s?start=336"></YoutubeEmbed>
 
 TL;DW: It works by taking an approximation and iterating closer and closer to the actual value by riding the slope of the curve.
 
