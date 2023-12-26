@@ -9,6 +9,9 @@
       width="100%"
       height="50%"
       fit="contain"
+      format="webp"
+      sizes="sm:200 md:400"
+      :placeholder="[16, undefined, 80, 1]"
     ></NuxtImg>
     <div class="item__overlay">
       <h3 aria-hidden="true">{{ project.name }}</h3>

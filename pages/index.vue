@@ -9,6 +9,7 @@
           src="/profile-pic.jpg"
           height="200"
           width="200"
+          sizes="sm:200"
           quality="100"
           fit="cover"
           blur="10"
