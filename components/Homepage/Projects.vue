@@ -40,14 +40,14 @@ export default {
       {
         name: "Cubing AlgTrainer",
         image: "projects/algtrainer.png",
-        link: "/cubing/algtrainer",
+        link: "https://www.preethamrn.com/cubing/algtrainer",
         code: "https://github.com/preethamrn/cubing",
         description: "A algorithm trainer used by speed cubers to practice algorithms by syncing to a bluetooth cube.",
       },
       {
         name: "Scott Simulator",
         image: "projects/scottsim.png",
-        link: "/ScottSimulator",
+        link: "https://www.preethamrn.com/ScottSimulator",
         code: "https://github.com/preethamrn/ScottSimulator",
         description:
           "A WebGL game similar to The Stanley Parable set in UCLA where you play as our professor - Scott. Earned the most impressive project and 2nd most favorite out of 27.",

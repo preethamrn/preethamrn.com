@@ -5,7 +5,7 @@
       <h1 v-if="error.statusCode === 400">400 - bad request</h1>
       <h1 v-else>{{ error.statusCode }} - ERROR</h1>
       <p>Oops! That page returns an</p>
-      <NuxtImg src="/errorsAllTheWayDown.png" width="500" quality="50" alt="error" :title="error.message" />
+      <img src="/errorsAllTheWayDown.png" width="500" quality="50" alt="error" :title="error.message" />
       <p v-if="newPath">
         You might be looking for <NuxtLink :to="newPath">{{ newPath }}</NuxtLink>
       </p>
