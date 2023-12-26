@@ -32,11 +32,11 @@ const route = useRoute();
 const key = `post-${route.path}`.replace(/\/$/, "");
 const { data } = await useAsyncData(
   key, // return key without trailing slash
-  () => queryContent("/posts").where({ link: route.params.slug[0] }).findOne()
+  () => queryContent("/posts").where({ link: route.params.slug }).findOne()
 );
 if (!data || !data.value) {
   // TODO: improve the 404 redirect (maybe link to posts page instead?)
-  navigateTo(`/404?post=${route.params.slug[0]}`, { redirectCode: 404 });
+  navigateTo(`/404?post=${route.params.slug}`, { redirectCode: 404 });
 }
 
 const post = data.value;

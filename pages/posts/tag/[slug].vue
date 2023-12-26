@@ -9,11 +9,18 @@
 </template>
 
 <script setup>
+const route = useRoute();
+const tagName = route.params.slug;
 useHead({
-  title: "Posts - Preetham",
+  title: `#${tagName}- Preetham`,
 });
 
-const { data } = await useAsyncData("all-posts", () => queryContent("/posts").without("body").find());
+const { data } = await useAsyncData(`${tagName}-tag-posts`, () =>
+  queryContent("/posts")
+    .where({ tags: { $contains: tagName } })
+    .without("body")
+    .find()
+);
 const years = computed(() => {
   const posts = data.value;
   return postsPerYear(posts);
