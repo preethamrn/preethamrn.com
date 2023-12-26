@@ -234,23 +234,15 @@ x &= (1 + M)*2^{E-127} && \text{from earlier}\\
 $$
 
 
-<SideBySide>
-
-<template v-slot:left>
-
+::side-by-side
+#left
 Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/k7eekdct1s) for small values of x between 0 and 1.
 
 Since `M` will always be within 0 and 1, we can say that $M = log(1+M) + \varepsilon$ where $\varepsilon$ is a small error term.
 
-</template>
-
-<template v-slot:right>
-
+#right
 ![log(1+x) Approximation](/posts/fast-inverse-sqrt/log-approximation.png)
-
-</template>
-
-</SideBySide>
+::
 
 Putting all of this together, we get
 
