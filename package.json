@@ -17,11 +17,11 @@
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.7",
     "sass": "^1.69.5",
+    "vite-plugin-node-polyfills": "^0.18.0",
     "vue": "^3.3.12",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@nuxt/content": "^2.10.0",
     "@nuxt/image": "^1.1.0",
     "function-plot": "1.22.9-0",

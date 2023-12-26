@@ -1,16 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
   vite: {
-    optimizeDeps: {
-      esbuildOptions: {
-        define: {
-          global: "globalThis",
+    plugins: [
+      nodePolyfills({
+        include: ["events"],
+        globals: {
+          global: true,
         },
-      },
-    },
+      }),
+    ],
   },
   ignore: ["wip"],
   components: [
