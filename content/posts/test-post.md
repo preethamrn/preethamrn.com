@@ -17,7 +17,7 @@ And here's an image of the updated homepage. Looks a lot nicer. Lower quantity b
 
 I've also set up sub-repositories for webapps that were originally built in this repo and redirect to those sub pages from the original links. For example the old link [preethamrn.com/algtrainer](/algtrainer) redirects to [https://www.preethamrn.com/cubing/algtrainer](https://www.preethamrn.com/cubing/algtrainer)
 
-This helps reduce the package size of the main homepage and blog posts. I'll probably write up more about how I accomplished this later (for a hint, go to the [redirects](https://github.com/preethamrn/preethamrn.com/tree/master/content/redirects) directory in my repo).
+This helps reduce the package size of the main homepage and blog posts. I'll probably write up more about how I accomplished this later (for a hint, go to the [redirects](https://github.com/preethamrn/preethamrn.com/tree/bf929583bd4a2a80e10756ce6b4ce6a29ae6721a/content/redirects) directory in my repo).
 
 A few things that I'm planning on doing is adding tags to all my posts, a comments section, better citation support[^1], smaller image sizes, and recommended posts. Hopefully I'll have all this set up before writing my first proper blog post.
 

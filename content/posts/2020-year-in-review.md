@@ -60,13 +60,15 @@ The above story concurrently takes a different path at step 4.
 
 Before jumping into it and coding a full fledged application we did a test run with Google Sheets, Google Forms and a super basic StreamLabs setup[^3]. [It went way better than I could have ever imagined](https://www.youtube.com/watch?v=eR9VmV4n_Oc) and so I went on a massive coding binge as I implemented a completely new frontend and backend in CubersLive (while simultaneously implementing new features required for MonkeyLeague) to support this competition while also not breaking any existing functionality. This ended up being some of the best Javascript code I've written so far[^4]. Finally we unveiled the [Twisty Puzzle Cup](https://www.cuberslive.com/tpc).
 
-We managed to get sponsored by SpeedCubeShop and were able to have a prize pool for where we decided to do a full segment with four events - 3x3, 2x2, Pyraminx, and 3BLD. While the turnout wasn't as much as Cubing At Home or the MonkeyLeague, I felt ecstatic regardless because for the first I finally felt like a part of the cubing community instead of just an outside spectator[^5].
+We managed to get sponsored by SpeedCubeShop and were able to have a prize pool of $600 where we decided to do a full segment with four events - 3x3, 2x2, Pyraminx, and 3BLD. While the turnout wasn't as much as Cubing At Home or the MonkeyLeague, I felt ecstatic regardless because for the first I finally felt like a part of the cubing community instead of just an outside spectator[^5].
 
 A month later we did a second segment partnering with SpeedCubeShop and the American Cancer Society [where we raised over $1700](https://tiltify.com/@cuberslive/cuberslive-vs-cancer) for charity. PogChamp
 
 I also have to thank people like Dan, Evan, Ben, Tazzlyn, Tiffany, and any one else who help cast or participate in the stream or competition[^6]. It wouldn't have been possible without them.
 
 ## Twitch Affiliate
+
+Another branch happens at step 3 in the story.
 
 3. I decided to create a Twitch account and start streaming too.
 
