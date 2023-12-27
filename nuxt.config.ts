@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon", "@nuxtjs/color-mode", "nuxt-simple-sitemap"],
+  modules: ["@nuxt/content", "@nuxt/image", "nuxt-icon", "@nuxtjs/color-mode", "nuxt-simple-sitemap", "nuxt-gtag"],
   content: {
     markdown: {
       anchorLinks: true,
@@ -63,6 +63,12 @@ export default defineNuxtConfig({
       { label: "URL", width: "70%" },
       { label: "Last Modified", select: "sitemap:lastmod", width: "25%" },
     ],
+  },
+  gtag: {
+    id: "G-9J18JN15N0",
+    config: {
+      ...(process.env.NODE_ENV !== "production" && { traffic_type: "internal" }),
+    },
   },
   image: {},
   colorMode: {
