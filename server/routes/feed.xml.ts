@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     const contentList = (await serverQueryContent(event).find()) as ParsedContent[];
 
     // create new rss feed this will be our channel tag with website title and url
+    // TODO: consider using atom instead of RSS.
     const feed = new RSS({
       title: "Preetham's Posts",
       description:
