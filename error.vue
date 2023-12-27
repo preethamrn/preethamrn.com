@@ -2,7 +2,7 @@
   <NuxtLayout>
     <Container>
       <h1 v-if="error.statusCode === 404">404 - page not found</h1>
-      <h1 v-if="error.statusCode === 400">400 - bad request</h1>
+      <h1 v-else-if="error.statusCode === 400">400 - bad request</h1>
       <h1 v-else>{{ error.statusCode }} - ERROR</h1>
       <p>Oops! That page returns an</p>
       <img src="/errorsAllTheWayDown.png" width="500" quality="50" alt="error" :title="error.message" />
