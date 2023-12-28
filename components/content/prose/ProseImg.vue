@@ -6,7 +6,7 @@
     :height="height"
     :placeholder="img(props.src, { h: 30, width: 30, f: 'webp', blur: 1, q: 80 })"
     format="webp"
-    sizes="sm:200 md:300 lg:500 xxl:1000"
+    sizes="sm:400 md:500 lg:800 xxl:1200"
     loading="lazy"
   />
   <!-- NOTE: placeholder doesn't work with lazy loading. 
