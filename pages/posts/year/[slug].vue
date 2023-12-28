@@ -12,7 +12,7 @@
 const route = useRoute();
 const year = parseInt(route.params.slug);
 useHead({
-  title: `Year ${year}- Preetham`,
+  title: `Year ${year} - Preetham`,
 });
 
 if (isNaN(year)) {

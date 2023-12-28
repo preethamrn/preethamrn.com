@@ -10,7 +10,7 @@ bun run generate
 cd .output/public
 
 echo 'www.preethamrn.com' > CNAME
-touch .nojekyll # needed to allow github pages to include pages that start with _ (eg. _ipx, _nuxt, etc.)
+cp ../../vercel.json .
 
 git init
 git add -A

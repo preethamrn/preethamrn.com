@@ -12,7 +12,7 @@
 const route = useRoute();
 const tagName = route.params.slug;
 useHead({
-  title: `#${tagName}- Preetham`,
+  title: `#${tagName} - Preetham`,
 });
 
 const { data } = await useAsyncData(`${tagName}-tag-posts`, () =>
