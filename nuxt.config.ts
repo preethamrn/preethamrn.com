@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { indirectRedirects } from "./utils/redirects";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -15,7 +16,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ["/feed.xml"],
+      routes: indirectRedirects.concat(["/feed.xml"]),
     },
   },
   ignore: ["wip"],
