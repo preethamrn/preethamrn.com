@@ -17,10 +17,8 @@ git add -A
 git commit -m "deploy $1"
 
 if [ "$1" = "staging" ]; then
-  # TODO: fix the staging environment "baseURL" since we can no longer access links through /
-  # It needs to be prefixed by /preethamrn-staging.com
-  git checkout -b gh-pages
-  git push -f https://github.com/preethamrn/preethamrn-staging.com gh-pages
+  git checkout -b staging
+  git push -f https://github.com/preethamrn/preethamrn.github.io staging
 else
   read -p "Deploying to production: Are you sure? " -n 1 -r
   if [[ ! $REPLY =~ ^[Yy]$ ]]
