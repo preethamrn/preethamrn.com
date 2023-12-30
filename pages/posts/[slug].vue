@@ -41,6 +41,7 @@ if (!data || !data.value) {
 
 const post = data.value;
 if (post) {
+  const thumbnailImg = post.thumbnail ? `/posts/${post.thumbnail}` : `${post._path}/thumbnail.png`;
   useSeoMeta({
     title: post.title,
     ogTitle: post.title,
@@ -49,8 +50,8 @@ if (post) {
     ogDescription: post.description,
     twitterDescription: post.description,
     twitterCard: "summary",
-    ogImage: `/posts/${post.thumbnail}` || `${post._path}/thumbnail.png`,
-    twitterImage: `/posts/${post.thumbnail}` || `${post._path}/thumbnail.png`,
+    ogImage: thumbnailImg,
+    twitterImage: thumbnailImg,
     ogUrl: `preethamrn.com/posts/${post.link}`,
   });
 }
