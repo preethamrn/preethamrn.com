@@ -13,7 +13,7 @@ useHead({
   title: "Posts - Preetham",
 });
 
-const { data } = await useAsyncData("all-posts", () => queryContent("/posts").without("body").find());
+const { data } = await useAsyncData("all-posts", () => decoratedQueryPosts());
 const years = computed(() => {
   const posts = data.value;
   return postsPerYear(posts);

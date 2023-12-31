@@ -20,10 +20,7 @@ if (isNaN(year)) {
 }
 
 const { data } = await useAsyncData(`${year}-year-posts`, () =>
-  queryContent("/posts")
-    .where({ date: { $lt: (year + 1).toString(), $gt: year.toString() } })
-    .without("body")
-    .find()
+  decoratedQueryPosts({ date: { $lt: (year + 1).toString(), $gt: year.toString() } })
 );
 const years = computed(() => {
   const posts = data.value;

@@ -16,10 +16,7 @@ useHead({
 });
 
 const { data } = await useAsyncData(`${tagName}-tag-posts`, () =>
-  queryContent("/posts")
-    .where({ tags: { $contains: tagName } })
-    .without("body")
-    .find()
+  decoratedQueryPosts({ tags: { $contains: tagName } })
 );
 const years = computed(() => {
   const posts = data.value;

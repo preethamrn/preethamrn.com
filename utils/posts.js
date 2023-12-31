@@ -22,3 +22,14 @@ export function postsPerYear(posts) {
     })
     .map((v) => [v, yearsMap[v].sort((a, b) => (b.date > a.date ? 1 : -1))]);
 }
+
+export function decoratedQueryPosts(whereFilter = {}) {
+  const unlistedFilter = process.env.NODE_ENV === "production" ? { unlisted: { $ne: true } } : {};
+  return queryContent("/posts")
+    .where({
+      ...whereFilter,
+      ...unlistedFilter,
+    })
+    .without("body")
+    .find();
+}
