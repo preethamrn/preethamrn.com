@@ -15,7 +15,7 @@ Most applications use shared packages to perform common tasks so developers don'
 is-even and is-odd are npm packages which check if a number is even or odd. If that's all you know about them, then it does seem a bit silly that these exist considering you can usually do that using just one line of code: `n % 2 === 0`. Javascript however will happily allow you to check if a string is even or odd, in which case you now have to worry about whether the code is returning false because of some error or because the number is actually not even.
 
 is-even and is-odd take care of this by adding a bit of extra error checking. Specifically by:
-1. making sure `n` is positive
+1. converting `n` to a positive number
 2. `n` is actually a number
 3. and `n` is within the bounds of a "Safe Integer" because otherwise we'll find that `12345678978901233 % 2 === 0`  returns true even though it ends in a 3.
 
