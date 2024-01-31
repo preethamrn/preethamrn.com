@@ -20,7 +20,7 @@ if [ "$1" = "staging" ]; then
   git checkout -b staging
   git push -f https://github.com/preethamrn/preethamrn.github.io staging
 else
-  read -p "Deploying to production: Are you sure? " -n 1 -r
+  read -p "Deploying to production: Are you sure? (yN)" -n 1 -r
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
     [[ "$0" = "$BASH_SOURCE" ]] && echo && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell

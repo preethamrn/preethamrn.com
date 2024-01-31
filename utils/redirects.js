@@ -5,6 +5,7 @@ export const redirects = {
   "/stanzsheet": "/twitch-apps/stanzsheet",
   "/valorant": "/twitch-apps/valorant",
   "/pokemondens": "/pokemondens",
+  "/wikimaps": "https://wikimaps.vercel.app",
   // Add other redirects here
 };
 
