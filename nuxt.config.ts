@@ -36,7 +36,12 @@ export default defineNuxtConfig({
       },
       // NOTE: using mathml results in better accessibility but adds a lot of console warnings about "Failed to resolve component:"
       // Either Vue will be upgraded to support this in v3.4 or nuxt/content MDC renderer will allow configuring custom Vue compiler options.
-      rehypePlugins: { "rehype-katex": { output: "htmlAndMathml" } },
+      rehypePlugins: {
+        "rehype-katex": { output: "htmlAndMathml" },
+        "rehype-external-links": {
+          target: "_blank",
+        },
+      },
       tags: {
         highlight: "Highlight",
         "side-by-side": "SideBySide",
