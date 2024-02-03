@@ -1,6 +1,8 @@
 <template>
   <div class="post-list">
-    <h1>{{ year }}</h1>
+    <h1>
+      <NuxtLink :to="`/posts/year/${year}`">{{ year }}</NuxtLink>
+    </h1>
     <PostItem :key="post.link" v-for="post in posts" :post="post" />
   </div>
 </template>
@@ -15,6 +17,11 @@ export default {
 h1 {
   font-size: 2em;
   margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+  border-bottom: 0;
 }
 .post-list {
   margin-top: 20px;

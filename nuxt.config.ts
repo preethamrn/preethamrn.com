@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: indirectRedirects.concat(["/feed.xml"]),
+      routes: indirectRedirects.concat(["/feed.xml", "/posts"]),
     },
   },
   ignore: ["wip"],
