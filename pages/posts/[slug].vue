@@ -54,6 +54,15 @@ if (post) {
     twitterImage: thumbnailImg,
     ogUrl: `preethamrn.com/posts/${post.link}`,
   });
+  //
+  useHead({
+    script: [
+      {
+        async: true,
+        src: "https://platform.twitter.com/widgets.js",
+      },
+    ],
+  });
 }
 </script>
 
@@ -155,6 +164,10 @@ h6:hover .icon-link,
 .icon-link:hover {
   transition: visibility 0s linear 0ms, opacity 300ms;
   visibility: visible;
+}
+
+.twitter-tweet {
+  margin: 0 auto;
 }
 
 /* shiki code related styling for mobile devices */
