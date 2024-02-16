@@ -208,6 +208,10 @@ I bought some Pokemon tokens to count as point trackers, sleeved all the cards, 
 3. Doing AI art using something like StableDiffusion is tough. I'll have to look into it more some other day but for now ChatGPT was able to get the job done for me a lot faster.
 4. Working on the project gave me a lot of appreciation for all the effort and detail that goes into printing trading cards. Centering, making sure the cards aren't see through, having a border to avoid the card art from being visible from the edges, etc.
 
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">I finally came up with a project to use ChatGPT on. I made a custom Pokemon version of Love Letter. At some points I was really impressed at how efficient it was and at other points I wanted to just bang my head against the wall...<a href="https://t.co/AWlLAhbbd5">https://t.co/AWlLAhbbd5</a></p>&mdash; preethamrn (@preethamrn) <a href="https://twitter.com/preethamrn/status/1758584635720929654?ref_src=twsrc%5Etfw">February 16, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+---
+
 [^1]: I also enjoy games like Exploding Kittens, Coup, Secret Hitler. Similar suggestions would be appreciated.
 [^2]: Unless you're a fan of Pokemon this section will probably go over your head so you can skip it. And even if you are a fan, you should probably skip it if you don't want to be infuriated with my terrible reasoning. So here's is the list of Pokemon I settled on:
 
