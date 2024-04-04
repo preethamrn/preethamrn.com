@@ -33,7 +33,7 @@
           with a reader like <a target="_blank" href="https://feedly.com/">Feedly</a>
           <br />
           <div>
-            &copy; 2023 Preetham Narayanareddy
+            &copy; 2024 Preetham Narayanareddy
             <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank" class="footer-icon">
               <Icon name="ph:envelope" />
             </a>

@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
       id: baseURL,
       link: baseURL,
       favicon: "http://www.preethamrn.com/favicon.png",
-      copyright: "All rights reserved 2023, Preetham Narayanareddy",
+      copyright: "All rights reserved 2024, Preetham Narayanareddy",
       feedLinks: {
         atom: baseURL + "/feed.xml",
       },
