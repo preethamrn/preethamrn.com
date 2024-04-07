@@ -7,7 +7,7 @@ timeToRead: 6
 tags: ["Learn", "Programming"]
 ---
 
-One of the things that I love about programming is that you can see a problem in the world and solve it. When I had trouble getting into one of my college classes, I wrote a web scraper that would look at the class catalog for open seats and notify me when a spot came up so I could quickly register. When there wasn't a website for some niche Pokemon specific information, [I made one myself](https://www.preethamrn.com/pokemondens/) ([and it went a little viral](https://www.reddit.com/r/PokemonSwordAndShield/comments/es50l6/update_interactive_map_of_the_wild_area_with_list/)).
+One of the things that I love about programming is that you can see a problem in the world and solve it. When I had trouble getting into one of my college classes, I wrote a web scraper that would look at the class catalog for open seats and notify me when a spot came up so I could quickly register. When there wasn't a website for some niche Pokemon specific information, [I made one myself](https://www.preethamrn.com/pokemondens/) ([and it went a little viral](https://www.preethamrn.com/posts/2020-year-in-review#pokemon-dens)).
 
 So when I found out that one of the [apps](https://play.google.com/store/apps/details?id=com.razeeman.util.simpletimetracker) I used on a daily basis was [open source](https://github.com/Razeeman/Android-SimpleTimeTracker), I was pleasantly surprised. This app allowed you to track how you spent every second of your day. I love data and I love procrastination so this was perfect for me - I get to analyze how I spend my time and clamp down on the ways that I procrastinate mindlessly.
 
@@ -15,7 +15,7 @@ But there were 2 issues that bothered me:
 1. The date format used "day/month" instead of "month/day". I've lived in India and the US so I'm familiar with both and each have their merits[^1] but I'm used to month/day right now so I wished there was a setting for it.
 2. The app allows you to filter for activities in a specific time range. However, if an activity exceeds the time range then it doesn't clamp it to the specified time range. I don't need to know that I spent 30 minutes watching YouTube, 30 minutes reading, and 8 hours sleeping for the activities between 12am and 2am.
 
-Now I could actually fix them. On the other hand, I was a little bit daunted. Even though this wasn't the Linux kernel or anything like that it would still be my first time contributing a real change to some open source codebase and I didn't want to make a fool of myself.
+Now, I could actually fix them. On the other hand, I was a little bit daunted. Even though this wasn't the Linux kernel or anything like that it would still be my first time contributing a real change to some open source codebase and I didn't want to make a fool of myself.
 
 This post will go over issue #1 - Supporting month/day formatting in the bar chart.
 
@@ -23,8 +23,7 @@ This post will go over issue #1 - Supporting month/day formatting in the bar cha
 
 Step one was figuring out where the date formatting code even was[^2]. Generally when I'm doing this, I first try to get a grip onto the code by diving deep into it. I look for the tiniest thing that I can recognize and try to work my way around that to see how it fits in.
 
-In this case, that was the string "Average for period" you can see in the image above
-Searching for it led me to this code:
+In this case, that was the string "Average for period" you can see in the image above. Searching for it led me to this code:
 ```xml
 <string name="statistics_detail_range_averages_title">Average for period: %s</string>
 ```
@@ -125,6 +124,6 @@ I mentioned 2 issues earlier but this post is already getting quite long so I'll
 
 [^2]: Step one was actually cloning the repo, installing Android Studio, fixing random issues with gradle, finding out that for some reason I was using a 32 bit version of Java in Android Studio, and making sure that I was able to even run the thing on my phone. But all that is less interesting than the actual process of diving into a massive, unfamiliar codebase.
 
-[^3]: Most of the expedition was going through a bunch of different parts of the code to add a new preference for `useMonthDayTimeFormat`, a new checkbox to allow toggling the preference, UI event hooks so that everything behaves properly when the checkbox is checked, and refactoring a bunch of method signatures so we're able to pass the preferences down to where they're actually used.
+[^3]: Most of the expedition was copying and pasting the code used by a different setting - going through a bunch of different parts of the code to add a new preference for `useMonthDayTimeFormat`, adding a new checkbox to allow toggling the preference, adding UI event hooks so that everything behaves properly when the checkbox is checked, and refactoring a bunch of method signatures so we're able to pass the preferences down to where they're actually used.
 
 [^4]: I double checked this after writing the blog and turns out it was even faster. Within 3 hours the pull request was reviewed and merged.
