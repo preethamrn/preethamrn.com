@@ -2,8 +2,7 @@
   <NuxtImg
     :src="src"
     :alt="alt"
-    :width="width"
-    :height="height"
+    :style="{ width: width ? `${width}` : undefined, height: height ? `${height}` : undefined }"
     :placeholder="img(props.src, { h: 30, width: 30, f: 'webp', blur: 1, q: 80 })"
     format="webp"
     sizes="sm:400 md:500 lg:800 xxl:1200"

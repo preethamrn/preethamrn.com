@@ -20,7 +20,7 @@ My 3 goals for the project were:
 
 ### Step 0: Getting ChatGPT Plus
 I wanted ChatGPT Plus to help with generating the custom card art but my plans were foiled almost as soon as they started because of "high demand".
-![Pasted image 20240205222440.png](/posts/pokemon-love-letter/gpt_waitlist.png)
+![waitlist](/posts/pokemon-love-letter/gpt_waitlist.png)
 
 I figured I could try generating images using StableDiffusion. After all, it was free and I had a pretty good GPU. I quickly learned, however, that while it turned out the be pretty great at humans and it could be tweaked using LoRAs to generate other characters, you couldn't stretch its creativity that far outside of its training set. In the best case I got a deformed image of a Charmander and in the worst case I got absolute gibberish.
 
