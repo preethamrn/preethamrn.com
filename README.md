@@ -37,3 +37,6 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# TODO
+1. When deploying contents to vercel, the website navigation stops working for a little while (I'm guessing because some caches need to update and so it's linking to "old" content which doesn't have the correct assets, json, content, and links)

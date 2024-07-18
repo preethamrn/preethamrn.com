@@ -4,6 +4,7 @@ link: "ai-zero-to-hero-week-1"
 description: "I kept procrastinating learning ML because I either thought I was too late or not smart enough... Time to stop that."
 date: 2024-07-04
 timeToRead: 6
+thumbnail: "ai-zero-to-hero/extrapolation.png"
 tags: ["Programming"]
 ---
 
@@ -17,7 +18,7 @@ Then ChatGPT came out and I felt like we were already in the future way beyond a
 
 And now it's almost 2 years later and I finally realized that I can't keep waiting around saying it's too late. A lot of people are doing incredible things with AI and machine learning despite starting only a few years ago. You're only about 20 books behind the most cracked person in any field. Now that's no simple feat, but I can't avoid the fact that if I had started my journey 5 years earlier when I started feeling left out, I probably would have been a lot further along.
 
-:img{alt="https://xkcd.com/1768/ - Settling" src="https://imgs.xkcd.com/comics/settling.png" width="auto"}
+:img{alt="https://xkcd.com/1768/ - Settling" src="https://imgs.xkcd.com/comics/settling.png" width="30%"}
 
 So with that preamble out of the way, here's week 1 of my progress:
 
@@ -43,9 +44,11 @@ I haven't worked on anything here yet unless you count making small tweaks to th
 
 ## Other neat things I've learned
 People are way over hyped about AGI and making wild extrapolations. Learning more about the math made me realize that a lot of people who talk about AI are probably talking out of their asses in the same way that a lot of crypto grifters barely understand how distributed systems work.
-:img{alt="Extrapolation" src="/posts/ai-zero-to-hero/extrapolation.png" width="auto"}
+:img{alt="Extrapolation" src="/posts/ai-zero-to-hero/extrapolation.png" width="40%"}
 
 ## Life
 - I'm packing up for a vacation and also having friends over so a lot of free time went towards errands like cleaning.
 - Also playing Hades 2 (great game but eating into time I could be learning more)
 - Plus I have a job so that shrinks my free time pretty considerably. Most of the things I listed above happened over one and a half weekends.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I wrote about how I came to terms with being &quot;behind&quot; everyone else in ML/AI and what I&#39;m doing to fix that. I spent the last 8 years telling myself that I was either too late or that I wasn&#39;t smart enough but I figure everyone starts somewhere.<a href="https://t.co/Rkk5Mbnjpi">https://t.co/Rkk5Mbnjpi</a></p>&mdash; preethamrn (@preethamrn) <a href="https://twitter.com/preethamrn/status/1809073849927151915?ref_src=twsrc%5Etfw">July 5, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
