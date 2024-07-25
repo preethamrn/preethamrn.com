@@ -3,7 +3,8 @@
 # abort on errors
 set -e
 
-# build
+# rebuild
+rm -r .output
 bun run generate
 
 # navigate into the build output directory
