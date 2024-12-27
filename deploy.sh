@@ -4,7 +4,7 @@
 set -e
 
 # rebuild
-rm -r .output
+rm -rf .output
 bun run generate
 
 # navigate into the build output directory
