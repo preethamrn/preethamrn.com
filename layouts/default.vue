@@ -33,7 +33,7 @@
           with a reader like <a target="_blank" href="https://feedly.com/">Feedly</a>
           <br />
           <div>
-            &copy; 2024 Preetham Narayanareddy
+            &copy; 2025 Preetham Narayanareddy
             <a href="mailto:preetham.narayanareddy@gmail.com" target="_blank" class="footer-icon">
               <Icon name="ph:envelope" />
             </a>
@@ -87,16 +87,19 @@ useHead({
   --app-font-color: black;
   --app-highlight-color: rgba(255, 251, 0, 0.5);
 }
+
 .dark {
   --app-background-color: #091a28;
   --app-font-color: white;
   --app-highlight-color: rgba(0, 17, 255, 0.541);
 }
+
 .sepia {
   --app-background-color: #f1e7d0;
   --app-font-color: #433422;
   --app-highlight-color: rgba(255, 115, 0, 0.5);
 }
+
 body {
   background-color: var(--app-background-color);
   color: var(--app-font-color);
@@ -113,33 +116,40 @@ body {
   font-size: 0.8em;
   margin-bottom: 50px;
 }
+
 .footer a {
   color: gray;
 }
+
 .footer-links .footer-icon {
   margin: 0 4px;
   font-size: 1.2em;
   border-bottom: none;
 }
+
 a {
   border-bottom: 1px solid currentColor;
   color: rgb(32, 201, 151);
   text-decoration: none;
 }
+
 a:hover {
   border-bottom-color: currentColor;
   color: #686868;
 }
+
 h1 {
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
 @media only screen and (max-width: 500px) {
   .footer {
     flex-direction: column;
   }
+
   .header {
     h1 {
       font-size: 1em;

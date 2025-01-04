@@ -1,8 +1,8 @@
 ---
 title: Where are Mr. Beast's sponsors now?
 link: where-are-mrbeast-sponsors-now
-description: 
-date: 2024-12-24
+description: "These days it costs millions to sponsor a Mr. Beast video. But how much did he make in his early days and how much ROI did his early sponsors get?"
+date: 2025-01-01
 timeToRead: 5
 tags:
   - Programming
@@ -70,6 +70,6 @@ It seems like especially for these kinds of mobile games, user retention is hard
 # Conclusion
 What was the point of this? Honestly, I don't know. Originally I thought it would be fun to see how far businesses got by spending a relatively small amount of money on an early Mr. Beast video. Turns out most of the businesses that could spend tens of thousands of dollars on an unproven creator tend to be ones making money through relatively underhanded business practices.
 
-In my next post I'll talk more about Mr. Beast's business endeavors and more modern sponsorships and some surprising facts that I came across while analyzing all the data. Like how some of his videos today have multiple sponsors on top of him shouting out his own businesses and why most of his videos from 2020-2021 don't have any sponsors. I'll also discuss more about my methodology and tools I used to automate most of this data collection. If this is popular I might try analyzing other creators too.
+In my [next post](https://www.preethamrn.com/posts/why-does-mrbeast-cut-out-sponsors/) I'll talk more about Mr. Beast's business endeavors and more modern sponsorships and some surprising facts that I came across while analyzing all the data. Like how some of his videos today have multiple sponsors on top of him shouting out his own businesses and why most of his videos from 2020-2021 don't have any sponsors. I'll also discuss more about my methodology and tools I used to automate most of this data collection. If this is popular I might try analyzing other creators too.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">After all that&#39;s been going on in the news with honey and other Mr. Beast controversies, I wanted to take a look at where he started off so I did a deep dive on some of his early sponsors. Check it out!<a href="https://t.co/ytj31cMbKq">https://t.co/ytj31cMbKq</a></p>&mdash; preethamrn (@preethamrn) <a href="https://twitter.com/preethamrn/status/1872803539329942003?ref_src=twsrc%5Etfw">December 28, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
