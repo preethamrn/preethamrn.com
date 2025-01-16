@@ -67,6 +67,8 @@ Without actually reading a contract between Mr. Beast and his sponsors, it's har
 
 In my next and final post of this series I'll talk about how I captured all this data, ways I automated some of the analysis, and plans for analyzing other YouTubers' sponsors.
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Wrote a follow up post to my previous analysis of Mr. Beast sponsors where I look into the sponsorships on some of his newer videos<a href="https://t.co/SnuALc12YS">https://t.co/SnuALc12YS</a></p>&mdash; preethamrn (@preethamrn) <a href="https://twitter.com/preethamrn/status/1875464467997454430?ref_src=twsrc%5Etfw">January 4, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
 [^1]: This ad got some heat because there is a [progress bar](https://youtu.be/UPrkC1LdlLY?si=Jxfb7DXCJ54RQJsE&t=1279)  at the bottom which shows how much more of the ad is left however the bar moves extremely quickly at the start (halfway within 10 seconds) even though it's more than a minute long.
 
 [^2]: For example, in [this video](https://youtu.be/2isYuQZMbdU?si=UJHtQ6myLNvUuQXP&t=391), he shouts out the sponsor 6 times in a 3 minute period while the contestants are doing the challenge in the background - do you skip the sponsor and miss the content or watch the content while also hearing the ad read?

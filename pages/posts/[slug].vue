@@ -35,9 +35,11 @@ if (!data || !data.value) {
   navigateTo(`/404?post=${route.params.slug}`, { redirectCode: 404 });
 }
 
+// TODO: prefix the thumbnail metadata with the domain name (seems like some websites might only accept absolute links - instead of hardcoding preethamrn.com it should be based on which domain is being used)
+// can vercel.json be used to dynamically change the content? seems like metadata won't show up on twitter for cross domain links.
 const post = data.value;
 if (post) {
-  const thumbnailImg = post.thumbnail ? `/posts/${post.thumbnail}` : `${post._path}/thumbnail.png`;
+  const thumbnailImg = post.thumbnail ? `https://www.preethamrn.com/posts/${post.thumbnail}` : `https://www.preethamrn.com${post._path}/thumbnail.png`;
   useSeoMeta({
     title: post.title,
     ogTitle: post.title,
