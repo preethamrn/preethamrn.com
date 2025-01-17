@@ -1,5 +1,5 @@
 ---
-title: Using ChatGPT on an airplane through Whatsapp - ChatGPT Over Whatsapp (COW)
+title: Using ChatGPT on an airplane through free Whatsapp - ChatGPT Over Whatsapp (COW)
 link: chatgpt-over-whatsapp
 description: ChatGPT is pretty useful and I didn't want to give up access when I flew. Most airlines give messaging access for free... so ChatGPT over Whatsapp was born.
 date: 2025-01-14
@@ -9,7 +9,7 @@ tags:
 ---
 I had a handful of flights coming up and knew that it would be convenient to have ChatGPT in the air - something to talk to if I ended up having a random question, wanted to know more about a movie before watching it (the summary blurbs rarely cut it), or just wanted to learn something new.
 
-::side-by-side{}
+::side-by-side{leftWidth="50%"}
 #left
 Unfortunately for me, even though ChatGPT is purely text based like any other messaging app, airlines don't allow free access to OpenAI. Fortunately for me, ChatGPT is purely text based - so I built my own interface using the [free messaging](https://www.southwest.com/inflight-entertainment-portal) provided.
 
@@ -114,7 +114,7 @@ So in conclusion, all I needed in order to get this working was:
 
 Is it probably cheaper and easier to just pay for in flight Wifi? Yes. But that's no fun. 
 
-::side-by-side{leftWidth="125%"}
+::side-by-side{leftWidth="50%"}
 #left
 ![First picture on a plane in airplane mode](/posts/chatgpt-over-whatsapp/airplane1.jpg)
 

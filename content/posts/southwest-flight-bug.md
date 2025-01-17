@@ -17,7 +17,7 @@ Reading through the comments, it hit me. My legal first name has a space in it. 
 
 I tried different combinations of using my legal name and the truncated name in the flight credits input and the passenger information input. Nothing worked. It always either complained that my name didn't match the name of the flight credit or that the flight credit didn't match the name in the passenger information. The closest I got was being able to apply the flight credits by truncating my first name on the ticket but then I got an error when actually booking the ticket because I needed to change my first name back to my legal name and it no longer matched the flight credit.
 
-::side-by-side{leftWidth="100%"}
+::side-by-side{leftWidth="45%"}
 #left
 ![Using the truncated name allows me to apply the flight credits](/posts/southwest-flight-bug/truncated_name.png)
 Using the truncated name allows me to apply the flight credits
@@ -55,7 +55,7 @@ Flight credits are one of the main features that they advertise on their homepag
 ### Addendum
 In my search for more details about this bug, I found a few more (albeit minor) bugs with their website.
 
-::side-by-side
+::side-by-side{leftWidth="40%"}
 #left
 Even their [help page](https://www.southwest.com/help/changes-and-cancellations/flight-credit) was buggy[^4]. There's content at the top of the page that you can't click on and then a copy of that content at the bottom of the page.
 
@@ -63,7 +63,7 @@ Even their [help page](https://www.southwest.com/help/changes-and-cancellations/
 ![help page CSS is broken](/posts/southwest-flight-bug/help_page.png)
 ::
 
-::side-by-side
+::side-by-side{leftWidth="40%"}
 #left
 Also, when I contacted the Southwest account on Twitter and was asked to sign in and link my Southwest account to my Twitter profile.
 

@@ -26,7 +26,7 @@ Almost every video from 2019-01-08 to 2021-09-04 is missing a sponsor. It would 
 
 Using the [sponsorblock API](https://sponsor.ajay.app/), I was able to find some examples of ads in his videos like [this one](https://youtu.be/wMuYiLby3-s?si=rjVFTKYwWV8DhMhs&t=289) which says there should be an ad read from 4:44 to 5:39. However, in the current version of the video no ad exists besides the "honey" signs in the background of the set throughout the video. When I check the [wayback machine](https://web.archive.org/web/20210420145348/https://www.youtube.com/watch?v=wMuYiLby3-s) however, the length of the video is 57 seconds longer - the length of the ad that was cut out.
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{leftWidth="50%"}
 #left
 ![Latest video with sponsor cut out](/posts/why-does-mrbeast-cut-out-sponsors/new_vid.png)
 Current version of the video doesn't have a sponsorship.

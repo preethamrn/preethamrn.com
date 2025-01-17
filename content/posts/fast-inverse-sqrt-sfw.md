@@ -233,7 +233,7 @@ x &= (1 + M)*2^{E-127} && \text{from earlier}\\
 \end{aligned}
 $$
 
-::side-by-side
+::side-by-side{leftWidth="45%"}
 #left
 Through another fortunate quirk of logarithms, we see that [$x \approxeq log(1+x)$](https://www.desmos.com/calculator/k7eekdct1s) for small values of x between 0 and 1.
 

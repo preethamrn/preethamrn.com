@@ -24,7 +24,7 @@ I wanted ChatGPT Plus to help with generating the custom card art but my plans w
 
 I figured I could try generating images using StableDiffusion. After all, it was free and I had a pretty good GPU. I quickly learned, however, that while it turned out the be pretty great at humans and it could be tweaked using LoRAs to generate other characters, you couldn't stretch its creativity that far outside of its training set. In the best case I got a deformed image of a Charmander and in the worst case I got absolute gibberish.
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 I don't even know what this is supposed to be...
 
@@ -32,7 +32,7 @@ I don't even know what this is supposed to be...
 ![spooky faces](/posts/pokemon-love-letter/stablediffusion/00000-1727058110.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 It's great at designing generic things. Just that when I ask it to add a Pokemon in there, it completely breaks.
 
@@ -40,7 +40,7 @@ It's great at designing generic things. Just that when I ask it to add a Pokemon
 ![palace](/posts/pokemon-love-letter/stablediffusion/00022-3487952973.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 Is this supposed to be a spaceship or a Togepi?
 
@@ -48,7 +48,7 @@ Is this supposed to be a spaceship or a Togepi?
 ![egg](/posts/pokemon-love-letter/stablediffusion/00000-1854640301.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 We're getting closer but...
 1. These look like people dressed up as Pokemon
@@ -58,7 +58,7 @@ We're getting closer but...
 ![halloween costumes](/posts/pokemon-love-letter/stablediffusion/00001-3257732172.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 Using LoRAs I was finally able to generate something that looked like a Charmander. But it's tail somehow morphed into the tablecloth
 
@@ -66,7 +66,7 @@ Using LoRAs I was finally able to generate something that looked like a Charmand
 ![charmander/table cloth](/posts/pokemon-love-letter/stablediffusion/00003-476866056.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 This is the best one I got and it still looks a bit janky.
 
@@ -82,7 +82,7 @@ Within a minute of setting it up, I gave it my first prompt
 
 What took me hours to fail at with StableDiffusion, ChatGPT was able to do in a minute. This is the image that I ended up using in my final prints. Chansey and Snorlax were just as smooth.
 
-::side-by-side{leftWidth="70%"}
+::side-by-side{leftWidth="48%"}
 #left
 ![Chansey](/posts/pokemon-love-letter/chansey.png)
 
@@ -113,7 +113,7 @@ Squirtle was a breeze just like Chansey and Snorlax. Just a bit of prompting req
 #### Step 3.1: Bulbasaur
 Bulbasaur was a bit tougher. 
 
-::side-by-side
+::side-by-side{leftWidth="50%"}
 #left
 Somehow no matter how I asked, ChatGPT refused to generate an image of Bulbasaur because it "cannot create images that directly depict copyrighted characters such as Bulbasaur from Pokémon." However, it "can generate an original image inspired by the concept of a creature with similar characteristics that does not infringe on copyright" This didn't make much sense to me since it was able to generate images of every other Pokemon I threw at it.
 
@@ -121,7 +121,7 @@ Somehow no matter how I asked, ChatGPT refused to generate an image of Bulbasaur
 ![It wouldn't generate a copyrighted character](/posts/pokemon-love-letter/bulbasaur_1.png)
 ::
 
-::side-by-side
+::side-by-side{leftWidth="50%"}
 #left
 I tried jailbreaking. I tried starting new chats in case it would forget that Bulbasaur was copyrighted and generate the image for me (which actually worked to some extent. The image started generating, but before displaying it printed out the error message. I think there's an extra filter after generating the image but before outputting it). I tried to prompt it with an image instead of with text. Nothing worked.
 
@@ -148,7 +148,7 @@ I think part of the problem was that ChatGPT doesn't know its top from bottom.
 #### Step 3.3 Generating the rest of the rest of the images
 After spending way too long on just two cards, I was worried the rest would take forever and would have equally strange circumstances. However they were surprisingly uneventful outside of a few interesting images.
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 This was supposed to be a Gengar
 
@@ -156,7 +156,7 @@ This was supposed to be a Gengar
 ![DALL·E - A realistic depiction of a fictional creature inspired by Gengar from Pokemon, reimagined in real life. This creature has a dark, ghostly appearance.png](/posts/pokemon-love-letter/dall-e1.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 And can you guess what this one is? If you guessed Alakazam you'd be right. This was one of the reasons 7 is Ditto (Transform) instead of Alakazam (Teleport). I assume the fact that it's a humanoid Pokemon makes it tougher to generate than usual.
 
@@ -172,7 +172,7 @@ And here's where I realized I messed up. Pokemon card art needed to be a 14:10 a
 
 Now I probably could have gotten this to work with better prompting but I also wasn't particularly keen on regenerating all my images only to face issues with Voltorb again. One thing I learned from the project is that if you can't fix it, then work around it later.
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 I found a [Pokemon card generating website](https://pokecardmaker.net/creator) which allowed me to make full art card. This would fit the Pokemon that I had pretty well (with a bit of cropping) and it would only leave a small colored band at below the card art which turned out to be a good thing since it helped with the readability of the small text.
 
@@ -180,7 +180,7 @@ I found a [Pokemon card generating website](https://pokecardmaker.net/creator) w
 ![Charmander](/posts/pokemon-love-letter/Charmander.png)
 ::
 
-::side-by-side{leftWidth="150%"}
+::side-by-side{}
 #left
 A bit of editing to add the strength of each card and I had most of my images, ready for printing.
 
