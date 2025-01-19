@@ -17,16 +17,17 @@ Start the development server on `http://localhost:3000`:
 
 ```bash
 # bun
-bun run dev
+bun dev -o
 ```
+
+NOTE: When bun is running, if you try to build for production, it will cause the posts page to not show up (probably because the .ouput folder is in use and can't be probably updated).
 
 ## Production
 
-Build the application for production:
+Deploy the build to production (or optionally staging). If deploying to production, it will prompt for user to input y/N to continue the deployment.
 
 ```bash
-# bun
-bun run build
+./deploy.sh [staging]
 ```
 
 Locally preview production build:
@@ -37,6 +38,3 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-# TODO
-1. When deploying contents to vercel, the website navigation stops working for a little while (I'm guessing because some caches need to update and so it's linking to "old" content which doesn't have the correct assets, json, content, and links)
