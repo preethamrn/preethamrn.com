@@ -13,7 +13,7 @@ cd .output/public
 echo 'www.preethamrn.com' > CNAME
 cp ../../vercel.json .
 
-git init
+git init -b master
 git add -A
 git commit -m "deploy $1"
 
